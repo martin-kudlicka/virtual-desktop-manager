@@ -8,7 +8,8 @@
 class VirtualDesktopManager : public VirtualDesktopManagerInternal
 {
   public:
-    VirtualDesktopManager();
+             VirtualDesktopManager();
+    virtual ~VirtualDesktopManager();
 
   private:
     QAxObject _iVirtualDesktopManager;
