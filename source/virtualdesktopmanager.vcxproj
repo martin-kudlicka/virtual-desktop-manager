@@ -91,8 +91,11 @@
     </ClCompile>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainwindow.cpp" />
+    <ClCompile Include="options.cpp" />
+    <ClCompile Include="property.cpp" />
     <ClCompile Include="settings.cpp" />
-    <ClCompile Include="settingsdialog.cpp" />
+    <ClCompile Include="optionsdialog.cpp" />
+    <ClCompile Include="widgetsettings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mainwindow.h">
@@ -132,12 +135,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\intermediate\virtualdesktopmanager\ui_mainwindow.h" />
-    <ClInclude Include="..\..\..\intermediate\virtualdesktopmanager\ui_settingsdialog.h" />
+    <ClInclude Include="options.h" />
+    <ClInclude Include="property.h" />
     <ClInclude Include="settings.h" />
-    <ClInclude Include="settingsdialog.h" />
+    <ClInclude Include="optionsdialog.h" />
+    <ClInclude Include="widgetsettings.h" />
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="settingsdialog.ui">
+    <CustomBuild Include="optionsdialog.ui">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Uic%27ing %(Identity)...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\intermediate\virtualdesktopmanager\ui_%(Filename).h;%(Outputs)</Outputs>

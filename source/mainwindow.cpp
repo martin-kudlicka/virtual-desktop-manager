@@ -1,17 +1,17 @@
 #include "mainwindow.h"
 
-#include "settingsdialog.h"
+#include "optionsdialog.h"
 
 MainWindow::MainWindow() : QMainWindow()
 {
-	_ui.setupUi(this);
+  _ui.setupUi(this);
 }
 
 MainWindow::~MainWindow()
 {
 }
 
-void MainWindow::on_actionSettings_triggered(bool checked /* false */)
+void MainWindow::on_actionOptions_triggered(bool checked /* false */)
 {
-	SettingsDialog(this).exec();
+  OptionsDialog(this).exec();
 }

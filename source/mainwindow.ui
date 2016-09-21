@@ -29,14 +29,14 @@
     </property>
     <addaction name="action_Exit"/>
    </widget>
-   <widget class="QMenu" name="menuOptions">
+   <widget class="QMenu" name="menuConfiguration">
     <property name="title">
-     <string>&amp;Options</string>
+     <string>&amp;Configuration</string>
     </property>
-    <addaction name="actionSettings"/>
+    <addaction name="actionOptions"/>
    </widget>
    <addaction name="menuFile"/>
-   <addaction name="menuOptions"/>
+   <addaction name="menuConfiguration"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -52,9 +52,9 @@
     <string>&amp;Exit</string>
    </property>
   </action>
-  <action name="actionSettings">
+  <action name="actionOptions">
    <property name="text">
-    <string>&amp;Settings...</string>
+    <string>&amp;Options...</string>
    </property>
   </action>
  </widget>
