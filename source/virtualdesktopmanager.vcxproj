@@ -91,6 +91,7 @@
     </ClCompile>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainwindow.cpp" />
+    <ClCompile Include="settings.cpp" />
     <ClCompile Include="settingsdialog.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -132,6 +133,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\intermediate\virtualdesktopmanager\ui_mainwindow.h" />
     <ClInclude Include="..\..\..\intermediate\virtualdesktopmanager\ui_settingsdialog.h" />
+    <ClInclude Include="settings.h" />
     <ClInclude Include="settingsdialog.h" />
   </ItemGroup>
   <ItemGroup>
