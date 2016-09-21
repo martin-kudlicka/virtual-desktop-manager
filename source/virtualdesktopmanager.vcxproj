@@ -97,7 +97,6 @@
     <ClCompile Include="settings.cpp" />
     <ClCompile Include="optionsdialog.cpp" />
     <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal.cpp" />
-    <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal\immersiveshell.cpp" />
     <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal\ivirtualdesktopmanagerinternal.cpp" />
     <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal\virtualdesktopapiunknown.cpp" />
     <ClCompile Include="widgetsettings.cpp" />
@@ -147,7 +146,6 @@
     <ClInclude Include="optionsdialog.h" />
     <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal.h" />
     <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal\iapplicationview.h" />
-    <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal\immersiveshell.h" />
     <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal\ivirtualdesktop.h" />
     <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal\ivirtualdesktopmanagerinternal.h" />
     <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal\virtualdesktopapiunknown.h" />
