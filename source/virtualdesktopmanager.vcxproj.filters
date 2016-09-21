@@ -33,6 +33,18 @@
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
+    <Filter Include="Header Files\virtualdesktopmanager">
+      <UniqueIdentifier>{11311b75-bec2-4ee9-b40f-d27358be4587}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\virtualdesktopmanager">
+      <UniqueIdentifier>{3057e1c3-4d8b-48fd-bcf1-c14e7cb35b25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\virtualdesktopmanager\virtualdesktopmanagerinternal">
+      <UniqueIdentifier>{ff3d2f74-5c36-4ae1-b28a-a7cf78c7f74c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\virtualdesktopmanager\virtualdesktopmanagerinternal">
+      <UniqueIdentifier>{e980d721-9580-45a1-b63a-b80b86e60162}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -64,6 +76,21 @@
     </ClCompile>
     <ClCompile Include="optionsdialog.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="virtualdesktopmanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal.cpp">
+      <Filter>Source Files\virtualdesktopmanager</Filter>
+    </ClCompile>
+    <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal\ivirtualdesktopmanagerinternal.cpp">
+      <Filter>Source Files\virtualdesktopmanager\virtualdesktopmanagerinternal</Filter>
+    </ClCompile>
+    <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal\immersiveshell.cpp">
+      <Filter>Source Files\virtualdesktopmanager\virtualdesktopmanagerinternal</Filter>
+    </ClCompile>
+    <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal\virtualdesktopapiunknown.cpp">
+      <Filter>Source Files\virtualdesktopmanager\virtualdesktopmanagerinternal</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +125,27 @@
     </ClInclude>
     <ClInclude Include="optionsdialog.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="virtualdesktopmanager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal.h">
+      <Filter>Header Files\virtualdesktopmanager</Filter>
+    </ClInclude>
+    <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal\ivirtualdesktopmanagerinternal.h">
+      <Filter>Header Files\virtualdesktopmanager\virtualdesktopmanagerinternal</Filter>
+    </ClInclude>
+    <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal\iapplicationview.h">
+      <Filter>Header Files\virtualdesktopmanager\virtualdesktopmanagerinternal</Filter>
+    </ClInclude>
+    <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal\ivirtualdesktop.h">
+      <Filter>Header Files\virtualdesktopmanager\virtualdesktopmanagerinternal</Filter>
+    </ClInclude>
+    <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal\immersiveshell.h">
+      <Filter>Header Files\virtualdesktopmanager\virtualdesktopmanagerinternal</Filter>
+    </ClInclude>
+    <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal\virtualdesktopapiunknown.h">
+      <Filter>Header Files\virtualdesktopmanager\virtualdesktopmanagerinternal</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
