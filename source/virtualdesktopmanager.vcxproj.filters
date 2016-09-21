@@ -86,9 +86,6 @@
     <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal\ivirtualdesktopmanagerinternal.cpp">
       <Filter>Source Files\virtualdesktopmanager\virtualdesktopmanagerinternal</Filter>
     </ClCompile>
-    <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal\immersiveshell.cpp">
-      <Filter>Source Files\virtualdesktopmanager\virtualdesktopmanagerinternal</Filter>
-    </ClCompile>
     <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal\virtualdesktopapiunknown.cpp">
       <Filter>Source Files\virtualdesktopmanager\virtualdesktopmanagerinternal</Filter>
     </ClCompile>
@@ -139,9 +136,6 @@
       <Filter>Header Files\virtualdesktopmanager\virtualdesktopmanagerinternal</Filter>
     </ClInclude>
     <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal\ivirtualdesktop.h">
-      <Filter>Header Files\virtualdesktopmanager\virtualdesktopmanagerinternal</Filter>
-    </ClInclude>
-    <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal\immersiveshell.h">
       <Filter>Header Files\virtualdesktopmanager\virtualdesktopmanagerinternal</Filter>
     </ClInclude>
     <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal\virtualdesktopapiunknown.h">
