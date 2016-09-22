@@ -118,6 +118,9 @@
     <CustomBuild Include="optionsdialog.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="optionsdialog.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\intermediate\virtualdesktopmanager\ui_mainwindow.h">
@@ -133,9 +136,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="options.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="optionsdialog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="virtualdesktopmanager.h">
@@ -167,6 +167,9 @@
     </ClInclude>
     <ClInclude Include="applicationmodel.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\intermediate\virtualdesktopmanager\ui_optionsdialog.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

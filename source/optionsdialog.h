@@ -1,7 +1,7 @@
 #ifndef OPTIONSDIALOG_H
 #define OPTIONSDIALOG_H
 
-#include "ui_settingsdialog.h"
+#include "ui_optionsdialog.h"
 #include "widgetsettings.h"
 
 class OptionsDialog : public QDialog
@@ -10,9 +10,10 @@ class OptionsDialog : public QDialog
     OptionsDialog(QWidget *parent = Q_NULLPTR);
 
   private:
-    Ui::SettingsDialog _ui;
-    WidgetSettings     _widgetSettings;
+    Ui::OptionsDialog _ui;
+    WidgetSettings    _widgetSettings;
 
+    void setupHotkeys () const;
     void setupSettings();
 
     virtual void accept() override;
