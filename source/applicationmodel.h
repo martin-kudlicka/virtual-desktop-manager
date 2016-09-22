@@ -17,6 +17,7 @@ class ApplicationModel : public QAbstractItemModel
       DesktopIndex,
       Path,
       FileName,
+      Title,
       Count
     };
 

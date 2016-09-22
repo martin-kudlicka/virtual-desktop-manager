@@ -33,6 +33,8 @@ QVariant ApplicationModel::data(const QModelIndex &index, int role /* Qt::Displa
       return QDir::toNativeSeparators(appInfo.process.fileInfo.path());
     case static_cast<int>(Column::FileName):
       return appInfo.process.fileInfo.completeBaseName();
+    case static_cast<int>(Column::Title) :
+      return appInfo.window.title;
     default:
       Q_UNREACHABLE();
   }
@@ -56,6 +58,8 @@ QVariant ApplicationModel::headerData(int section, Qt::Orientation orientation, 
       return tr("Path");
     case static_cast<int>(Column::FileName):
       return tr("Name");
+    case static_cast<int>(Column::Title) :
+      return tr("Title");
     default:
       Q_UNREACHABLE();
   }
