@@ -3,6 +3,7 @@
 
 #include "ui_mainwindow.h"
 #include "appwindows.h"
+#include "applicationmodel.h"
 
 class MainWindow : public QMainWindow
 {
@@ -13,8 +14,11 @@ class MainWindow : public QMainWindow
     virtual ~MainWindow();
 
   private:
-    AppWindows     _appWindows;
-    Ui::MainWindow _ui;
+    ApplicationModel _applicationModel;
+    AppWindows       _appWindows;
+    Ui::MainWindow   _ui;
+
+    void setupApplicationModel();
 
   private slots:
     void on_actionOptions_triggered(bool checked = false);
