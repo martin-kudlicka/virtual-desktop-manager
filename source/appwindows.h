@@ -11,8 +11,8 @@ class AppWindows
     AppWindows();
 
   private:
-    struct WindowInfo;
-    using WindowInfoList = QList<WindowInfo>;
+    /*struct WindowInfo;
+    using WindowInfoList = QList<WindowInfo>;*/
 
     struct ProcessInfo
     {
@@ -24,7 +24,8 @@ class AppWindows
       HWND           handle;
       QString        className;
       QString        title;
-      WindowInfoList childs;
+      quintptr       desktopIndex;
+      //WindowInfoList childs;
     };
     struct AppInfo
     {
@@ -37,7 +38,7 @@ class AppWindows
     AppInfoList _appsInfo;
 
     void enumerate  ();
-    void enumWindows(HWND hwnd);
+    void enumWindows(HWND window);
 
     static BOOL CALLBACK enumWindowsProc(_In_ HWND hwnd, _In_ LPARAM lParam);
 };
