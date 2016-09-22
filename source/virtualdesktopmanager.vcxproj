@@ -89,6 +89,7 @@
     <ClCompile Include="..\..\..\intermediate\virtualdesktopmanager\Release\moc_mainwindow.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="appwindows.cpp" />
     <ClCompile Include="virtualdesktopmanager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainwindow.cpp" />
@@ -139,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\intermediate\virtualdesktopmanager\ui_mainwindow.h" />
+    <ClInclude Include="appwindows.h" />
     <ClInclude Include="virtualdesktopmanager.h" />
     <ClInclude Include="options.h" />
     <ClInclude Include="property.h" />

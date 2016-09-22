@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "ui_mainwindow.h"
+#include "appwindows.h"
 
 class MainWindow : public QMainWindow
 {
@@ -12,6 +13,7 @@ class MainWindow : public QMainWindow
     virtual ~MainWindow();
 
   private:
+    AppWindows     _appWindows;
     Ui::MainWindow _ui;
 
   private slots:
