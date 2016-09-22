@@ -1,11 +1,17 @@
 #include "appwindows.h"
 
-#include <MkCore/MGlobal>
+#include <MkCore/MkGlobal>
 #include "virtualdesktopmanager.h"
+#include <MkCore/MProcessHandle>
 
 AppWindows::AppWindows()
 {
   enumerate();
+}
+
+const AppWindows::AppInfoList *AppWindows::applications() const
+{
+  return &_appsInfo;
 }
 
 void AppWindows::enumerate()
@@ -20,27 +26,54 @@ void AppWindows::enumWindows(HWND window)
     AppInfo appInfo;
 
     GetWindowThreadProcessId(window, &appInfo.process.id);
+    setProcessInfo(&appInfo.process);
 
     appInfo.window.handle = window;
+    setWindowInfo(&appInfo.window);
 
-    WCHAR text[Mk::PageSize] = { 0 };
-    GetClassName(window, text, _countof(text));
-    if (wcslen(text) > 0)
-    {
-      appInfo.window.className = QString::fromWCharArray(text);
-    }
-
-    GetWindowText(window, text, _countof(text));
-    if (wcslen(text) == 0)
+    if (appInfo.window.title.isEmpty())
     {
       return;
     }
-    appInfo.window.title = QString::fromWCharArray(text);
-
-    appInfo.window.desktopIndex = gVirtualDesktopManager->index(window);
 
     _appsInfo.append(qMove(appInfo));
   }
+}
+
+void AppWindows::setProcessInfo(ProcessInfo *processInfo) const
+{
+  auto process = MProcessHandle(processInfo->id, PROCESS_QUERY_LIMITED_INFORMATION);
+  if (!process.valid())
+  {
+    return;
+  }
+
+  WCHAR filePath[Mk::PageSize] = { 0 };
+  DWORD filePathSize = _countof(filePath);
+  auto ok = QueryFullProcessImageName(process, 0, filePath, &filePathSize);
+  if (ok)
+  {
+    processInfo->fileInfo.setFile(QString::fromWCharArray(filePath));
+  }
+}
+
+void AppWindows::setWindowInfo(WindowInfo *windowInfo) const
+{
+  WCHAR text[Mk::PageSize] = { 0 };
+  auto chars = GetClassName(windowInfo->handle, text, _countof(text));
+  if (chars > 0)
+  {
+    windowInfo->className = QString::fromWCharArray(text);
+  }
+
+  chars = GetWindowText(windowInfo->handle, text, _countof(text));
+  if (chars == 0)
+  {
+    return;
+  }
+  windowInfo->title = QString::fromWCharArray(text);
+
+  windowInfo->desktopIndex = gVirtualDesktopManager->index(windowInfo->handle);
 }
 
 BOOL CALLBACK AppWindows::enumWindowsProc(_In_ HWND hwnd, _In_ LPARAM lParam)
