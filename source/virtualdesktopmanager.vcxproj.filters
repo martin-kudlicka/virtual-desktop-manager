@@ -89,6 +89,9 @@
     <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal\virtualdesktopapiunknown.cpp">
       <Filter>Source Files\virtualdesktopmanager\virtualdesktopmanagerinternal</Filter>
     </ClCompile>
+    <ClCompile Include="appwindows.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mainwindow.h">
@@ -140,6 +143,9 @@
     </ClInclude>
     <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal\virtualdesktopapiunknown.h">
       <Filter>Header Files\virtualdesktopmanager\virtualdesktopmanagerinternal</Filter>
+    </ClInclude>
+    <ClInclude Include="appwindows.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
