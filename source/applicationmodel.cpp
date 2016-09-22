@@ -41,6 +41,29 @@ QVariant ApplicationModel::data(const QModelIndex &index, int role /* Qt::Displa
   return QVariant();
 }
 
+QVariant ApplicationModel::headerData(int section, Qt::Orientation orientation, int role /* Qt::DisplayRole */) const
+{
+  if (orientation == Qt::Orientation::Vertical || role != Qt::DisplayRole)
+  {
+    return QVariant();
+  }
+
+  switch (section)
+  {
+    case static_cast<int>(Column::DesktopIndex):
+      return tr("#");
+    case static_cast<int>(Column::Path):
+      return tr("Path");
+    case static_cast<int>(Column::FileName):
+      return tr("Name");
+    default:
+      Q_UNREACHABLE();
+  }
+
+  Q_UNREACHABLE();
+  return QVariant();
+}
+
 QModelIndex ApplicationModel::index(int row, int column, const QModelIndex &parent /* QModelIndex() */) const
 {
   return createIndex(row, column);
