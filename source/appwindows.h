@@ -8,9 +8,6 @@
 class AppWindows
 {
   public:
-    AppWindows();
-
-  private:
     /*struct WindowInfo;
     using WindowInfoList = QList<WindowInfo>;*/
 
@@ -35,10 +32,17 @@ class AppWindows
 
     using AppInfoList = QList<AppInfo>;
 
+    AppWindows();
+
+    const AppInfoList *applications() const;
+
+  private:
     AppInfoList _appsInfo;
 
     void enumerate  ();
     void enumWindows(HWND window);
+    void setProcessInfo(ProcessInfo *processInfo) const;
+    void setWindowInfo(WindowInfo *windowInfo) const;
 
     static BOOL CALLBACK enumWindowsProc(_In_ HWND hwnd, _In_ LPARAM lParam);
 };
