@@ -92,6 +92,15 @@
     <ClCompile Include="appwindows.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal\ivirtualdesktop.cpp">
+      <Filter>Source Files\virtualdesktopmanager\virtualdesktopmanagerinternal</Filter>
+    </ClCompile>
+    <ClCompile Include="virtualdesktopmanager\ivirtualdesktopmanager.cpp">
+      <Filter>Source Files\virtualdesktopmanager</Filter>
+    </ClCompile>
+    <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal\immersiveshell.cpp">
+      <Filter>Source Files\virtualdesktopmanager\virtualdesktopmanagerinternal</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mainwindow.h">
@@ -146,6 +155,12 @@
     </ClInclude>
     <ClInclude Include="appwindows.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="virtualdesktopmanager\ivirtualdesktopmanager.h">
+      <Filter>Header Files\virtualdesktopmanager</Filter>
+    </ClInclude>
+    <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal\immersiveshell.h">
+      <Filter>Header Files\virtualdesktopmanager\virtualdesktopmanagerinternal</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

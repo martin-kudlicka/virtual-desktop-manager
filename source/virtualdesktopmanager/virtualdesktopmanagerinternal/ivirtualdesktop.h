@@ -1,6 +1,9 @@
 #ifndef IVIRTUALDESKTOP_H
 #define IVIRTUALDESKTOP_H
 
+#include <Objbase.h>
+#include "iapplicationview.h"
+
 EXTERN_C const IID IID_IVirtualDesktop;
 
 MIDL_INTERFACE("FF72FFDD-BE7E-43FC-9C03-AD81681E88E4") IVirtualDesktop : public IUnknown
