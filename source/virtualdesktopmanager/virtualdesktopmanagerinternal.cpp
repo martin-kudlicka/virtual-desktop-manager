@@ -40,3 +40,21 @@ VirtualDesktopManagerInternal::IVirtualDesktopList VirtualDesktopManagerInternal
 
   return virtualDesktops;
 }
+
+void VirtualDesktopManagerInternal::switchTo(quintptr index) const
+{
+  quintptr index2 = 0;
+  for (const auto &desktop : desktops())
+  {
+    if (index2 == index)
+    {
+      _iVirtualDesktopManagerInternal->SwitchDesktop(desktop);
+      return;
+    }
+
+    index2++;
+  }
+
+  Q_UNREACHABLE();
+  return;
+}
