@@ -3,6 +3,7 @@
 
 #include "settings.h"
 #include <MkCore/MLazySingleton>
+#include <MkGui/MHotkey>
 
 class Options : public Settings
 {
@@ -11,6 +12,10 @@ class Options : public Settings
     virtual ~Options();
 
     static const QString DesktopCount;
+
+    quintptr desktopCount    ()               const;
+    MHotkey  desktopHotkey   (quintptr index) const;
+    void     setDesktopHotkey(quintptr index, const MHotkey &hotkey);
 };
 
 extern MLazySingleton<Options> gOptions;
