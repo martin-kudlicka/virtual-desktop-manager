@@ -104,6 +104,12 @@
     <ClCompile Include="applicationmodel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\intermediate\virtualdesktopmanager\Debug\moc_optionsdialog.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\intermediate\virtualdesktopmanager\Release\moc_optionsdialog.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mainwindow.h">

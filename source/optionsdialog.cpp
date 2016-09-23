@@ -10,6 +10,8 @@ OptionsDialog::OptionsDialog(QWidget *parent /* Q_NULLPTR */) : QDialog(parent),
   setupSettings();
   _widgetSettings.load();
 
+  on_trayIcon_stateChanged(_ui.trayIcon->checkState());
+
   setupHotkeys();
 }
 
@@ -58,4 +60,9 @@ void OptionsDialog::accept()
   _widgetSettings.save();
 
   QDialog::accept();
+}
+
+void OptionsDialog::on_trayIcon_stateChanged(int state) const
+{
+  _ui.minimizeToTray->setEnabled(state == Qt::Checked);
 }

@@ -6,8 +6,11 @@
 
 class OptionsDialog : public QDialog
 {
+  Q_OBJECT
+
   public:
-    OptionsDialog(QWidget *parent = Q_NULLPTR);
+             OptionsDialog(QWidget *parent = Q_NULLPTR);
+    virtual ~OptionsDialog() Q_DECL_OVERRIDE;
 
   private:
     Ui::OptionsDialog _ui;
@@ -18,6 +21,9 @@ class OptionsDialog : public QDialog
     void setupSettings();
 
     virtual void accept() override;
+
+    private Q_SLOTS:
+      void on_trayIcon_stateChanged(int state) const;
 };
 
 #endif
