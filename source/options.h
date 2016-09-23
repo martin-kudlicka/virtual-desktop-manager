@@ -17,6 +17,7 @@ class Options : public Settings
 
     quintptr desktopCount    ()               const;
     MHotkey  desktopHotkey   (quintptr index) const;
+    bool     minimizeToTray  ()               const;
     void     setDesktopHotkey(quintptr index, const MHotkey &hotkey);
     bool     trayIcon        ()               const;
 };

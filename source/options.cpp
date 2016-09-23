@@ -46,6 +46,11 @@ MHotkey Options::desktopHotkey(quintptr index) const
   return hotkey;
 }
 
+bool Options::minimizeToTray() const
+{
+  return value(MinimizeToTray).toBool();
+}
+
 void Options::setDesktopHotkey(quintptr index, const MHotkey &hotkey)
 {
   auto group = QString("%1/%2/%3/").arg(Group_Hotkey).arg(Group_Desktop).arg(index);

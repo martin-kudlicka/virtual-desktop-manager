@@ -68,6 +68,20 @@ void MainWindow::setupApplicationModel()
   headerView->setSectionResizeMode(QHeaderView::ResizeToContents);
 }
 
+bool MainWindow::event(QEvent *event)
+{
+  switch (event->type())
+  {
+    case QEvent::WindowStateChange:
+      if (isMinimized() && _trayIcon.isVisible() && gOptions->minimizeToTray())
+      {
+        setWindowFlags(windowFlags() | Qt::CustomizeWindowHint);
+      }
+  }
+
+  return QMainWindow::event(event);
+}
+
 bool MainWindow::nativeEvent(const QByteArray &eventType, void *message, long *result)
 {
   auto msg = static_cast<LPMSG>(message);
