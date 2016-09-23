@@ -24,6 +24,7 @@ class MainWindow : public QMainWindow
     void registerHotkeys      () const;
     void setupApplicationModel();
 
+    virtual bool event      (QEvent *event)                                            Q_DECL_OVERRIDE;
     virtual bool nativeEvent(const QByteArray &eventType, void *message, long *result) Q_DECL_OVERRIDE;
 
   private slots:
