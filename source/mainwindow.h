@@ -29,6 +29,7 @@ class MainWindow : public QMainWindow
 
   private slots:
     void on_actionOptions_triggered(bool checked = false);
+    void on_trayIcon_activated     (QSystemTrayIcon::ActivationReason reason);
 };
 
 #endif
