@@ -11,8 +11,9 @@ class VirtualDesktopManagerInternal
     _COM_SMARTPTR_TYPEDEF(IVirtualDesktop, IID_IVirtualDesktop);
     using IVirtualDesktopList = QList<IVirtualDesktopPtr>;
 
-    quintptr            count   () const;
-    IVirtualDesktopList desktops() const;
+    quintptr            count   ()               const;
+    IVirtualDesktopList desktops()               const;
+    void                switchTo(quintptr index) const;
 
   protected:
     VirtualDesktopManagerInternal();

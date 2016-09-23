@@ -2,6 +2,7 @@
 
 #include "optionsdialog.h"
 #include "options.h"
+#include "virtualdesktopmanager.h"
 
 MainWindow::MainWindow() : QMainWindow(), _applicationModel(&_appWindows)
 {
@@ -63,7 +64,7 @@ bool MainWindow::nativeEvent(const QByteArray &eventType, void *message, long *r
   {
     case WM_HOTKEY:
       auto desktopIndex = msg->wParam;
-      // TODO
+      gVirtualDesktopManager->switchTo(desktopIndex);
       return true;
   }
 
