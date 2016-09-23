@@ -13,6 +13,10 @@ OptionsDialog::OptionsDialog(QWidget *parent /* Q_NULLPTR */) : QDialog(parent),
   setupHotkeys();
 }
 
+OptionsDialog::~OptionsDialog()
+{
+}
+
 void OptionsDialog::saveHotkeys() const
 {
   auto formLayout = qobject_cast<QFormLayout *>(_ui.hotkeysContents->layout());
@@ -43,7 +47,9 @@ void OptionsDialog::setupHotkeys() const
 
 void OptionsDialog::setupSettings()
 {
-  _widgetSettings.setWidget(Options::DesktopCount, _ui.desktopCount);
+  _widgetSettings.setWidget(Options::DesktopCount,   _ui.desktopCount);
+  _widgetSettings.setWidget(Options::TrayIcon,       _ui.trayIcon);
+  _widgetSettings.setWidget(Options::MinimizeToTray, _ui.minimizeToTray);
 }
 
 void OptionsDialog::accept()
