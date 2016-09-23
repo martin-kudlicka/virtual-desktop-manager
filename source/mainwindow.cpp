@@ -15,6 +15,8 @@ MainWindow::MainWindow() : QMainWindow(), _applicationModel(&_appWindows)
   _trayIcon.setIcon(QIcon(":/resources/mainwindow/mainwindow.png"));
 
   applySettings();
+
+  connect(&_trayIcon, &QSystemTrayIcon::activated, this, &MainWindow::on_trayIcon_activated);
 }
 
 MainWindow::~MainWindow()
@@ -111,4 +113,14 @@ void MainWindow::on_actionOptions_triggered(bool checked /* false */)
   }
 
   applySettings();
+}
+
+void MainWindow::on_trayIcon_activated(QSystemTrayIcon::ActivationReason reason)
+{
+  if (reason == QSystemTrayIcon::DoubleClick && isMinimized())
+  {
+    setWindowFlags(windowFlags() & ~Qt::CustomizeWindowHint);
+    showNormal();
+    activateWindow();
+  }
 }
