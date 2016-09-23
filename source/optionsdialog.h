@@ -13,6 +13,7 @@ class OptionsDialog : public QDialog
     Ui::OptionsDialog _ui;
     WidgetSettings    _widgetSettings;
 
+    void saveHotkeys  () const;
     void setupHotkeys () const;
     void setupSettings();
 
