@@ -11,10 +11,21 @@ MainWindow::MainWindow() : QMainWindow(), _applicationModel(&_appWindows)
   setupApplicationModel();
 
   registerHotkeys();
+
+  _trayIcon.setIcon(QIcon(":/resources/mainwindow/mainwindow.png"));
+
+  applySettings();
 }
 
 MainWindow::~MainWindow()
 {
+}
+
+void MainWindow::applySettings()
+{
+  _trayIcon.setVisible(gOptions->trayIcon());
+
+  registerHotkeys();
 }
 
 void MainWindow::registerHotkeys() const
@@ -84,5 +95,6 @@ void MainWindow::on_actionOptions_triggered(bool checked /* false */)
   {
     UnregisterHotKey(reinterpret_cast<HWND>(winId()), index);
   }
-  registerHotkeys();
+
+  applySettings();
 }

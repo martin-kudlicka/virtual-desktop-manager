@@ -17,7 +17,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -41,6 +41,40 @@
          </property>
         </widget>
        </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>&amp;Tray icon</string>
+         </property>
+         <property name="buddy">
+          <cstring>trayIcon</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QCheckBox" name="trayIcon">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>&amp;Minimize to tray</string>
+         </property>
+         <property name="buddy">
+          <cstring>minimizeToTray</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QCheckBox" name="minimizeToTray">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="tab_2">
@@ -58,8 +92,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>356</width>
-            <height>197</height>
+            <width>98</width>
+            <height>28</height>
            </rect>
           </property>
           <layout class="QFormLayout" name="formLayout_2"/>

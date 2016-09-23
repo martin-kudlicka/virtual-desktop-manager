@@ -4,6 +4,7 @@
 #include "ui_mainwindow.h"
 #include "appwindows.h"
 #include "applicationmodel.h"
+#include <QtWidgets/QSystemTrayIcon>
 
 class MainWindow : public QMainWindow
 {
@@ -17,7 +18,9 @@ class MainWindow : public QMainWindow
     ApplicationModel _applicationModel;
     AppWindows       _appWindows;
     Ui::MainWindow   _ui;
+    QSystemTrayIcon  _trayIcon;
 
+    void applySettings        ();
     void registerHotkeys      () const;
     void setupApplicationModel();
 
