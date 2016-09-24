@@ -14,6 +14,12 @@ const AppWindows::AppInfoList *AppWindows::applications() const
   return &_appsInfo;
 }
 
+void AppWindows::refresh()
+{
+  _appsInfo.clear();
+  enumerate();
+}
+
 void AppWindows::enumerate()
 {
   EnumWindows(&enumWindowsProc, reinterpret_cast<LPARAM>(this));

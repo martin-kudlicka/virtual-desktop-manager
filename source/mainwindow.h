@@ -27,9 +27,10 @@ class MainWindow : public QMainWindow
     virtual bool event      (QEvent *event)                                            Q_DECL_OVERRIDE;
     virtual bool nativeEvent(const QByteArray &eventType, void *message, long *result) Q_DECL_OVERRIDE;
 
-  private slots:
-    void on_actionOptions_triggered(bool checked = false);
-    void on_trayIcon_activated     (QSystemTrayIcon::ActivationReason reason);
+  private Q_SLOTS:
+    void on_actionOptions_triggered          (bool checked = false);
+    void on_refreshApplicationsButton_clicked(bool checked = false);
+    void on_trayIcon_activated               (QSystemTrayIcon::ActivationReason reason);
 };
 
 #endif

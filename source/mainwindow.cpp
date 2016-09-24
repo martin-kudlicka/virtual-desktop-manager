@@ -115,12 +115,22 @@ void MainWindow::on_actionOptions_triggered(bool checked /* false */)
   applySettings();
 }
 
+void MainWindow::on_refreshApplicationsButton_clicked(bool checked /* false */)
+{
+  _appWindows.refresh();
+  _ui.applicationView->reset();
+}
+
 void MainWindow::on_trayIcon_activated(QSystemTrayIcon::ActivationReason reason)
 {
-  if (reason == QSystemTrayIcon::DoubleClick && isMinimized())
+  switch (reason)
   {
-    setWindowFlags(windowFlags() & ~Qt::CustomizeWindowHint);
-    showNormal();
-    activateWindow();
+    case QSystemTrayIcon::DoubleClick:
+      if (isMinimized())
+      {
+        setWindowFlags(windowFlags() & ~Qt::CustomizeWindowHint);
+        showNormal();
+        activateWindow();
+      }
   }
 }
