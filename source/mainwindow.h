@@ -28,9 +28,10 @@ class MainWindow : public QMainWindow
     virtual bool nativeEvent(const QByteArray &eventType, void *message, long *result) Q_DECL_OVERRIDE;
 
   private Q_SLOTS:
-    void on_actionOptions_triggered          (bool checked = false);
-    void on_refreshApplicationsButton_clicked(bool checked = false);
-    void on_trayIcon_activated               (QSystemTrayIcon::ActivationReason reason);
+    void on_actionOptions_triggered                   (bool checked = false);
+    void on_applicationView_customContextMenuRequested(const QPoint &pos) const;
+    void on_refreshApplicationsButton_clicked         (bool checked = false);
+    void on_trayIcon_activated                        (QSystemTrayIcon::ActivationReason reason);
 };
 
 #endif

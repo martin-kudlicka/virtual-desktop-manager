@@ -115,6 +115,33 @@ void MainWindow::on_actionOptions_triggered(bool checked /* false */)
   applySettings();
 }
 
+void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos) const
+{
+  auto selections = _ui.applicationView->selectionModel()->selectedRows();
+
+  QMenu contextMenu;
+
+  auto switchTo = contextMenu.addAction(tr("Switch to"));
+  switchTo->setEnabled(selections.size() == 1);
+
+  auto moveTo = contextMenu.addAction(tr("Move to desktop"));
+  moveTo->setEnabled(!selections.empty());
+
+  contextMenu.addSeparator();
+
+  contextMenu.addAction(tr("Refresh"), this, &MainWindow::on_refreshApplicationsButton_clicked);
+
+  auto action = contextMenu.exec(_ui.applicationView->mapToGlobal(pos));
+  if (action == switchTo)
+  {
+    // TODO
+  }
+  else if (action == moveTo)
+  {
+    // TODO
+  }
+}
+
 void MainWindow::on_refreshApplicationsButton_clicked(bool checked /* false */)
 {
   _appWindows.refresh();
