@@ -37,3 +37,23 @@ quintptr VirtualDesktopManager::index(HWND window) const
 
   return -1;
 }
+
+void VirtualDesktopManager::moveWindowTo(HWND window, quintptr index) const
+{
+  DWORD processId = 0;
+  GetWindowThreadProcessId(window, &processId);
+
+  if (processId == GetCurrentProcessId())
+  {
+    auto desktop = desktops().at(index);
+
+    GUID id;
+    desktop->GetID(&id);
+
+    _iVirtualDesktopManager->MoveWindowToDesktop(window, id);
+  }
+  else
+  {
+    // TODO
+  }
+}
