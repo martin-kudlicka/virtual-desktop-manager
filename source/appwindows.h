@@ -35,6 +35,7 @@ class AppWindows
     AppWindows();
 
     const AppInfoList *applications() const;
+          void         refresh     ();
 
   private:
     AppInfoList _appsInfo;
