@@ -2,6 +2,7 @@
 
 #include "options.h"
 #include <MkWidgets/MHotkeyLineEdit>
+#include <MkWidgets/MFormLayout>
 
 OptionsDialog::OptionsDialog(QWidget *parent /* Q_NULLPTR */) : QDialog(parent), _widgetSettings(gOptions.data())
 {
@@ -17,6 +18,21 @@ OptionsDialog::OptionsDialog(QWidget *parent /* Q_NULLPTR */) : QDialog(parent),
 
 OptionsDialog::~OptionsDialog()
 {
+}
+
+void OptionsDialog::addHotkeyEdit(QFormLayout *formLayout, quintptr index) const
+{
+  auto desktopHotkey = gOptions->desktopHotkey(index);
+
+  auto hotkeyEdit = new MHotkeyLineEdit(_ui.hotkeysContents);
+  hotkeyEdit->setHotkey(desktopHotkey);
+
+  formLayout->addRow(QString("Desktop %1").arg(index), hotkeyEdit);
+}
+
+void OptionsDialog::removeHotkeyEdit(MFormLayout *formLayout, quintptr index) const
+{
+  formLayout->removeRow(index);
 }
 
 void OptionsDialog::saveHotkeys() const
@@ -38,12 +54,7 @@ void OptionsDialog::setupHotkeys() const
 
   for (auto index = 0; index < _ui.desktopCount->value(); index++)
   {
-    auto desktopHotkey = gOptions->desktopHotkey(index);
-
-    auto hotkeyEdit = new MHotkeyLineEdit(_ui.hotkeysContents);
-    hotkeyEdit->setHotkey(desktopHotkey);
-
-    formLayout->addRow(QString("Desktop %1").arg(index), hotkeyEdit);
+    addHotkeyEdit(formLayout, index);
   }
 }
 
@@ -60,6 +71,27 @@ void OptionsDialog::accept()
   _widgetSettings.save();
 
   QDialog::accept();
+}
+
+void OptionsDialog::on_desktopCount_valueChanged(int i) const
+{
+  auto formLayout = static_cast<MFormLayout *>(_ui.hotkeysContents->layout());
+  if (formLayout->rowCount() == 0)
+  {
+    return;
+  }
+
+  while (i != formLayout->rowCount())
+  {
+    if (i < formLayout->rowCount())
+    {
+      removeHotkeyEdit(formLayout, formLayout->rowCount() - 1);
+    }
+    else
+    {
+      addHotkeyEdit(formLayout, formLayout->rowCount());
+    }
+  }
 }
 
 void OptionsDialog::on_trayIcon_stateChanged(int state) const

@@ -4,6 +4,8 @@
 #include "ui_optionsdialog.h"
 #include "widgetsettings.h"
 
+class MFormLayout;
+
 class OptionsDialog : public QDialog
 {
   Q_OBJECT
@@ -16,6 +18,8 @@ class OptionsDialog : public QDialog
     Ui::OptionsDialog _ui;
     WidgetSettings    _widgetSettings;
 
+    void addHotkeyEdit(QFormLayout *formLayout, quintptr index) const;
+    void removeHotkeyEdit(MFormLayout *formLayout, quintptr index) const;
     void saveHotkeys  () const;
     void setupHotkeys () const;
     void setupSettings();
@@ -23,6 +27,7 @@ class OptionsDialog : public QDialog
     virtual void accept() override;
 
     private Q_SLOTS:
+      void on_desktopCount_valueChanged(int i) const;
       void on_trayIcon_stateChanged(int state) const;
 };
 
