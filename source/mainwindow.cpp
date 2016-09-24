@@ -134,7 +134,11 @@ void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos
   auto action = contextMenu.exec(_ui.applicationView->mapToGlobal(pos));
   if (action == switchTo)
   {
-    // TODO
+    auto appInfo = _appWindows.applications()->at(selections.first().row());
+
+    gVirtualDesktopManager->switchTo(appInfo.window.desktopIndex);
+
+    SetForegroundWindow(appInfo.window.handle);
   }
   else if (action == moveTo)
   {
