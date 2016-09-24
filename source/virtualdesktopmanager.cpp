@@ -22,7 +22,7 @@ quintptr VirtualDesktopManager::index(HWND window) const
   GUID id;
   _iVirtualDesktopManager->GetWindowDesktopId(window, &id);
 
-  quintptr index2 = 1;
+  quintptr index2 = 0;
   for (const auto &desktop : desktops())
   {
     GUID id2;
@@ -31,6 +31,8 @@ quintptr VirtualDesktopManager::index(HWND window) const
     {
       return index2;
     }
+
+    index2++;
   }
 
   return -1;
