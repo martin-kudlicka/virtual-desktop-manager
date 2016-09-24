@@ -124,25 +124,41 @@ void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos
   auto switchTo = contextMenu.addAction(tr("Switch to"));
   switchTo->setEnabled(selections.size() == 1);
 
-  auto moveTo = contextMenu.addAction(tr("Move to desktop"));
-  moveTo->setEnabled(!selections.empty());
+  static const auto Property_MoveToDesktopAction = "MoveToDesktop";
+
+  auto moveToMenu = contextMenu.addMenu(tr("Move to desktop"));
+  moveToMenu->setEnabled(!selections.empty() && gVirtualDesktopManager->count() > 1);
+  if (moveToMenu->isEnabled())
+  {
+    for (auto index = 0; index < gVirtualDesktopManager->count(); index++)
+    {
+      auto moveTo = moveToMenu->addAction(QString::number(index + 1));
+      moveTo->setProperty(Property_MoveToDesktopAction, true);
+      moveTo->setData(index);
+    }
+  }
 
   contextMenu.addSeparator();
 
   contextMenu.addAction(tr("Refresh"), this, &MainWindow::on_refreshApplicationsButton_clicked);
 
   auto action = contextMenu.exec(_ui.applicationView->mapToGlobal(pos));
+  if (!action)
+  {
+    return;
+  }
   if (action == switchTo)
   {
-    auto appInfo = _appWindows.applications()->at(selections.first().row());
-
-    gVirtualDesktopManager->switchTo(appInfo.window.desktopIndex);
-
-    SetForegroundWindow(appInfo.window.handle);
+    auto appInfo = &_appWindows.applications()->at(selections.first().row());
+    SetForegroundWindow(appInfo->window.handle);
   }
-  else if (action == moveTo)
+  else if (action->property(Property_MoveToDesktopAction).toBool())
   {
-    // TODO
+    for (const auto &index : selections)
+    {
+      auto appInfo = &_appWindows.applications()->at(index.row());
+      gVirtualDesktopManager->moveWindowTo(appInfo->window.handle, action->data().toUInt());
+    }
   }
 }
 
