@@ -110,6 +110,15 @@
     <ClCompile Include="..\..\..\intermediate\virtualdesktopmanager\Release\moc_optionsdialog.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal\iapplicationviewcollection.cpp">
+      <Filter>Source Files\virtualdesktopmanager\virtualdesktopmanagerinternal</Filter>
+    </ClCompile>
+    <ClCompile Include="virtualdesktopmanager\applicationviewcollection.cpp">
+      <Filter>Source Files\virtualdesktopmanager</Filter>
+    </ClCompile>
+    <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal\iapplicationview.cpp">
+      <Filter>Source Files\virtualdesktopmanager\virtualdesktopmanagerinternal</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mainwindow.h">
@@ -176,6 +185,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\intermediate\virtualdesktopmanager\ui_optionsdialog.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal\iapplicationviewcollection.h">
+      <Filter>Header Files\virtualdesktopmanager\virtualdesktopmanagerinternal</Filter>
+    </ClInclude>
+    <ClInclude Include="virtualdesktopmanager\applicationviewcollection.h">
+      <Filter>Header Files\virtualdesktopmanager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

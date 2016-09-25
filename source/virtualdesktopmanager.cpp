@@ -1,6 +1,7 @@
 #include "virtualdesktopmanager.h"
 
 #include "virtualdesktopmanager/virtualdesktopmanagerinternal/immersiveshell.h"
+#include "virtualdesktopmanager/applicationviewcollection.h"
 
 MLazySingleton<VirtualDesktopManager> gVirtualDesktopManager;
 
@@ -54,6 +55,7 @@ void VirtualDesktopManager::moveWindowTo(HWND window, quintptr index) const
   }
   else
   {
-    // TODO
+    auto applicationView = ApplicationViewCollection().forHwnd(window);
+    moveViewTo(applicationView, index);
   }
 }

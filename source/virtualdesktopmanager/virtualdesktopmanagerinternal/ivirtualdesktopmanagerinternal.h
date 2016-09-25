@@ -29,4 +29,6 @@ MIDL_INTERFACE("F31574D6-B682-4CDC-BD56-1827860ABEC6") IVirtualDesktopManagerInt
     virtual HRESULT STDMETHODCALLTYPE FindDesktop        (GUID *desktopId, IVirtualDesktop **ppDesktop)                                                        = 0;
 };
 
+_COM_SMARTPTR_TYPEDEF(IVirtualDesktopManagerInternal, IID_IVirtualDesktopManagerInternal);
+
 #endif
