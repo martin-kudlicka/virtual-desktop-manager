@@ -62,12 +62,6 @@
     <ClCompile Include="..\..\..\intermediate\virtualdesktopmanager\qrc_mainwindow.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="settings.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="property.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="widgetsettings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -140,12 +134,6 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\intermediate\virtualdesktopmanager\ui_mainwindow.h">
       <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="settings.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="property.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="widgetsettings.h">
       <Filter>Header Files</Filter>

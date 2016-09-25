@@ -3,11 +3,11 @@
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QRadioButton>
-#include "settings.h"
+#include <MkCore/MSettings>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QLineEdit>
 
-WidgetSettings::WidgetSettings(Settings *settings) : _settings(settings)
+WidgetSettings::WidgetSettings(MSettings *settings) : _settings(settings)
 {
 }
 
@@ -21,7 +21,7 @@ void WidgetSettings::save() const
   update(true);
 }
 
-void WidgetSettings::setWidget(const QString &key, QRadioButtonPtrList &&radioGroup, Settings *settings /* Q_NULLPTR */)
+void WidgetSettings::setWidget(const QString &key, QRadioButtonPtrList &&radioGroup, MSettings *settings /* Q_NULLPTR */)
 {
   WidgetData widgetData;
   widgetData.radioGroup = qMove(radioGroup);
@@ -29,7 +29,7 @@ void WidgetSettings::setWidget(const QString &key, QRadioButtonPtrList &&radioGr
   _widgets.insert(key, qMove(widgetData));
 }
 
-void WidgetSettings::setWidget(const QString &key, QWidget *widget, Settings *settings /* Q_NULLPTR */)
+void WidgetSettings::setWidget(const QString &key, QWidget *widget, MSettings *settings /* Q_NULLPTR */)
 {
   WidgetData widgetData;
   widgetData.widget   = widget;
@@ -82,7 +82,7 @@ void WidgetSettings::update(bool save) const
     }
     else
     {
-      const auto widgetType = type(widgetData->widget);
+      auto widgetType = type(widgetData->widget);
       switch (widgetType)
       {
         case QSizePolicy::CheckBox:
@@ -104,7 +104,7 @@ void WidgetSettings::update(bool save) const
   }
 }
 
-void WidgetSettings::updateCheckBox(bool save, const QString &key, QCheckBox *checkBox, Settings *settings /* Q_NULLPTR */) const
+void WidgetSettings::updateCheckBox(bool save, const QString &key, QCheckBox *checkBox, MSettings *settings /* Q_NULLPTR */) const
 {
   if (!settings)
   {
@@ -121,7 +121,7 @@ void WidgetSettings::updateCheckBox(bool save, const QString &key, QCheckBox *ch
   }
 }
 
-void WidgetSettings::updateComboBox(bool save, const QString &key, QComboBox *comboBox, Settings *settings /* Q_NULLPTR */) const
+void WidgetSettings::updateComboBox(bool save, const QString &key, QComboBox *comboBox, MSettings *settings /* Q_NULLPTR */) const
 {
   if (!settings)
   {
@@ -145,7 +145,7 @@ void WidgetSettings::updateComboBox(bool save, const QString &key, QComboBox *co
   }
 }
 
-void WidgetSettings::updateLineEdit(bool save, const QString &key, QLineEdit *lineEdit, Settings *settings /* Q_NULLPTR */) const
+void WidgetSettings::updateLineEdit(bool save, const QString &key, QLineEdit *lineEdit, MSettings *settings /* Q_NULLPTR */) const
 {
   if (!settings)
   {
@@ -162,7 +162,7 @@ void WidgetSettings::updateLineEdit(bool save, const QString &key, QLineEdit *li
   }
 }
 
-void WidgetSettings::updateRadioGroup(bool save, const QString &key, const QRadioButtonPtrList &radioGroup, Settings *settings /* Q_NULLPTR */) const
+void WidgetSettings::updateRadioGroup(bool save, const QString &key, const QRadioButtonPtrList &radioGroup, MSettings *settings /* Q_NULLPTR */) const
 {
   if (!settings)
   {
@@ -171,7 +171,7 @@ void WidgetSettings::updateRadioGroup(bool save, const QString &key, const QRadi
 
   if (save)
   {
-    qintptr index = 0;
+    qintptr index;
     for (index = 0; index < radioGroup.size(); index++)
     {
       if (radioGroup.at(index)->isChecked())
@@ -195,7 +195,7 @@ void WidgetSettings::updateRadioGroup(bool save, const QString &key, const QRadi
   }
 }
 
-void WidgetSettings::updateSpinBox(bool save, const QString &key, QSpinBox *spinBox, Settings *settings /* Q_NULLPTR */) const
+void WidgetSettings::updateSpinBox(bool save, const QString &key, QSpinBox *spinBox, MSettings *settings /* Q_NULLPTR */) const
 {
   if (!settings)
   {
