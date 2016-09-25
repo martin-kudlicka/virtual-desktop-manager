@@ -101,8 +101,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainwindow.cpp" />
     <ClCompile Include="options.cpp" />
-    <ClCompile Include="property.cpp" />
-    <ClCompile Include="settings.cpp" />
     <ClCompile Include="optionsdialog.cpp" />
     <ClCompile Include="virtualdesktopmanager\applicationviewcollection.cpp" />
     <ClCompile Include="virtualdesktopmanager\ivirtualdesktopmanager.cpp" />
@@ -158,8 +156,6 @@
     <ClInclude Include="appwindows.h" />
     <ClInclude Include="virtualdesktopmanager.h" />
     <ClInclude Include="options.h" />
-    <ClInclude Include="property.h" />
-    <ClInclude Include="settings.h" />
     <CustomBuild Include="optionsdialog.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing optionsdialog.h...</Message>

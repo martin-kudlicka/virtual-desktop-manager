@@ -1,11 +1,11 @@
 #ifndef OPTIONS_H
 #define OPTIONS_H
 
-#include "settings.h"
+#include <MkCore/MSettings>
 #include <MkCore/MLazySingleton>
 #include <MkGui/MHotkey>
 
-class Options : public Settings
+class Options : public MSettings
 {
   public:
              Options();
