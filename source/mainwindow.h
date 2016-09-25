@@ -29,6 +29,7 @@ class MainWindow : public QMainWindow
 
   private Q_SLOTS:
     void on_actionOptions_triggered                   (bool checked = false);
+    void on_addRuleButton_clicked                     (bool checked = false);
     void on_applicationView_customContextMenuRequested(const QPoint &pos);
     void on_refreshApplicationsButton_clicked         (bool checked = false);
     void on_trayIcon_activated                        (QSystemTrayIcon::ActivationReason reason);

@@ -110,6 +110,9 @@
     <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal\iapplicationview.cpp">
       <Filter>Source Files\virtualdesktopmanager\virtualdesktopmanagerinternal</Filter>
     </ClCompile>
+    <ClCompile Include="ruledialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mainwindow.h">
@@ -126,6 +129,9 @@
     </CustomBuild>
     <CustomBuild Include="optionsdialog.h">
       <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ruledialog.ui">
+      <Filter>Form Files</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -173,6 +179,12 @@
     </ClInclude>
     <ClInclude Include="virtualdesktopmanager\applicationviewcollection.h">
       <Filter>Header Files\virtualdesktopmanager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\intermediate\virtualdesktopmanager\ui_ruledialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ruledialog.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

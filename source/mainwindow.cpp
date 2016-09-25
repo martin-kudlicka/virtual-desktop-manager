@@ -3,6 +3,7 @@
 #include "optionsdialog.h"
 #include "options.h"
 #include "virtualdesktopmanager.h"
+#include "ruledialog.h"
 
 MainWindow::MainWindow() : QMainWindow(), _applicationModel(&_appWindows)
 {
@@ -115,6 +116,11 @@ void MainWindow::on_actionOptions_triggered(bool checked /* false */)
   applySettings();
 }
 
+void MainWindow::on_addRuleButton_clicked(bool checked /* false */)
+{
+  RuleDialog().exec();
+}
+
 void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos)
 {
   auto selections = _ui.applicationView->selectionModel()->selectedRows();
@@ -126,15 +132,17 @@ void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos
 
   static const auto Property_MoveToDesktopAction = "MoveToDesktop";
 
-  auto moveToMenu = contextMenu.addMenu(tr("Move to desktop"));
-  moveToMenu->setEnabled(!selections.empty() && gVirtualDesktopManager->count() > 1);
-  if (moveToMenu->isEnabled())
   {
-    for (auto index = 0; index < gVirtualDesktopManager->count(); index++)
+    auto moveToMenu = contextMenu.addMenu(tr("Move to desktop"));
+    moveToMenu->setEnabled(!selections.empty() && gVirtualDesktopManager->count() > 1);
+    if (moveToMenu->isEnabled())
     {
-      auto moveTo = moveToMenu->addAction(QString::number(index + 1));
-      moveTo->setProperty(Property_MoveToDesktopAction, true);
-      moveTo->setData(index);
+      for (auto index = 0; index < gVirtualDesktopManager->count(); index++)
+      {
+        auto moveTo = moveToMenu->addAction(QString::number(index + 1));
+        moveTo->setProperty(Property_MoveToDesktopAction, true);
+        moveTo->setData(index);
+      }
     }
   }
 

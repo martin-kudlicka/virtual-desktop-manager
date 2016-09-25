@@ -17,9 +17,12 @@
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
      <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
-        <string>Applications</string>
+        <string>&amp;Applications</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
@@ -60,8 +63,31 @@
       </widget>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
-        <string>Tab 2</string>
+        <string>R&amp;ules</string>
        </attribute>
+       <widget class="QTreeView" name="ruleView">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>20</y>
+          <width>611</width>
+          <height>431</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="addRuleButton">
+        <property name="geometry">
+         <rect>
+          <x>680</x>
+          <y>20</y>
+          <width>75</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>A&amp;dd</string>
+        </property>
+       </widget>
       </widget>
      </widget>
     </item>
