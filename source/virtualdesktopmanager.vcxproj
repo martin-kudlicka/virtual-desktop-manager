@@ -111,7 +111,6 @@
     <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal\ivirtualdesktop.cpp" />
     <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal\ivirtualdesktopmanagerinternal.cpp" />
     <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal\virtualdesktopapiunknown.cpp" />
-    <ClCompile Include="widgetsettings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mainwindow.h">
@@ -175,7 +174,6 @@
     <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal\ivirtualdesktop.h" />
     <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal\ivirtualdesktopmanagerinternal.h" />
     <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal\virtualdesktopapiunknown.h" />
-    <ClInclude Include="widgetsettings.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="optionsdialog.ui">

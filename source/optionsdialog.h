@@ -2,7 +2,7 @@
 #define OPTIONSDIALOG_H
 
 #include "ui_optionsdialog.h"
-#include "widgetsettings.h"
+#include <MkWidgets/MWidgetSettings>
 
 class MFormLayout;
 
@@ -16,7 +16,7 @@ class OptionsDialog : public QDialog
 
   private:
     Ui::OptionsDialog _ui;
-    WidgetSettings    _widgetSettings;
+    MWidgetSettings   _widgetSettings;
 
     void addHotkeyEdit(QFormLayout *formLayout, quintptr index) const;
     void removeHotkeyEdit(MFormLayout *formLayout, quintptr index) const;
