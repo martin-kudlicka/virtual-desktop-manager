@@ -28,7 +28,7 @@ QVariant ApplicationModel::data(const QModelIndex &index, int role /* Qt::Displa
   switch (index.column())
   {
     case static_cast<int>(Column::DesktopIndex):
-      return appInfo.window.desktopIndex;
+      return appInfo.window.desktopIndex + 1;
     case static_cast<int>(Column::Path):
       return QDir::toNativeSeparators(appInfo.process.fileInfo.path());
     case static_cast<int>(Column::FileName):
