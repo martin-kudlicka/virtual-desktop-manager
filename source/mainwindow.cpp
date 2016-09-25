@@ -115,7 +115,7 @@ void MainWindow::on_actionOptions_triggered(bool checked /* false */)
   applySettings();
 }
 
-void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos) const
+void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos)
 {
   auto selections = _ui.applicationView->selectionModel()->selectedRows();
 
@@ -158,6 +158,8 @@ void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos
     {
       auto appInfo = &_appWindows.applications()->at(index.row());
       gVirtualDesktopManager->moveWindowTo(appInfo->window.handle, action->data().toUInt());
+
+      on_refreshApplicationsButton_clicked();
     }
   }
 }
