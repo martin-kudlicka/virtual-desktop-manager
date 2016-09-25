@@ -41,6 +41,11 @@ VirtualDesktopManagerInternal::IVirtualDesktopList VirtualDesktopManagerInternal
   return virtualDesktops;
 }
 
+void VirtualDesktopManagerInternal::moveViewTo(IApplicationViewPtr view, quintptr index) const
+{
+  _iVirtualDesktopManagerInternal->MoveViewToDesktop(view, desktops().at(index));
+}
+
 void VirtualDesktopManagerInternal::switchTo(quintptr index) const
 {
   quintptr index2 = 0;

@@ -104,8 +104,11 @@
     <ClCompile Include="property.cpp" />
     <ClCompile Include="settings.cpp" />
     <ClCompile Include="optionsdialog.cpp" />
+    <ClCompile Include="virtualdesktopmanager\applicationviewcollection.cpp" />
     <ClCompile Include="virtualdesktopmanager\ivirtualdesktopmanager.cpp" />
     <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal.cpp" />
+    <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal\iapplicationview.cpp" />
+    <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal\iapplicationviewcollection.cpp" />
     <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal\immersiveshell.cpp" />
     <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal\ivirtualdesktop.cpp" />
     <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal\ivirtualdesktopmanagerinternal.cpp" />
@@ -167,9 +170,11 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DWINVER=0x0600 -D_WIN32_WINNT=0x0600 -DPSAPI_VERSION=1 -D_user_mode_=1 "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets" "-I.\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\." "-I.\..\..\..\intermediate\virtualdesktopmanager"</Command>
     </CustomBuild>
+    <ClInclude Include="virtualdesktopmanager\applicationviewcollection.h" />
     <ClInclude Include="virtualdesktopmanager\ivirtualdesktopmanager.h" />
     <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal.h" />
     <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal\iapplicationview.h" />
+    <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal\iapplicationviewcollection.h" />
     <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal\immersiveshell.h" />
     <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal\ivirtualdesktop.h" />
     <ClInclude Include="virtualdesktopmanager\virtualdesktopmanagerinternal\ivirtualdesktopmanagerinternal.h" />
