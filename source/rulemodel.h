@@ -3,6 +3,7 @@
 
 #include <QtCore/QAbstractItemModel>
 
+class MUuidPtr;
 class Rules;
 
 class RuleModel : public QAbstractItemModel
@@ -11,7 +12,7 @@ class RuleModel : public QAbstractItemModel
              RuleModel(const Rules *rules);
     virtual ~RuleModel() Q_DECL_OVERRIDE;
 
-    void insertRow(const QUuid &id);
+    void insertRow(const MUuidPtr &id);
 
   private:
     enum class Column

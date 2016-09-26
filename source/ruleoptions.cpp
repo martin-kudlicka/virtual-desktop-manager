@@ -9,7 +9,7 @@ const QString RuleOptions::Name    = "name";
 const QString RuleOptions::Process = "process";
 const QString RuleOptions::Title   = "title";
 
-RuleOptions::RuleOptions(QUuid &&id) : _id(id)
+RuleOptions::RuleOptions(MUuidPtr &&id) : _id(id)
 {
   beginGroup(Rules::Group);
   beginGroup(_id.toString());
@@ -33,7 +33,7 @@ bool RuleOptions::enabled() const
   return value(Enabled).toBool();
 }
 
-const QUuid &RuleOptions::id() const
+const MUuidPtr &RuleOptions::id() const
 {
   return _id;
 }

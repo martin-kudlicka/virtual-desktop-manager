@@ -10,7 +10,7 @@ class RuleDialog : public QDialog
   Q_OBJECT
 
   public:
-             RuleDialog(QUuid &&id, QWidget *parent = Q_NULLPTR);
+             RuleDialog(MUuidPtr &&id, QWidget *parent = Q_NULLPTR);
              RuleDialog(QWidget *parent = Q_NULLPTR);
     virtual ~RuleDialog() Q_DECL_OVERRIDE;
 

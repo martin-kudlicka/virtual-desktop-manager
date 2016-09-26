@@ -1,6 +1,6 @@
 #include "ruledialog.h"
 
-RuleDialog::RuleDialog(QUuid &&id, QWidget *parent /* Q_NULLPTR */) : QDialog(parent), _options(qMove(id)), _widgetSettings(&_options)
+RuleDialog::RuleDialog(MUuidPtr &&id, QWidget *parent /* Q_NULLPTR */) : QDialog(parent), _options(qMove(id)), _widgetSettings(&_options)
 {
   _ui.setupUi(this);
 
@@ -8,7 +8,7 @@ RuleDialog::RuleDialog(QUuid &&id, QWidget *parent /* Q_NULLPTR */) : QDialog(pa
   _widgetSettings.load();
 }
 
-RuleDialog::RuleDialog(QWidget *parent /* Q_NULLPTR */) : RuleDialog(QUuid::createUuid(), parent)
+RuleDialog::RuleDialog(QWidget *parent /* Q_NULLPTR */) : RuleDialog(MUuidPtr::createUuid(), parent)
 {
 }
 
