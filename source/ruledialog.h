@@ -10,9 +10,11 @@ class RuleDialog : public QDialog
   Q_OBJECT
 
   public:
-             RuleDialog(const QUuid &id, QWidget *parent = Q_NULLPTR);
+             RuleDialog(QUuid &&id, QWidget *parent = Q_NULLPTR);
              RuleDialog(QWidget *parent = Q_NULLPTR);
     virtual ~RuleDialog() Q_DECL_OVERRIDE;
+
+    const RuleOptions &options() const;
 
     private:
       Ui::RuleDialog  _ui;

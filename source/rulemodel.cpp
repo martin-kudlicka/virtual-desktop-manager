@@ -1,7 +1,6 @@
 #include "rulemodel.h"
 
 #include "rules.h"
-#include <QtCore/QUuid>
 #include "ruleoptions.h"
 
 RuleModel::RuleModel(const Rules *rules) : QAbstractItemModel(), _rules(rules)
@@ -10,6 +9,14 @@ RuleModel::RuleModel(const Rules *rules) : QAbstractItemModel(), _rules(rules)
 
 RuleModel::~RuleModel()
 {
+}
+
+void RuleModel::insertRow(const QUuid &id)
+{
+  auto index2 = _rules->index(id);
+
+  beginInsertRows(QModelIndex(), index2, index2);
+  endInsertRows();
 }
 
 int RuleModel::columnCount(const QModelIndex &parent /* QModelIndex() */) const
@@ -24,8 +31,8 @@ QVariant RuleModel::data(const QModelIndex &index, int role /* Qt::DisplayRole *
     return QVariant();
   }
 
-  auto id      = _rules->id(index.row());
-  RuleOptions options(id);
+  auto id = _rules->id(index.row());
+  RuleOptions options(qMove(id));
 
   switch (role)
   {
@@ -34,11 +41,11 @@ QVariant RuleModel::data(const QModelIndex &index, int role /* Qt::DisplayRole *
       {
         case static_cast<int>(Column::Name):
           return options.name();
-        case static_cast<int>(Column::Process) :
+        case static_cast<int>(Column::Process):
           return options.process();
-        case static_cast<int>(Column::Title) :
+        case static_cast<int>(Column::Title):
           return options.title();
-        case static_cast<int>(Column::Class) :
+        case static_cast<int>(Column::Class):
           return options.className();
         default:
           return QVariant();
@@ -46,7 +53,7 @@ QVariant RuleModel::data(const QModelIndex &index, int role /* Qt::DisplayRole *
     case Qt::CheckStateRole:
       switch (index.column())
       {
-        case static_cast<int>(Column::Enabled) :
+        case static_cast<int>(Column::Enabled):
           return options.enabled();
         default:
           return QVariant();
@@ -74,7 +81,7 @@ QVariant RuleModel::headerData(int section, Qt::Orientation orientation, int rol
       return tr("Process");
     case static_cast<int>(Column::Title):
       return tr("Title");
-    case static_cast<int>(Column::Class) :
+    case static_cast<int>(Column::Class):
       return tr("Class");
     default:
       Q_UNREACHABLE();
