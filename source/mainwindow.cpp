@@ -134,7 +134,8 @@ void MainWindow::on_addRuleButton_clicked(bool checked /* false */)
     return;
   }
 
-  _ruleModel.insertRow(ruleDialog.options().id());
+  auto row = _rules.index(ruleDialog.options().id());
+  _ruleModel.insertRow(row);
 }
 
 void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos)
@@ -193,10 +194,9 @@ void MainWindow::on_deleteRuleButton_clicked(bool checked /* false */)
   auto selected = _ui.ruleView->selectionModel()->selectedRows();
   for (auto index = selected.crbegin(); index != selected.crend(); index++)
   {
-    _rules.remove(index->row());
+    _rules.removeId(index->internalId());
+    _ruleModel.removeRow(index->row());
   }
-
-  _ui.ruleView->reset();
 }
 
 void MainWindow::on_editRuleButton_clicked(bool checked /* false */)

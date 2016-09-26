@@ -11,14 +11,6 @@ RuleModel::~RuleModel()
 {
 }
 
-void RuleModel::insertRow(const MUuidPtr &id)
-{
-  auto index2 = _rules->index(id);
-
-  beginInsertRows(QModelIndex(), index2, index2);
-  endInsertRows();
-}
-
 int RuleModel::columnCount(const QModelIndex &parent /* QModelIndex() */) const
 {
   return static_cast<int>(Column::Count);
@@ -93,12 +85,28 @@ QVariant RuleModel::headerData(int section, Qt::Orientation orientation, int rol
 
 QModelIndex RuleModel::index(int row, int column, const QModelIndex &parent /* QModelIndex() */) const
 {
-  return createIndex(row, column);
+  return createIndex(row, column, _rules->id(row));
+}
+
+bool RuleModel::insertRows(int row, int count, const QModelIndex &parent /* QModelIndex() */)
+{
+  beginInsertRows(parent, row, row + count - 1);
+  endInsertRows();
+
+  return true;
 }
 
 QModelIndex RuleModel::parent(const QModelIndex &index) const
 {
   return QModelIndex();
+}
+
+bool RuleModel::removeRows(int row, int count, const QModelIndex &parent /* QModelIndex() */)
+{
+  beginRemoveRows(parent, row, row + count - 1);
+  endRemoveRows();
+
+  return true;
 }
 
 int RuleModel::rowCount(const QModelIndex &parent /* QModelIndex() */) const
