@@ -188,6 +188,17 @@ void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos
   }
 }
 
+void MainWindow::on_deleteRuleButton_clicked(bool checked /* false */)
+{
+  auto selected = _ui.ruleView->selectionModel()->selectedRows();
+  for (const auto &index : selected)
+  {
+    _rules.remove(index.row());
+  }
+
+  _ui.ruleView->reset();
+}
+
 void MainWindow::on_editRuleButton_clicked(bool checked /* false */)
 {
   auto index = _ui.ruleView->selectionModel()->currentIndex().row();
