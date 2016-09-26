@@ -23,8 +23,7 @@ QVariant RuleModel::data(const QModelIndex &index, int role /* Qt::DisplayRole *
     return QVariant();
   }
 
-  auto id = _rules->id(index.row());
-  RuleOptions options(qMove(id));
+  RuleOptions options(index.internalId());
 
   switch (role)
   {
