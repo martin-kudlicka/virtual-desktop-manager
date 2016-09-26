@@ -1,9 +1,8 @@
 #include "applicationmodel.h"
 
-#include "appwindows.h"
 #include <QtCore/QDir>
 
-ApplicationModel::ApplicationModel(const AppWindows *appWindows) : QAbstractItemModel(), _appWindows(appWindows)
+ApplicationModel::ApplicationModel(const AppWindows::AppInfoList *applications) : QAbstractItemModel(), _applications(applications)
 {
 }
 
@@ -23,7 +22,7 @@ QVariant ApplicationModel::data(const QModelIndex &index, int role /* Qt::Displa
     return QVariant();
   }
 
-  auto appInfo = _appWindows->applications()->at(index.row());
+  auto appInfo = _applications->at(index.row());
 
   switch (index.column())
   {
@@ -82,7 +81,7 @@ int ApplicationModel::rowCount(const QModelIndex &parent /* QModelIndex() */) co
 {
   if (parent == QModelIndex())
   {
-    return _appWindows->applications()->size();
+    return _applications->size();
   }
   else
   {

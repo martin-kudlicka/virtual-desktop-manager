@@ -2,14 +2,13 @@
 #define APPLICATIONMODEL_H
 
 #include <QtCore/QAbstractItemModel>
-
-class AppWindows;
+#include "appwindows.h"
 
 class ApplicationModel : public QAbstractItemModel
 {
   public:
-             ApplicationModel(const AppWindows *appWindows);
-    virtual ~ApplicationModel();
+             ApplicationModel(const AppWindows::AppInfoList *applications);
+    virtual ~ApplicationModel() Q_DECL_OVERRIDE;
 
   private:
     enum class Column
@@ -21,7 +20,7 @@ class ApplicationModel : public QAbstractItemModel
       Count
     };
 
-    const AppWindows *_appWindows;
+    const AppWindows::AppInfoList *_applications;
 
     virtual int         columnCount(const QModelIndex &parent = QModelIndex())                            const Q_DECL_OVERRIDE;
     virtual QVariant    data       (const QModelIndex &index, int role = Qt::DisplayRole)                 const Q_DECL_OVERRIDE;

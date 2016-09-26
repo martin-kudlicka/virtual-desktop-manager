@@ -5,7 +5,7 @@
 #include "virtualdesktopmanager.h"
 #include "ruledialog.h"
 
-MainWindow::MainWindow() : QMainWindow(), _applicationModel(&_appWindows)
+MainWindow::MainWindow() : QMainWindow(), _applicationModel(_appWindows.applications())
 {
   _ui.setupUi(this);
 
@@ -118,7 +118,13 @@ void MainWindow::on_actionOptions_triggered(bool checked /* false */)
 
 void MainWindow::on_addRuleButton_clicked(bool checked /* false */)
 {
-  RuleDialog().exec();
+  if (RuleDialog().exec() == QDialog::Rejected)
+  {
+    return;
+  }
+
+  // TODO
+  _ui.ruleView->reset();
 }
 
 void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos)
