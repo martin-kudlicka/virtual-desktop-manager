@@ -2,12 +2,16 @@
 
 #include <QtCore/QUuid>
 
-RuleDialog::RuleDialog(QWidget *parent /* Q_NULLPTR */) : QDialog(parent), _options(QUuid::createUuid()), _widgetSettings(&_options)
+RuleDialog::RuleDialog(const QUuid &id, QWidget *parent /* Q_NULLPTR */) : QDialog(parent), _options(id), _widgetSettings(&_options)
 {
   _ui.setupUi(this);
 
   setupSettings();
   _widgetSettings.load();
+}
+
+RuleDialog::RuleDialog(QWidget *parent /* Q_NULLPTR */) : RuleDialog(QUuid::createUuid(), parent)
+{
 }
 
 RuleDialog::~RuleDialog()

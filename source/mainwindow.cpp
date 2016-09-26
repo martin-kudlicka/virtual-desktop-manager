@@ -4,6 +4,7 @@
 #include "options.h"
 #include "virtualdesktopmanager.h"
 #include "ruledialog.h"
+#include <QtCore/QUuid>
 
 MainWindow::MainWindow() : QMainWindow(), _applicationModel(_appWindows.applications()), _ruleModel(&_rules)
 {
@@ -184,6 +185,19 @@ void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos
       on_refreshApplicationsButton_clicked();
     }
   }
+}
+
+void MainWindow::on_editRuleButton_clicked(bool checked /* false */)
+{
+  auto index = _ui.ruleView->selectionModel()->currentIndex().row();
+  auto id    = _rules.id(index);
+
+  if (RuleDialog(id).exec() == QDialog::Rejected)
+  {
+    return;
+  }
+
+  _ui.ruleView->reset();
 }
 
 void MainWindow::on_refreshApplicationsButton_clicked(bool checked /* false */)

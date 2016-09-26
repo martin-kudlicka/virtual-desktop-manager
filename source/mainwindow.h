@@ -35,6 +35,7 @@ class MainWindow : public QMainWindow
     void on_actionOptions_triggered                   (bool checked = false);
     void on_addRuleButton_clicked                     (bool checked = false);
     void on_applicationView_customContextMenuRequested(const QPoint &pos);
+    void on_editRuleButton_clicked                    (bool checked = false);
     void on_refreshApplicationsButton_clicked         (bool checked = false);
     void on_trayIcon_activated                        (QSystemTrayIcon::ActivationReason reason);
 };
