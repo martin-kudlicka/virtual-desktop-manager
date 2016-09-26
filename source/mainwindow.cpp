@@ -201,15 +201,16 @@ void MainWindow::on_deleteRuleButton_clicked(bool checked /* false */)
 
 void MainWindow::on_editRuleButton_clicked(bool checked /* false */)
 {
-  auto index = _ui.ruleView->selectionModel()->currentIndex().row();
-  auto id    = _rules.id(index);
+  auto selected = _ui.ruleView->selectionModel()->selectedIndexes();
+  auto index    = selected.first().row();
+  auto id       = _rules.id(index);
 
   if (RuleDialog(qMove(id)).exec() == QDialog::Rejected)
   {
     return;
   }
 
-  _ui.ruleView->reset();
+  emit _ruleModel.dataChanged(selected.first(), selected.last());
 }
 
 void MainWindow::on_refreshApplicationsButton_clicked(bool checked /* false */)
