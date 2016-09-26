@@ -210,6 +210,7 @@ void MainWindow::on_refreshApplicationsButton_clicked(bool checked /* false */)
 void MainWindow::on_ruleView_selectionModel_selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) const
 {
   _ui.editRuleButton->setEnabled(_ui.ruleView->selectionModel()->selectedRows().size() == 1);
+  _ui.deleteRuleButton->setEnabled(!_ui.ruleView->selectionModel()->selectedRows().empty());
 }
 
 void MainWindow::on_trayIcon_activated(QSystemTrayIcon::ActivationReason reason)
