@@ -202,8 +202,7 @@ void MainWindow::on_deleteRuleButton_clicked(bool checked /* false */)
 void MainWindow::on_editRuleButton_clicked(bool checked /* false */)
 {
   auto selected = _ui.ruleView->selectionModel()->selectedIndexes();
-  auto index    = selected.first().row();
-  auto id       = _rules.id(index);
+  auto id       = selected.first().internalId();
 
   if (RuleDialog(qMove(id)).exec() == QDialog::Rejected)
   {
