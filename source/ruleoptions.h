@@ -6,15 +6,21 @@
 class RuleOptions : public MSettings
 {
   public:
-             RuleOptions(const QUuid &id);
-    virtual ~RuleOptions();
-
     static const QString Action;
     static const QString Class;
     static const QString Enabled;
     static const QString Name;
     static const QString Process;
     static const QString Title;
+
+             RuleOptions(const QUuid &id);
+    virtual ~RuleOptions() Q_DECL_OVERRIDE;
+
+    QString className() const;
+    bool    enabled  () const;
+    QString name     () const;
+    QString process  () const;
+    QString title    () const;
 };
 
 #endif

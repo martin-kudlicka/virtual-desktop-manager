@@ -104,7 +104,9 @@
     <ClCompile Include="applicationmodel.cpp" />
     <ClCompile Include="appwindows.cpp" />
     <ClCompile Include="ruledialog.cpp" />
+    <ClCompile Include="rulemodel.cpp" />
     <ClCompile Include="ruleoptions.cpp" />
+    <ClCompile Include="rules.cpp" />
     <ClCompile Include="virtualdesktopmanager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainwindow.cpp" />
@@ -172,7 +174,9 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DWINVER=0x0600 -D_WIN32_WINNT=0x0600 -DPSAPI_VERSION=1 -D_user_mode_=1 "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets" "-I.\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\." "-I.\..\..\..\intermediate\virtualdesktopmanager"</Command>
     </CustomBuild>
+    <ClInclude Include="rulemodel.h" />
     <ClInclude Include="ruleoptions.h" />
+    <ClInclude Include="rules.h" />
     <ClInclude Include="virtualdesktopmanager.h" />
     <ClInclude Include="options.h" />
     <CustomBuild Include="optionsdialog.h">

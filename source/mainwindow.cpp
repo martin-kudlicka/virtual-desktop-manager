@@ -5,11 +5,12 @@
 #include "virtualdesktopmanager.h"
 #include "ruledialog.h"
 
-MainWindow::MainWindow() : QMainWindow(), _applicationModel(_appWindows.applications())
+MainWindow::MainWindow() : QMainWindow(), _applicationModel(_appWindows.applications()), _ruleModel(&_rules)
 {
   _ui.setupUi(this);
 
   setupApplicationModel();
+  setupRuleModel();
 
   registerHotkeys();
 
@@ -71,6 +72,14 @@ void MainWindow::setupApplicationModel()
   headerView->setSectionResizeMode(QHeaderView::ResizeToContents);
 }
 
+void MainWindow::setupRuleModel()
+{
+  _ui.ruleView->setModel(&_ruleModel);
+
+  auto headerView = _ui.ruleView->header();
+  headerView->setSectionResizeMode(QHeaderView::ResizeToContents);
+}
+
 bool MainWindow::event(QEvent *event)
 {
   switch (event->type())
@@ -123,7 +132,6 @@ void MainWindow::on_addRuleButton_clicked(bool checked /* false */)
     return;
   }
 
-  // TODO
   _ui.ruleView->reset();
 }
 
