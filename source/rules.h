@@ -11,8 +11,9 @@ class Rules
      Rules();
     ~Rules();
 
-    QUuid    id  (quintptr index) const;
-    quintptr size()               const;
+    QUuid    id    (quintptr index) const;
+    void     remove(quintptr index);
+    quintptr size  ()               const;
 
   private:
     QSettings _settings;

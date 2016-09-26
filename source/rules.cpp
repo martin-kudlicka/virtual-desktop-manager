@@ -19,6 +19,12 @@ QUuid Rules::id(quintptr index) const
   return _settings.childGroups().at(index);
 }
 
+void Rules::remove(quintptr index)
+{
+  auto id2 = id(index);
+  _settings.remove(id2.toString());
+}
+
 quintptr Rules::size() const
 {
   return _settings.childGroups().size();
