@@ -122,6 +122,12 @@
     <ClCompile Include="ruleoptions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="rules.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="rulemodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mainwindow.h">
@@ -196,6 +202,12 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="ruleoptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rules.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rulemodel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

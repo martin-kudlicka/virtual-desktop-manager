@@ -2,9 +2,10 @@
 #define MAINWINDOW_H
 
 #include "ui_mainwindow.h"
-#include "appwindows.h"
 #include "applicationmodel.h"
 #include <QtWidgets/QSystemTrayIcon>
+#include "rulemodel.h"
+#include "rules.h"
 
 class MainWindow : public QMainWindow
 {
@@ -18,11 +19,14 @@ class MainWindow : public QMainWindow
     ApplicationModel _applicationModel;
     AppWindows       _appWindows;
     Ui::MainWindow   _ui;
+    RuleModel        _ruleModel;
+    Rules            _rules;
     QSystemTrayIcon  _trayIcon;
 
     void applySettings        ();
     void registerHotkeys      () const;
     void setupApplicationModel();
+    void setupRuleModel       ();
 
     virtual bool event      (QEvent *event)                                            Q_DECL_OVERRIDE;
     virtual bool nativeEvent(const QByteArray &eventType, void *message, long *result) Q_DECL_OVERRIDE;
