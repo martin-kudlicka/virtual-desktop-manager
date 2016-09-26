@@ -4,7 +4,6 @@
 #include "options.h"
 #include "virtualdesktopmanager.h"
 #include "ruledialog.h"
-#include <QtCore/QUuid>
 
 MainWindow::MainWindow() : QMainWindow(), _applicationModel(_appWindows.applications()), _ruleModel(&_rules)
 {
@@ -129,12 +128,13 @@ void MainWindow::on_actionOptions_triggered(bool checked /* false */)
 
 void MainWindow::on_addRuleButton_clicked(bool checked /* false */)
 {
-  if (RuleDialog().exec() == QDialog::Rejected)
+  RuleDialog ruleDialog;
+  if (ruleDialog.exec() == QDialog::Rejected)
   {
     return;
   }
 
-  _ui.ruleView->reset();
+  _ruleModel.insertRow(ruleDialog.options().id());
 }
 
 void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos)
@@ -191,9 +191,9 @@ void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos
 void MainWindow::on_deleteRuleButton_clicked(bool checked /* false */)
 {
   auto selected = _ui.ruleView->selectionModel()->selectedRows();
-  for (const auto &index : selected)
+  for (auto index = selected.crbegin(); index != selected.crend(); index++)
   {
-    _rules.remove(index.row());
+    _rules.remove(index->row());
   }
 
   _ui.ruleView->reset();
@@ -204,7 +204,7 @@ void MainWindow::on_editRuleButton_clicked(bool checked /* false */)
   auto index = _ui.ruleView->selectionModel()->currentIndex().row();
   auto id    = _rules.id(index);
 
-  if (RuleDialog(id).exec() == QDialog::Rejected)
+  if (RuleDialog(qMove(id)).exec() == QDialog::Rejected)
   {
     return;
   }

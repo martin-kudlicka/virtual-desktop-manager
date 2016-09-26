@@ -11,6 +11,8 @@ class RuleModel : public QAbstractItemModel
              RuleModel(const Rules *rules);
     virtual ~RuleModel() Q_DECL_OVERRIDE;
 
+    void insertRow(const QUuid &id);
+
   private:
     enum class Column
     {

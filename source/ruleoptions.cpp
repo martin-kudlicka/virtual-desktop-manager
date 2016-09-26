@@ -1,6 +1,5 @@
 #include "ruleoptions.h"
 
-#include <QtCore/QUuid>
 #include "rules.h"
 
 const QString RuleOptions::Action  = "action";
@@ -10,10 +9,10 @@ const QString RuleOptions::Name    = "name";
 const QString RuleOptions::Process = "process";
 const QString RuleOptions::Title   = "title";
 
-RuleOptions::RuleOptions(const QUuid &id)
+RuleOptions::RuleOptions(QUuid &&id) : _id(id)
 {
   beginGroup(Rules::Group);
-  beginGroup(id.toString());
+  beginGroup(_id.toString());
 
   addProperty(Enabled, Qt::Checked);
 }
@@ -32,6 +31,11 @@ QString RuleOptions::className() const
 bool RuleOptions::enabled() const
 {
   return value(Enabled).toBool();
+}
+
+const QUuid &RuleOptions::id() const
+{
+  return _id;
 }
 
 QString RuleOptions::name() const
