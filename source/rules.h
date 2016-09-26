@@ -2,6 +2,7 @@
 #define RULES_H
 
 #include <QtCore/QSettings>
+#include <MkCore/MUuidPtr>
 
 class Rules
 {
@@ -11,11 +12,11 @@ class Rules
      Rules();
     ~Rules();
 
-    QUuid    id    (quintptr index)  const;
-    quintptr index (const QUuid &id) const;
+    MUuidPtr id    (quintptr index)     const;
+    quintptr index (const MUuidPtr &id) const;
     void     remove(quintptr index);
-    void     remove(const QUuid &id);
-    quintptr size  ()                const;
+    void     remove(const MUuidPtr &id);
+    quintptr size  ()                   const;
 
   private:
     QSettings _settings;

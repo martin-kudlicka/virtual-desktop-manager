@@ -1,6 +1,6 @@
 #include "rules.h"
 
-#include <QtCore/QUuid>
+#include <MkCore/MUuidPtr>
 
 const QString Rules::Group = "rules";
 
@@ -14,12 +14,12 @@ Rules::~Rules()
   _settings.endGroup();
 }
 
-QUuid Rules::id(quintptr index) const
+MUuidPtr Rules::id(quintptr index) const
 {
   return _settings.childGroups().at(index);
 }
 
-quintptr Rules::index(const QUuid &id) const
+quintptr Rules::index(const MUuidPtr &id) const
 {
   quintptr index2 = 0;
 
@@ -43,7 +43,7 @@ void Rules::remove(quintptr index)
   remove(id2);
 }
 
-void Rules::remove(const QUuid &id)
+void Rules::remove(const MUuidPtr &id)
 {
   _settings.remove(id.toString());
 }

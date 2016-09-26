@@ -11,7 +11,7 @@ RuleModel::~RuleModel()
 {
 }
 
-void RuleModel::insertRow(const QUuid &id)
+void RuleModel::insertRow(const MUuidPtr &id)
 {
   auto index2 = _rules->index(id);
 

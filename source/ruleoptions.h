@@ -2,7 +2,7 @@
 #define RULEOPTIONS_H
 
 #include <MkCore/MSettings>
-#include <QtCore/QUuid>
+#include <MkCore/MUuidPtr>
 
 class RuleOptions : public MSettings
 {
@@ -14,18 +14,18 @@ class RuleOptions : public MSettings
     static const QString Process;
     static const QString Title;
 
-             RuleOptions(QUuid &&id);
+             RuleOptions(MUuidPtr &&id);
     virtual ~RuleOptions() Q_DECL_OVERRIDE;
 
-          QString className() const;
-          bool    enabled  () const;
-    const QUuid  &id       () const;
-          QString name     () const;
-          QString process  () const;
-          QString title    () const;
+          QString   className() const;
+          bool      enabled  () const;
+    const MUuidPtr &id       () const;
+          QString   name     () const;
+          QString   process  () const;
+          QString   title    () const;
 
   private:
-    QUuid _id;
+    MUuidPtr _id;
 };
 
 #endif
