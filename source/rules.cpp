@@ -37,15 +37,15 @@ quintptr Rules::index(const MUuidPtr &id) const
   return -1;
 }
 
-void Rules::remove(quintptr index)
-{
-  auto id2 = id(index);
-  remove(id2);
-}
-
-void Rules::remove(const MUuidPtr &id)
+void Rules::removeId(const MUuidPtr &id)
 {
   _settings.remove(id.toString());
+}
+
+void Rules::removeIndex(quintptr index)
+{
+  auto id2 = id(index);
+  removeId(id2);
 }
 
 quintptr Rules::size() const
