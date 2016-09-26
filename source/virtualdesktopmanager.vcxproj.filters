@@ -113,6 +113,15 @@
     <ClCompile Include="ruledialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\intermediate\virtualdesktopmanager\Debug\moc_ruledialog.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\intermediate\virtualdesktopmanager\Release\moc_ruledialog.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="ruleoptions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mainwindow.h">
@@ -132,6 +141,9 @@
     </CustomBuild>
     <CustomBuild Include="ruledialog.ui">
       <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ruledialog.h">
+      <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -183,7 +195,7 @@
     <ClInclude Include="..\..\..\intermediate\virtualdesktopmanager\ui_ruledialog.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="ruledialog.h">
+    <ClInclude Include="ruleoptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
