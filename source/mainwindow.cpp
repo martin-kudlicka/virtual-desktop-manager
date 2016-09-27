@@ -128,7 +128,7 @@ void MainWindow::on_actionOptions_triggered(bool checked /* false */)
 
 void MainWindow::on_addRuleButton_clicked(bool checked /* false */)
 {
-  RuleDialog ruleDialog;
+  RuleDialog ruleDialog(this);
   if (ruleDialog.exec() == QDialog::Rejected)
   {
     return;
@@ -165,6 +165,11 @@ void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos
 
   contextMenu.addSeparator();
 
+  auto createRule = contextMenu.addAction(tr("Create rule"));
+  createRule->setEnabled(selected.size() == 1);
+
+  contextMenu.addSeparator();
+
   contextMenu.addAction(tr("Refresh"), this, &MainWindow::on_refreshApplicationsButton_clicked);
 
   auto action = contextMenu.exec(_ui.applicationView->mapToGlobal(pos));
@@ -176,6 +181,16 @@ void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos
   {
     auto appInfo = &_appWindows.applications()->at(selected.first().row());
     SetForegroundWindow(appInfo->window.handle);
+  }
+  else if (action == createRule)
+  {
+    auto appInfo = &_appWindows.applications()->at(selected.first().row());
+    RuleDialog ruleDialog(appInfo->process.fileInfo.filePath(), appInfo->window.title, appInfo->window.className, this);
+    if (ruleDialog.exec() == QDialog::Accepted)
+    {
+      auto row = _rules.index(ruleDialog.options().id());
+      _ruleModel.insertRow(row);
+    }
   }
   else if (action->property(Property_MoveToDesktopAction).toBool())
   {

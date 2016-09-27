@@ -11,6 +11,7 @@ class RuleDialog : public QDialog
 
   public:
              RuleDialog(MUuidPtr &&id, QWidget *parent = Q_NULLPTR);
+             RuleDialog(const QString &process, const QString &windowTitle, const QString &windowClass, QWidget *parent = Q_NULLPTR);
              RuleDialog(QWidget *parent = Q_NULLPTR);
     virtual ~RuleDialog() Q_DECL_OVERRIDE;
 
