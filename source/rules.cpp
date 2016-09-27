@@ -14,6 +14,11 @@ Rules::~Rules()
   _settings.endGroup();
 }
 
+bool Rules::empty() const
+{
+  return size() == 0;
+}
+
 MUuidPtr Rules::id(quintptr index) const
 {
   return _settings.childGroups().at(index);

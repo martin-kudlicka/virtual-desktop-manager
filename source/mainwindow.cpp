@@ -140,18 +140,18 @@ void MainWindow::on_addRuleButton_clicked(bool checked /* false */)
 
 void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos)
 {
-  auto selections = _ui.applicationView->selectionModel()->selectedRows();
+  auto selected = _ui.applicationView->selectionModel()->selectedRows();
 
   QMenu contextMenu;
 
   auto switchTo = contextMenu.addAction(tr("Switch to"));
-  switchTo->setEnabled(selections.size() == 1);
+  switchTo->setEnabled(selected.size() == 1);
 
   static const auto Property_MoveToDesktopAction = "MoveToDesktop";
 
   {
     auto moveToMenu = contextMenu.addMenu(tr("Move to desktop"));
-    moveToMenu->setEnabled(!selections.empty() && gVirtualDesktopManager->count() > 1);
+    moveToMenu->setEnabled(!selected.empty() && gVirtualDesktopManager->count() > 1);
     if (moveToMenu->isEnabled())
     {
       for (auto index = 0; index < gVirtualDesktopManager->count(); index++)
@@ -174,28 +174,18 @@ void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos
   }
   if (action == switchTo)
   {
-    auto appInfo = &_appWindows.applications()->at(selections.first().row());
+    auto appInfo = &_appWindows.applications()->at(selected.first().row());
     SetForegroundWindow(appInfo->window.handle);
   }
   else if (action->property(Property_MoveToDesktopAction).toBool())
   {
-    for (const auto &index : selections)
+    for (const auto &index : selected)
     {
       auto appInfo = &_appWindows.applications()->at(index.row());
       gVirtualDesktopManager->moveWindowTo(appInfo->window.handle, action->data().toUInt());
 
       on_refreshApplicationsButton_clicked();
     }
-  }
-}
-
-void MainWindow::on_deleteRuleButton_clicked(bool checked /* false */)
-{
-  auto selected = _ui.ruleView->selectionModel()->selectedRows();
-  for (auto index = selected.crbegin(); index != selected.crend(); index++)
-  {
-    _rules.removeId(index->internalId());
-    _ruleModel.removeRow(index->row());
   }
 }
 
@@ -218,10 +208,37 @@ void MainWindow::on_refreshApplicationsButton_clicked(bool checked /* false */)
   _ui.applicationView->reset();
 }
 
+void MainWindow::on_removeRuleButton_clicked(bool checked /* false */)
+{
+  auto selected = _ui.ruleView->selectionModel()->selectedRows();
+  for (auto index = selected.crbegin(); index != selected.crend(); index++)
+  {
+    _rules.removeId(index->internalId());
+    _ruleModel.removeRow(index->row());
+  }
+}
+
+void MainWindow::on_ruleView_customContextMenuRequested(const QPoint &pos) const
+{
+  auto selected = _ui.ruleView->selectionModel()->selectedRows();
+
+  QMenu contextMenu;
+
+  auto addRule = contextMenu.addAction(tr("Add"), this, &MainWindow::on_addRuleButton_clicked);
+
+  auto editRule = contextMenu.addAction(tr("Edit"), this, &MainWindow::on_editRuleButton_clicked);
+  editRule->setEnabled(selected.size() == 1);
+
+  auto removeRule = contextMenu.addAction(tr("Remove"), this, &MainWindow::on_removeRuleButton_clicked);
+  removeRule->setEnabled(!selected.empty());
+
+  contextMenu.exec(_ui.ruleView->mapToGlobal(pos));
+}
+
 void MainWindow::on_ruleView_selectionModel_selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) const
 {
   _ui.editRuleButton->setEnabled(_ui.ruleView->selectionModel()->selectedRows().size() == 1);
-  _ui.deleteRuleButton->setEnabled(!_ui.ruleView->selectionModel()->selectedRows().empty());
+  _ui.removeRuleButton->setEnabled(!_ui.ruleView->selectionModel()->selectedRows().empty());
 }
 
 void MainWindow::on_trayIcon_activated(QSystemTrayIcon::ActivationReason reason)

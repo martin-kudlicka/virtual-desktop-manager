@@ -12,6 +12,7 @@ class Rules
      Rules();
     ~Rules();
 
+    bool     empty      ()                   const;
     MUuidPtr id         (quintptr index)     const;
     quintptr index      (const MUuidPtr &id) const;
     void     removeId   (const MUuidPtr &id);
