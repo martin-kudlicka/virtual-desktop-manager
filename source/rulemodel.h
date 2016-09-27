@@ -9,7 +9,7 @@ class Rules;
 class RuleModel : public QAbstractItemModel
 {
   public:
-             RuleModel(const Rules *rules);
+             RuleModel(Rules *rules);
     virtual ~RuleModel() Q_DECL_OVERRIDE;
 
   private:
@@ -23,7 +23,7 @@ class RuleModel : public QAbstractItemModel
       Count
     };
 
-    const Rules *_rules;
+    Rules *_rules;
 
     virtual int         columnCount(const QModelIndex &parent = QModelIndex())                            const Q_DECL_OVERRIDE;
     virtual QVariant    data       (const QModelIndex &index, int role = Qt::DisplayRole)                 const Q_DECL_OVERRIDE;
