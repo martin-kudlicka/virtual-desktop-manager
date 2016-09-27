@@ -35,9 +35,10 @@ class MainWindow : public QMainWindow
     void on_actionOptions_triggered                   (bool checked = false);
     void on_addRuleButton_clicked                     (bool checked = false);
     void on_applicationView_customContextMenuRequested(const QPoint &pos);
-    void on_deleteRuleButton_clicked                  (bool checked = false);
     void on_editRuleButton_clicked                    (bool checked = false);
     void on_refreshApplicationsButton_clicked         (bool checked = false);
+    void on_removeRuleButton_clicked                  (bool checked = false);
+    void on_ruleView_customContextMenuRequested       (const QPoint &pos) const;
     void on_ruleView_selectionModel_selectionChanged  (const QItemSelection &selected, const QItemSelection &deselected) const;
     void on_trayIcon_activated                        (QSystemTrayIcon::ActivationReason reason);
 };

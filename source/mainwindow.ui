@@ -74,6 +74,12 @@
           <height>431</height>
          </rect>
         </property>
+        <property name="contextMenuPolicy">
+         <enum>Qt::CustomContextMenu</enum>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::ExtendedSelection</enum>
+        </property>
        </widget>
        <widget class="QPushButton" name="addRuleButton">
         <property name="geometry">
@@ -104,7 +110,7 @@
          <string>&amp;Edit</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="deleteRuleButton">
+       <widget class="QPushButton" name="removeRuleButton">
         <property name="enabled">
          <bool>false</bool>
         </property>
@@ -117,7 +123,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>De&amp;lete</string>
+         <string>&amp;Remove</string>
         </property>
        </widget>
       </widget>
