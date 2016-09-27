@@ -8,6 +8,13 @@ RuleDialog::RuleDialog(MUuidPtr &&id, QWidget *parent /* Q_NULLPTR */) : QDialog
   _widgetSettings.load();
 }
 
+RuleDialog::RuleDialog(const QString &process, const QString &windowTitle, const QString &windowClass, QWidget *parent /* Q_NULLPTR */) : RuleDialog(MUuidPtr::createUuid(), parent)
+{
+  _ui.process->setText(process);
+  _ui.windowTitle->setText(windowTitle);
+  _ui.windowClass->setText(windowClass);
+}
+
 RuleDialog::RuleDialog(QWidget *parent /* Q_NULLPTR */) : RuleDialog(MUuidPtr::createUuid(), parent)
 {
 }
