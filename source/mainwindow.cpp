@@ -4,6 +4,7 @@
 #include "options.h"
 #include "virtualdesktopmanager.h"
 #include "ruledialog.h"
+#include <QtCore/QDir>
 
 MainWindow::MainWindow() : QMainWindow(), _applicationModel(_appWindows.applications()), _ruleModel(&_rules)
 {
@@ -185,7 +186,7 @@ void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos
   else if (action == createRule)
   {
     auto appInfo = &_appWindows.applications()->at(selected.first().row());
-    RuleDialog ruleDialog(appInfo->process.fileInfo.filePath(), appInfo->window.title, appInfo->window.className, this);
+    RuleDialog ruleDialog(QDir::toNativeSeparators(appInfo->process.fileInfo.filePath()), appInfo->window.title, appInfo->window.className, this);
     if (ruleDialog.exec() == QDialog::Accepted)
     {
       auto row = _rules.index(ruleDialog.options().id());
@@ -252,6 +253,11 @@ void MainWindow::on_ruleView_customContextMenuRequested(const QPoint &pos) const
   removeRule->setEnabled(!selected.empty());
 
   contextMenu.exec(_ui.ruleView->mapToGlobal(pos));
+}
+
+void MainWindow::on_ruleView_doubleClicked(const QModelIndex &index)
+{
+  on_editRuleButton_clicked();
 }
 
 void MainWindow::on_ruleView_selectionModel_selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) const
