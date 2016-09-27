@@ -8,6 +8,8 @@
 class VirtualDesktopManager : public VirtualDesktopManagerInternal
 {
   public:
+    static const quintptr InvalidDesktop = -1;
+
              VirtualDesktopManager();
     virtual ~VirtualDesktopManager();
 
@@ -15,8 +17,6 @@ class VirtualDesktopManager : public VirtualDesktopManagerInternal
     void     moveWindowTo(HWND window, quintptr index) const;
 
   private:
-    _COM_SMARTPTR_TYPEDEF(IVirtualDesktopManager, IID_IVirtualDesktopManager);
-
     IVirtualDesktopManagerPtr _iVirtualDesktopManager;
 };
 

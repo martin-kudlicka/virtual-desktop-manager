@@ -14,7 +14,9 @@ class RuleOptions : public MSettings
     static const QString Process;
     static const QString Title;
 
+             RuleOptions();
              RuleOptions(MUuidPtr &&id);
+             RuleOptions(const RuleOptions &other);
     virtual ~RuleOptions() Q_DECL_OVERRIDE;
 
           QString   className() const;
@@ -23,9 +25,12 @@ class RuleOptions : public MSettings
           QString   name     () const;
           QString   process  () const;
           QString   title    () const;
+          bool      valid    () const;
 
   private:
     MUuidPtr _id;
 };
+
+using RuleOptionsList = QList<RuleOptions>;
 
 #endif

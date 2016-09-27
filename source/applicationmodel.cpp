@@ -2,7 +2,7 @@
 
 #include <QtCore/QDir>
 
-ApplicationModel::ApplicationModel(const AppWindows::AppInfoList *applications) : QAbstractItemModel(), _applications(applications)
+ApplicationModel::ApplicationModel(const AppInfoList *applications) : QAbstractItemModel(), _applications(applications)
 {
 }
 
@@ -27,13 +27,22 @@ QVariant ApplicationModel::data(const QModelIndex &index, int role /* Qt::Displa
   switch (index.column())
   {
     case static_cast<int>(Column::DesktopIndex):
-      return appInfo.window.desktopIndex + 1;
+      return appInfo.window().desktopIndex + 1;
     case static_cast<int>(Column::Path):
-      return QDir::toNativeSeparators(appInfo.process.fileInfo.path());
+      return QDir::toNativeSeparators(appInfo.process().fileInfo.path());
     case static_cast<int>(Column::FileName):
-      return appInfo.process.fileInfo.completeBaseName();
-    case static_cast<int>(Column::Title) :
-      return appInfo.window.title;
+      return appInfo.process().fileInfo.fileName();
+    case static_cast<int>(Column::Title):
+      return appInfo.window().title;
+    case static_cast<int>(Column::Rule):
+      {
+        auto ruleOptions = appInfo.bestRule();
+        if (ruleOptions.valid())
+        {
+          return ruleOptions.name();
+        }
+      }
+      return QVariant();
     default:
       Q_UNREACHABLE();
   }
@@ -52,13 +61,15 @@ QVariant ApplicationModel::headerData(int section, Qt::Orientation orientation, 
   switch (section)
   {
     case static_cast<int>(Column::DesktopIndex):
-      return tr("#");
+      return "#";
     case static_cast<int>(Column::Path):
       return tr("Path");
     case static_cast<int>(Column::FileName):
       return tr("Name");
-    case static_cast<int>(Column::Title) :
+    case static_cast<int>(Column::Title):
       return tr("Title");
+    case static_cast<int>(Column::Rule):
+      return tr("Rule");
     default:
       Q_UNREACHABLE();
   }

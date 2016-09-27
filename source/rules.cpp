@@ -4,6 +4,8 @@
 
 const QString Rules::Group = "rules";
 
+MLazySingleton<Rules> gRules;
+
 Rules::Rules()
 {
   _settings.beginGroup(Group);
@@ -22,6 +24,18 @@ bool Rules::empty() const
 MUuidPtr Rules::id(quintptr index) const
 {
   return _settings.childGroups().at(index);
+}
+
+MUuidPtrList Rules::ids() const
+{
+  MUuidPtrList ids2;
+
+  for (const auto &id2 : _settings.childGroups())
+  {
+    ids2.push_back(id2);
+  }
+
+  return ids2;
 }
 
 quintptr Rules::index(const MUuidPtr &id) const

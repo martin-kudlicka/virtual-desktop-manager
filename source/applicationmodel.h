@@ -7,7 +7,7 @@
 class ApplicationModel : public QAbstractItemModel
 {
   public:
-             ApplicationModel(const AppWindows::AppInfoList *applications);
+             ApplicationModel(const AppInfoList *applications);
     virtual ~ApplicationModel() Q_DECL_OVERRIDE;
 
   private:
@@ -17,10 +17,11 @@ class ApplicationModel : public QAbstractItemModel
       Path,
       FileName,
       Title,
+      Rule,
       Count
     };
 
-    const AppWindows::AppInfoList *_applications;
+    const AppInfoList *_applications;
 
     virtual int         columnCount(const QModelIndex &parent = QModelIndex())                            const Q_DECL_OVERRIDE;
     virtual QVariant    data       (const QModelIndex &index, int role = Qt::DisplayRole)                 const Q_DECL_OVERRIDE;

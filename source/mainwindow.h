@@ -5,7 +5,6 @@
 #include "applicationmodel.h"
 #include <QtWidgets/QSystemTrayIcon>
 #include "rulemodel.h"
-#include "rules.h"
 
 class MainWindow : public QMainWindow
 {
@@ -20,7 +19,6 @@ class MainWindow : public QMainWindow
     AppWindows       _appWindows;
     Ui::MainWindow   _ui;
     RuleModel        _ruleModel;
-    Rules            _rules;
     QSystemTrayIcon  _trayIcon;
 
     void applySettings        ();
