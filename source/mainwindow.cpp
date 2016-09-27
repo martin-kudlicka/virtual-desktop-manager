@@ -210,11 +210,15 @@ void MainWindow::on_refreshApplicationsButton_clicked(bool checked /* false */)
 
 void MainWindow::on_removeRuleButton_clicked(bool checked /* false */)
 {
-  auto selected = _ui.ruleView->selectionModel()->selectedRows();
-  for (auto index = selected.crbegin(); index != selected.crend(); index++)
+  forever
   {
-    _rules.removeId(index->internalId());
-    _ruleModel.removeRow(index->row());
+    auto selected = _ui.ruleView->selectionModel()->selectedRows();
+    if (selected.empty())
+    {
+      break;
+    }
+
+    _ruleModel.removeRow(selected.first().row());
   }
 }
 
