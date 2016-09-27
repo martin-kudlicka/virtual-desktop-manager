@@ -19,11 +19,6 @@ RuleOptions AppInfo::bestRule() const
 
   for (const auto &ruleOptions : rulesOptions)
   {
-    if (!ruleOptions.enabled())
-    {
-      continue;
-    }
-
     auto ruleFilledFields = 0;
     auto ruleFieldChars   = 0;
     if (!ruleOptions.process().isEmpty())
@@ -90,6 +85,11 @@ RuleOptionsList AppInfo::suitableRules() const
   for (auto &&ruleId : ruleIds)
   {
     RuleOptions ruleOptions(qMove(ruleId));
+
+    if (!ruleOptions.enabled())
+    {
+      continue;
+    }
 
     if (!ruleOptions.process().isEmpty())
     {
