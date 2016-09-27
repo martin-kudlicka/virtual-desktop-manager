@@ -36,12 +36,12 @@ quintptr VirtualDesktopManager::index(HWND window) const
     index2++;
   }
 
-  return -1;
+  return InvalidDesktop;
 }
 
 void VirtualDesktopManager::moveWindowTo(HWND window, quintptr index) const
 {
-  DWORD processId = 0;
+  DWORD processId;
   GetWindowThreadProcessId(window, &processId);
 
   if (processId == GetCurrentProcessId())

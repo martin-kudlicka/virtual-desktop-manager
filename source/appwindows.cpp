@@ -9,7 +9,7 @@ AppWindows::AppWindows()
   enumerate();
 }
 
-const AppWindows::AppInfoList *AppWindows::applications() const
+const AppInfoList *AppWindows::applications() const
 {
   return &_appsInfo;
 }
@@ -31,13 +31,13 @@ void AppWindows::enumWindows(HWND window)
   {
     AppInfo appInfo;
 
-    GetWindowThreadProcessId(window, &appInfo.process.id);
-    setProcessInfo(&appInfo.process);
+    GetWindowThreadProcessId(window, &appInfo.process().id);
+    setProcessInfo(&appInfo.process());
 
-    appInfo.window.handle = window;
-    setWindowInfo(&appInfo.window);
+    appInfo.window().handle = window;
+    setWindowInfo(&appInfo.window());
 
-    if (appInfo.window.title.isEmpty() || appInfo.window.desktopIndex == -1)
+    if (appInfo.window().title.isEmpty() || appInfo.window().desktopIndex == VirtualDesktopManager::InvalidDesktop)
     {
       return;
     }
@@ -46,7 +46,7 @@ void AppWindows::enumWindows(HWND window)
   }
 }
 
-void AppWindows::setProcessInfo(ProcessInfo *processInfo) const
+void AppWindows::setProcessInfo(AppInfo::ProcessInfo *processInfo) const
 {
   auto process = MProcessHandle(processInfo->id, PROCESS_QUERY_LIMITED_INFORMATION);
   if (!process.valid())
@@ -63,7 +63,7 @@ void AppWindows::setProcessInfo(ProcessInfo *processInfo) const
   }
 }
 
-void AppWindows::setWindowInfo(WindowInfo *windowInfo) const
+void AppWindows::setWindowInfo(AppInfo::WindowInfo *windowInfo) const
 {
   {
     WCHAR text[Mk::PageSize] = { 0 };

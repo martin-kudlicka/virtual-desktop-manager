@@ -9,12 +9,20 @@ const QString RuleOptions::Name    = "name";
 const QString RuleOptions::Process = "process";
 const QString RuleOptions::Title   = "title";
 
-RuleOptions::RuleOptions(MUuidPtr &&id) : _id(id)
+RuleOptions::RuleOptions()
+{
+}
+
+RuleOptions::RuleOptions(MUuidPtr &&id) : _id(qMove(id))
 {
   beginGroup(Rules::Group);
   beginGroup(_id.toString());
 
   addProperty(Enabled, Qt::Checked);
+}
+
+RuleOptions::RuleOptions(const RuleOptions &other) : RuleOptions(MUuidPtr(other._id))
+{
 }
 
 RuleOptions::~RuleOptions()
@@ -51,4 +59,9 @@ QString RuleOptions::process() const
 QString RuleOptions::title() const
 {
   return value(Title).toString();
+}
+
+bool RuleOptions::valid() const
+{
+  return !_id.isNull();
 }

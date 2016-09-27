@@ -4,12 +4,11 @@
 #include <QtCore/QAbstractItemModel>
 
 class MUuidPtr;
-class Rules;
 
 class RuleModel : public QAbstractItemModel
 {
   public:
-             RuleModel(Rules *rules);
+             RuleModel();
     virtual ~RuleModel() Q_DECL_OVERRIDE;
 
   private:
@@ -22,8 +21,6 @@ class RuleModel : public QAbstractItemModel
       Class,
       Count
     };
-
-    Rules *_rules;
 
     virtual int         columnCount(const QModelIndex &parent = QModelIndex())                            const Q_DECL_OVERRIDE;
     virtual QVariant    data       (const QModelIndex &index, int role = Qt::DisplayRole)                 const Q_DECL_OVERRIDE;

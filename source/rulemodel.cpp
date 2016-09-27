@@ -3,7 +3,7 @@
 #include "rules.h"
 #include "ruleoptions.h"
 
-RuleModel::RuleModel(Rules *rules) : QAbstractItemModel(), _rules(rules)
+RuleModel::RuleModel() : QAbstractItemModel()
 {
 }
 
@@ -84,12 +84,12 @@ QVariant RuleModel::headerData(int section, Qt::Orientation orientation, int rol
 
 QModelIndex RuleModel::index(int row, int column, const QModelIndex &parent /* QModelIndex() */) const
 {
-  if (_rules->empty())
+  if (gRules->empty())
   {
     return createIndex(row, column);
   }
 
-  return createIndex(row, column, _rules->id(row));
+  return createIndex(row, column, gRules->id(row));
 }
 
 bool RuleModel::insertRows(int row, int count, const QModelIndex &parent /* QModelIndex() */)
@@ -110,7 +110,7 @@ bool RuleModel::removeRows(int row, int count, const QModelIndex &parent /* QMod
 {
   beginRemoveRows(parent, row, row + count - 1);
 
-  _rules->removeIndex(row);
+  gRules->removeIndex(row);
 
   endRemoveRows();
 
@@ -121,7 +121,7 @@ int RuleModel::rowCount(const QModelIndex &parent /* QModelIndex() */) const
 {
   if (parent == QModelIndex())
   {
-    return _rules->size();
+    return gRules->size();
   }
   else
   {

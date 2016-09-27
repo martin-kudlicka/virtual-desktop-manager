@@ -101,6 +101,7 @@
     <ClCompile Include="..\..\..\intermediate\virtualdesktopmanager\Release\moc_ruledialog.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="appinfo.cpp" />
     <ClCompile Include="applicationmodel.cpp" />
     <ClCompile Include="appwindows.cpp" />
     <ClCompile Include="ruledialog.cpp" />
@@ -121,6 +122,7 @@
     <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal\ivirtualdesktop.cpp" />
     <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal\ivirtualdesktopmanagerinternal.cpp" />
     <ClCompile Include="virtualdesktopmanager\virtualdesktopmanagerinternal\virtualdesktopapiunknown.cpp" />
+    <ClCompile Include="wildcard.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mainwindow.h">
@@ -162,8 +164,10 @@
     <ClInclude Include="..\..\..\intermediate\virtualdesktopmanager\ui_mainwindow.h" />
     <ClInclude Include="..\..\..\intermediate\virtualdesktopmanager\ui_optionsdialog.h" />
     <ClInclude Include="..\..\..\intermediate\virtualdesktopmanager\ui_ruledialog.h" />
+    <ClInclude Include="appinfo.h" />
     <ClInclude Include="applicationmodel.h" />
     <ClInclude Include="appwindows.h" />
+    <ClInclude Include="wildcard.h" />
     <CustomBuild Include="ruledialog.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing ruledialog.h...</Message>

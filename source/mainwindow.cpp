@@ -1,12 +1,13 @@
 #include "mainwindow.h"
 
+#include "rules.h"
 #include "optionsdialog.h"
 #include "options.h"
 #include "virtualdesktopmanager.h"
 #include "ruledialog.h"
 #include <QtCore/QDir>
 
-MainWindow::MainWindow() : QMainWindow(), _applicationModel(_appWindows.applications()), _ruleModel(&_rules)
+MainWindow::MainWindow() : QMainWindow(), _applicationModel(_appWindows.applications())
 {
   _ui.setupUi(this);
 
@@ -112,16 +113,18 @@ bool MainWindow::nativeEvent(const QByteArray &eventType, void *message, long *r
 
 void MainWindow::on_actionOptions_triggered(bool checked /* false */)
 {
-  auto desktopCountOld = gOptions->desktopCount();
-
-  if (OptionsDialog(this).exec() == QDialog::Rejected)
   {
-    return;
-  }
+    auto desktopCountOld = gOptions->desktopCount();
 
-  for (auto index = gOptions->desktopCount(); index < desktopCountOld; index++)
-  {
-    UnregisterHotKey(reinterpret_cast<HWND>(winId()), index);
+    if (OptionsDialog(this).exec() == QDialog::Rejected)
+    {
+      return;
+    }
+
+    for (auto index = gOptions->desktopCount(); index < desktopCountOld; index++)
+    {
+      UnregisterHotKey(reinterpret_cast<HWND>(winId()), index);
+    }
   }
 
   applySettings();
@@ -135,7 +138,7 @@ void MainWindow::on_addRuleButton_clicked(bool checked /* false */)
     return;
   }
 
-  auto row = _rules.index(ruleDialog.options().id());
+  auto row = gRules->index(ruleDialog.options().id());
   _ruleModel.insertRow(row);
 }
 
@@ -181,15 +184,15 @@ void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos
   if (action == switchTo)
   {
     auto appInfo = &_appWindows.applications()->at(selected.first().row());
-    SetForegroundWindow(appInfo->window.handle);
+    SetForegroundWindow(appInfo->window().handle);
   }
   else if (action == createRule)
   {
     auto appInfo = &_appWindows.applications()->at(selected.first().row());
-    RuleDialog ruleDialog(QDir::toNativeSeparators(appInfo->process.fileInfo.filePath()), appInfo->window.title, appInfo->window.className, this);
+    RuleDialog ruleDialog(QDir::toNativeSeparators(appInfo->process().fileInfo.filePath()), appInfo->window().title, appInfo->window().className, this);
     if (ruleDialog.exec() == QDialog::Accepted)
     {
-      auto row = _rules.index(ruleDialog.options().id());
+      auto row = gRules->index(ruleDialog.options().id());
       _ruleModel.insertRow(row);
     }
   }
@@ -198,7 +201,7 @@ void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos
     for (const auto &index : selected)
     {
       auto appInfo = &_appWindows.applications()->at(index.row());
-      gVirtualDesktopManager->moveWindowTo(appInfo->window.handle, action->data().toUInt());
+      gVirtualDesktopManager->moveWindowTo(appInfo->window().handle, action->data().toUInt());
 
       on_refreshApplicationsButton_clicked();
     }
