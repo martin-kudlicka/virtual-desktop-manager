@@ -30,12 +30,13 @@ const RuleOptions &RuleDialog::options() const
 
 void RuleDialog::setupSettings()
 {
-  _widgetSettings.setWidget(RuleOptions::Name,    _ui.name);
-  _widgetSettings.setWidget(RuleOptions::Enabled, _ui.enabled);
-  _widgetSettings.setWidget(RuleOptions::Process, _ui.process);
-  _widgetSettings.setWidget(RuleOptions::Title,   _ui.windowTitle);
-  _widgetSettings.setWidget(RuleOptions::Class,   _ui.windowClass);
-  _widgetSettings.setWidget(RuleOptions::Action,  qMove(QRadioButtonPtrList() << _ui.moveToDesktop << _ui.keepOnOneDesktop << _ui.autoClose));
+  _widgetSettings.setWidget(RuleOptions::Name,         _ui.name);
+  _widgetSettings.setWidget(RuleOptions::Enabled,      _ui.enabled);
+  _widgetSettings.setWidget(RuleOptions::Process,      _ui.process);
+  _widgetSettings.setWidget(RuleOptions::Title,        _ui.windowTitle);
+  _widgetSettings.setWidget(RuleOptions::Class,        _ui.windowClass);
+  _widgetSettings.setWidget(RuleOptions::Action,       qMove(QRadioButtonPtrList() << _ui.moveToDesktop << _ui.keepOnOneDesktop << _ui.autoClose));
+  _widgetSettings.setWidget(RuleOptions::DesktopIndex, _ui.desktopIndex);
 }
 
 void RuleDialog::accept()
