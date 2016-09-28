@@ -7,7 +7,38 @@
 
 RuleOptions AppInfo::bestRule() const
 {
-  auto rulesOptions = suitableRules();
+  auto ruleIds = gRules->ids();
+  return bestRule(ruleIds);
+}
+
+RuleOptions AppInfo::bestRule(const MUuidPtrList &rulesIds) const
+{
+  auto rulesOptions = suitableRules(rulesIds);
+  return bestRule(rulesOptions);
+}
+
+AppInfo::ProcessInfo &AppInfo::process()
+{
+  return _process;
+}
+
+const AppInfo::ProcessInfo &AppInfo::process() const
+{
+  return _process;
+}
+
+AppInfo::WindowInfo &AppInfo::window()
+{
+  return _window;
+}
+
+const AppInfo::WindowInfo &AppInfo::window() const
+{
+  return _window;
+}
+
+RuleOptions AppInfo::bestRule(const RuleOptionsList &rulesOptions) const
+{
   if (rulesOptions.empty())
   {
     return RuleOptions();
@@ -57,34 +88,13 @@ RuleOptions AppInfo::bestRule() const
   return *bestOptions;
 }
 
-AppInfo::ProcessInfo &AppInfo::process()
-{
-  return _process;
-}
-
-const AppInfo::ProcessInfo &AppInfo::process() const
-{
-  return _process;
-}
-
-AppInfo::WindowInfo &AppInfo::window()
-{
-  return _window;
-}
-
-const AppInfo::WindowInfo &AppInfo::window() const
-{
-  return _window;
-}
-
-RuleOptionsList AppInfo::suitableRules() const
+RuleOptionsList AppInfo::suitableRules(const MUuidPtrList &ruleIds) const
 {
   RuleOptionsList rulesOptions;
 
-  auto ruleIds = gRules->ids();
-  for (auto &&ruleId : ruleIds)
+  for (const auto &ruleId : ruleIds)
   {
-    RuleOptions ruleOptions(qMove(ruleId));
+    RuleOptions ruleOptions(ruleId);
 
     if (!ruleOptions.enabled())
     {

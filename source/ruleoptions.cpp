@@ -22,6 +22,10 @@ RuleOptions::RuleOptions(MUuidPtr &&id) : _id(qMove(id))
   addProperty(Enabled, Qt::Checked);
 }
 
+RuleOptions::RuleOptions(const MUuidPtr &id) : RuleOptions(MUuidPtr(id))
+{
+}
+
 RuleOptions::RuleOptions(const RuleOptions &other) : RuleOptions(MUuidPtr(other._id))
 {
 }
@@ -40,6 +44,11 @@ RuleOptions::ActionType RuleOptions::action() const
 QString RuleOptions::className() const
 {
   return value(Class).toString();
+}
+
+quintptr RuleOptions::desktopIndex() const
+{
+  return value(DesktopIndex).toUInt();
 }
 
 bool RuleOptions::enabled() const

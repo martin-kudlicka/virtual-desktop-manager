@@ -24,17 +24,19 @@ class RuleOptions : public MSettings
 
              RuleOptions();
              RuleOptions(MUuidPtr &&id);
+             RuleOptions(const MUuidPtr &id);
              RuleOptions(const RuleOptions &other);
     virtual ~RuleOptions() Q_DECL_OVERRIDE;
 
-          ActionType action   () const;
-          QString    className() const;
-          bool       enabled  () const;
-    const MUuidPtr  &id       () const;
-          QString    name     () const;
-          QString    process  () const;
-          QString    title    () const;
-          bool       valid    () const;
+          ActionType action      () const;
+          QString    className   () const;
+          quintptr   desktopIndex() const;
+          bool       enabled     () const;
+    const MUuidPtr  &id          () const;
+          QString    name        () const;
+          QString    process     () const;
+          QString    title       () const;
+          bool       valid       () const;
 
   private:
     MUuidPtr _id;
