@@ -24,7 +24,7 @@
        <attribute name="title">
         <string>&amp;Applications</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_4">
+       <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
@@ -50,6 +50,30 @@
              </widget>
             </item>
             <item>
+             <widget class="QPushButton" name="moveToDesktopButton">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="text">
+               <string>Move to desktop</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="Line" name="line_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="refreshApplicationsButton">
+              <property name="text">
+               <string>&amp;Refresh</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <spacer name="verticalSpacer_2">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
@@ -63,30 +87,6 @@
              </spacer>
             </item>
            </layout>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout">
-          <item>
-           <spacer name="horizontalSpacer">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QPushButton" name="refreshApplicationsButton">
-            <property name="text">
-             <string>&amp;Refresh</string>
-            </property>
-           </widget>
           </item>
          </layout>
         </item>
