@@ -223,7 +223,7 @@ void MainWindow::on_applyRuleButton_clicked(bool checked /* false */)
     applyRule(appWindow, ruleOptions);
   }
 
-  _ui.applicationView->reset();
+  on_refreshApplicationsButton_clicked();
 }
 
 void MainWindow::on_createRuleButton_clicked(bool checked /* false */)
