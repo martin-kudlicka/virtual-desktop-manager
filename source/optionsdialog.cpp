@@ -37,14 +37,14 @@ void OptionsDialog::removeHotkeyEdit(MFormLayout *formLayout, quintptr index) co
 
 void OptionsDialog::saveHotkeys() const
 {
-  auto formLayout = qobject_cast<QFormLayout *>(_ui.hotkeysContents->layout());
+  auto formLayout = static_cast<MFormLayout *>(_ui.hotkeysContents->layout());
 
-  for (auto index = 0; index < formLayout->rowCount(); index++)
+  for (auto row = 0; row < formLayout->rowCount(); row++)
   {
-    auto layoutItem = formLayout->itemAt(index, QFormLayout::FieldRole);
+    auto layoutItem = formLayout->itemAt(row, QFormLayout::FieldRole);
     auto hotkeyEdit = qobject_cast<MHotkeyLineEdit *>(layoutItem->widget());
 
-    gOptions->setDesktopHotkey(index, hotkeyEdit->hotkey());
+    gOptions->setDesktopHotkey(row, hotkeyEdit->hotkey());
   }
 }
 
