@@ -37,6 +37,7 @@ class MainWindow : public QMainWindow
     void on_applicationView_customContextMenuRequested     (const QPoint &pos);
     void on_applicationView_selectionModel_selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) const;
     void on_applyRuleButton_clicked                        (bool checked = false);
+    void on_createRuleButton_clicked                       (bool checked = false);
     void on_desktopIndexMenu_triggered                     (QAction *action);
     void on_editRuleButton_clicked                         (bool checked = false);
     void on_refreshApplicationsButton_clicked              (bool checked = false);
