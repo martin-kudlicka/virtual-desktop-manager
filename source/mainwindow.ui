@@ -67,6 +67,23 @@
              </widget>
             </item>
             <item>
+             <widget class="QPushButton" name="createRuleButton">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="text">
+               <string>Create rule...</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="Line" name="line_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QPushButton" name="refreshApplicationsButton">
               <property name="text">
                <string>&amp;Refresh</string>

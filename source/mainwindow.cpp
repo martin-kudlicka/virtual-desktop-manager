@@ -187,28 +187,14 @@ void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos
 
   contextMenu.addSeparator();
 
-  auto createRule = contextMenu.addAction(tr("Create rule"));
+  auto createRule = contextMenu.addAction(tr("Create rule..."), this, &MainWindow::on_createRuleButton_clicked);
   createRule->setEnabled(selected.size() == 1);
 
   contextMenu.addSeparator();
 
   contextMenu.addAction(tr("Refresh"), this, &MainWindow::on_refreshApplicationsButton_clicked);
 
-  auto action = contextMenu.exec(_ui.applicationView->mapToGlobal(pos));
-  if (!action)
-  {
-    return;
-  }
-  if (action == createRule)
-  {
-    auto appInfo = &_appWindows.applications()->at(selected.first().row());
-    RuleDialog ruleDialog(QDir::toNativeSeparators(appInfo->process().fileInfo.filePath()), appInfo->window().title, appInfo->window().className, this);
-    if (ruleDialog.exec() == QDialog::Accepted)
-    {
-      auto row = gRules->index(ruleDialog.options().id());
-      _ruleModel.insertRow(row);
-    }
-  }
+  contextMenu.exec(_ui.applicationView->mapToGlobal(pos));
 }
 
 void MainWindow::on_applicationView_selectionModel_selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) const
@@ -217,6 +203,7 @@ void MainWindow::on_applicationView_selectionModel_selectionChanged(const QItemS
 
   _ui.switchToButton->setEnabled(selectedRows.size() == 1);
   _ui.moveToDesktopButton->setEnabled(!selectedRows.empty() && gVirtualDesktopManager->count() > 1);
+  _ui.createRuleButton->setEnabled(selectedRows.size() == 1);
 }
 
 void MainWindow::on_applyRuleButton_clicked(bool checked /* false */)
@@ -237,6 +224,19 @@ void MainWindow::on_applyRuleButton_clicked(bool checked /* false */)
   }
 
   _ui.applicationView->reset();
+}
+
+void MainWindow::on_createRuleButton_clicked(bool checked /* false */)
+{
+  auto selected = _ui.applicationView->selectionModel()->selectedRows();
+  auto appInfo  = &_appWindows.applications()->at(selected.first().row());
+
+  RuleDialog ruleDialog(QDir::toNativeSeparators(appInfo->process().fileInfo.filePath()), appInfo->window().title, appInfo->window().className, this);
+  if (ruleDialog.exec() == QDialog::Accepted)
+  {
+    auto row = gRules->index(ruleDialog.options().id());
+    _ruleModel.insertRow(row);
+  }
 }
 
 void MainWindow::on_desktopIndexMenu_triggered(QAction *action)
