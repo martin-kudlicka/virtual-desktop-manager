@@ -297,6 +297,11 @@ void MainWindow::on_ruleView_customContextMenuRequested(const QPoint &pos) const
   auto removeRule = contextMenu.addAction(tr("Remove"), this, &MainWindow::on_removeRuleButton_clicked);
   removeRule->setEnabled(!selected.empty());
 
+  contextMenu.addSeparator();
+
+  auto applyRule2 = contextMenu.addAction(tr("Apply"), this, &MainWindow::on_applyRuleButton_clicked);
+  applyRule2->setEnabled(!selected.empty());
+
   contextMenu.exec(_ui.ruleView->mapToGlobal(pos));
 }
 
