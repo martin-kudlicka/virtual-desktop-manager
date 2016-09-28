@@ -7,22 +7,23 @@
 #include "ruledialog.h"
 #include <QtCore/QDir>
 
-MainWindow::MainWindow() : QMainWindow(), _applicationModel(_appWindows.applications())
+MainWindow::MainWindow() : QMainWindow(), _applicationModel(_appWindows.applications()), _desktopIndexMenu(tr("Move to desktop"))
 {
   _ui.setupUi(this);
 
   setupApplicationModel();
   setupRuleModel();
 
-  registerHotkeys();
-
   _trayIcon.setIcon(QIcon(":/resources/mainwindow/mainwindow.png"));
+  _ui.moveToDesktopButton->setMenu(&_desktopIndexMenu);
 
-  applySettings();
-
+  connect(&_desktopIndexMenu,                    &QMenu::triggered,                      this, &MainWindow::on_desktopIndexMenu_triggered);
+  connect(&_trayIcon,                            &QSystemTrayIcon::activated,            this, &MainWindow::on_trayIcon_activated);
   connect(_ui.applicationView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &MainWindow::on_applicationView_selectionModel_selectionChanged);
   connect(_ui.ruleView->selectionModel(),        &QItemSelectionModel::selectionChanged, this, &MainWindow::on_ruleView_selectionModel_selectionChanged);
-  connect(&_trayIcon,                            &QSystemTrayIcon::activated,            this, &MainWindow::on_trayIcon_activated);
+
+  registerHotkeys();
+  applySettings();
 }
 
 MainWindow::~MainWindow()
@@ -53,6 +54,13 @@ void MainWindow::applyRule(const AppInfo &appInfo, const RuleOptions &ruleOption
 
 void MainWindow::applySettings()
 {
+  _desktopIndexMenu.clear();
+  for (auto index = 0; index < gVirtualDesktopManager->count(); index++)
+  {
+    auto moveTo = _desktopIndexMenu.addAction(QString::number(index + 1));
+    moveTo->setData(index);
+  }
+
   _trayIcon.setVisible(gOptions->trayIcon());
 
   registerHotkeys();
@@ -174,21 +182,8 @@ void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos
   auto switchTo = contextMenu.addAction(tr("Switch to"), this, &MainWindow::on_switchToButton_clicked);
   switchTo->setEnabled(selected.size() == 1);
 
-  static const auto Property_MoveToDesktopAction = "MoveToDesktop";
-
-  {
-    auto moveToMenu = contextMenu.addMenu(tr("Move to desktop"));
-    moveToMenu->setEnabled(!selected.empty() && gVirtualDesktopManager->count() > 1);
-    if (moveToMenu->isEnabled())
-    {
-      for (auto index = 0; index < gVirtualDesktopManager->count(); index++)
-      {
-        auto moveTo = moveToMenu->addAction(QString::number(index + 1));
-        moveTo->setProperty(Property_MoveToDesktopAction, true);
-        moveTo->setData(index);
-      }
-    }
-  }
+  contextMenu.addMenu(&_desktopIndexMenu);
+  _desktopIndexMenu.setEnabled(!selected.empty() && gVirtualDesktopManager->count() > 1);
 
   contextMenu.addSeparator();
 
@@ -214,21 +209,14 @@ void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos
       _ruleModel.insertRow(row);
     }
   }
-  else if (action->property(Property_MoveToDesktopAction).toBool())
-  {
-    for (const auto &index : selected)
-    {
-      auto appInfo = &_appWindows.applications()->at(index.row());
-      gVirtualDesktopManager->moveWindowTo(appInfo->window().handle, action->data().toUInt());
-
-      on_refreshApplicationsButton_clicked();
-    }
-  }
 }
 
 void MainWindow::on_applicationView_selectionModel_selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) const
 {
-  _ui.switchToButton->setEnabled(_ui.applicationView->selectionModel()->selectedRows().size() == 1);
+  auto selectedRows = _ui.applicationView->selectionModel()->selectedRows();
+
+  _ui.switchToButton->setEnabled(selectedRows.size() == 1);
+  _ui.moveToDesktopButton->setEnabled(!selectedRows.empty() && gVirtualDesktopManager->count() > 1);
 }
 
 void MainWindow::on_applyRuleButton_clicked(bool checked /* false */)
@@ -249,6 +237,19 @@ void MainWindow::on_applyRuleButton_clicked(bool checked /* false */)
   }
 
   _ui.applicationView->reset();
+}
+
+void MainWindow::on_desktopIndexMenu_triggered(QAction *action)
+{
+  auto selected = _ui.applicationView->selectionModel()->selectedRows();
+
+  for (const auto &index : selected)
+  {
+    auto appInfo = &_appWindows.applications()->at(index.row());
+    gVirtualDesktopManager->moveWindowTo(appInfo->window().handle, action->data().toUInt());
+  }
+
+  on_refreshApplicationsButton_clicked();
 }
 
 void MainWindow::on_editRuleButton_clicked(bool checked /* false */)
@@ -313,9 +314,11 @@ void MainWindow::on_ruleView_doubleClicked(const QModelIndex &index)
 
 void MainWindow::on_ruleView_selectionModel_selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) const
 {
-  _ui.editRuleButton->setEnabled(_ui.ruleView->selectionModel()->selectedRows().size() == 1);
-  _ui.removeRuleButton->setEnabled(!_ui.ruleView->selectionModel()->selectedRows().empty());
-  _ui.applyRuleButton->setEnabled(!_ui.ruleView->selectionModel()->selectedRows().empty());
+  auto selectedRows = _ui.ruleView->selectionModel()->selectedRows();
+
+  _ui.editRuleButton->setEnabled(selectedRows.size() == 1);
+  _ui.removeRuleButton->setEnabled(!selectedRows.empty());
+  _ui.applyRuleButton->setEnabled(!selectedRows.empty());
 }
 
 void MainWindow::on_switchToButton_clicked(bool checked /* false */) const
