@@ -1,11 +1,15 @@
 #include "ruledialog.h"
 
+#include "options.h"
+
 RuleDialog::RuleDialog(MUuidPtr &&id, QWidget *parent /* Q_NULLPTR */) : QDialog(parent), _options(qMove(id)), _widgetSettings(&_options)
 {
   _ui.setupUi(this);
 
   setupSettings();
   _widgetSettings.load();
+
+  _ui.desktopIndex->setMaximum(gOptions->desktopCount());
 }
 
 RuleDialog::RuleDialog(const QString &process, const QString &windowTitle, const QString &windowClass, QWidget *parent /* Q_NULLPTR */) : RuleDialog(MUuidPtr::createUuid(), parent)
