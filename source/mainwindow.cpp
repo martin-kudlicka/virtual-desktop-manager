@@ -20,8 +20,9 @@ MainWindow::MainWindow() : QMainWindow(), _applicationModel(_appWindows.applicat
 
   applySettings();
 
-  connect(_ui.ruleView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &MainWindow::on_ruleView_selectionModel_selectionChanged);
-  connect(&_trayIcon,                     &QSystemTrayIcon::activated,            this, &MainWindow::on_trayIcon_activated);
+  connect(_ui.applicationView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &MainWindow::on_applicationView_selectionModel_selectionChanged);
+  connect(_ui.ruleView->selectionModel(),        &QItemSelectionModel::selectionChanged, this, &MainWindow::on_ruleView_selectionModel_selectionChanged);
+  connect(&_trayIcon,                            &QSystemTrayIcon::activated,            this, &MainWindow::on_trayIcon_activated);
 }
 
 MainWindow::~MainWindow()
@@ -170,7 +171,7 @@ void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos
 
   QMenu contextMenu;
 
-  auto switchTo = contextMenu.addAction(tr("Switch to"));
+  auto switchTo = contextMenu.addAction(tr("Switch to"), this, &MainWindow::on_switchToButton_clicked);
   switchTo->setEnabled(selected.size() == 1);
 
   static const auto Property_MoveToDesktopAction = "MoveToDesktop";
@@ -203,12 +204,7 @@ void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos
   {
     return;
   }
-  if (action == switchTo)
-  {
-    auto appInfo = &_appWindows.applications()->at(selected.first().row());
-    SetForegroundWindow(appInfo->window().handle);
-  }
-  else if (action == createRule)
+  if (action == createRule)
   {
     auto appInfo = &_appWindows.applications()->at(selected.first().row());
     RuleDialog ruleDialog(QDir::toNativeSeparators(appInfo->process().fileInfo.filePath()), appInfo->window().title, appInfo->window().className, this);
@@ -228,6 +224,11 @@ void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos
       on_refreshApplicationsButton_clicked();
     }
   }
+}
+
+void MainWindow::on_applicationView_selectionModel_selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) const
+{
+  _ui.switchToButton->setEnabled(_ui.applicationView->selectionModel()->selectedRows().size() == 1);
 }
 
 void MainWindow::on_applyRuleButton_clicked(bool checked /* false */)
@@ -315,6 +316,14 @@ void MainWindow::on_ruleView_selectionModel_selectionChanged(const QItemSelectio
   _ui.editRuleButton->setEnabled(_ui.ruleView->selectionModel()->selectedRows().size() == 1);
   _ui.removeRuleButton->setEnabled(!_ui.ruleView->selectionModel()->selectedRows().empty());
   _ui.applyRuleButton->setEnabled(!_ui.ruleView->selectionModel()->selectedRows().empty());
+}
+
+void MainWindow::on_switchToButton_clicked(bool checked /* false */) const
+{
+  auto selected = _ui.applicationView->selectionModel()->selectedRows();
+  auto appInfo  = &_appWindows.applications()->at(selected.first().row());
+
+  SetForegroundWindow(appInfo->window().handle);
 }
 
 void MainWindow::on_trayIcon_activated(QSystemTrayIcon::ActivationReason reason)
