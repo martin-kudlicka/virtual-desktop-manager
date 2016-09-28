@@ -21,6 +21,7 @@ class MainWindow : public QMainWindow
     RuleModel        _ruleModel;
     QSystemTrayIcon  _trayIcon;
 
+    void applyRule            (const AppInfo &appInfo, const RuleOptions &ruleOptions) const;
     void applySettings        ();
     void registerHotkeys      () const;
     void setupApplicationModel();
@@ -33,6 +34,7 @@ class MainWindow : public QMainWindow
     void on_actionOptions_triggered                   (bool checked = false);
     void on_addRuleButton_clicked                     (bool checked = false);
     void on_applicationView_customContextMenuRequested(const QPoint &pos);
+    void on_applyRuleButton_clicked                   (bool checked = false);
     void on_editRuleButton_clicked                    (bool checked = false);
     void on_refreshApplicationsButton_clicked         (bool checked = false);
     void on_removeRuleButton_clicked                  (bool checked = false);

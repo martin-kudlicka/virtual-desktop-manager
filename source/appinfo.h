@@ -28,17 +28,19 @@ class AppInfo
       WindowInfo();
     };
 
-          RuleOptions  bestRule() const;
+          RuleOptions  bestRule()                             const;
+          RuleOptions  bestRule(const MUuidPtrList &rulesIds) const;
           ProcessInfo &process ();
-    const ProcessInfo &process () const;
+    const ProcessInfo &process ()                             const;
           WindowInfo  &window  ();
-    const WindowInfo  &window  () const;
+    const WindowInfo  &window  ()                             const;
 
   private:
     ProcessInfo _process;
     WindowInfo  _window;
 
-    RuleOptionsList suitableRules() const;
+    RuleOptions     bestRule     (const RuleOptionsList &rulesOptions) const;
+    RuleOptionsList suitableRules(const MUuidPtrList &ruleIds)         const;
 };
 
 using AppInfoList = QList<AppInfo>;

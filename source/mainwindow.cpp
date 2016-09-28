@@ -28,6 +28,28 @@ MainWindow::~MainWindow()
 {
 }
 
+void MainWindow::applyRule(const AppInfo &appInfo, const RuleOptions &ruleOptions) const
+{
+  if (!ruleOptions.valid())
+  {
+    return;
+  }
+
+  switch (ruleOptions.action())
+  {
+    case RuleOptions::ActionType::MoveToDesktop:
+      gVirtualDesktopManager->moveWindowTo(appInfo.window().handle, ruleOptions.desktopIndex() - 1);
+      break;
+    case RuleOptions::ActionType::KeepOnDesktop:
+      // TODO
+    case RuleOptions::ActionType::AutoClose:
+      // TODO
+      ;
+    default:
+      Q_UNREACHABLE();
+  }
+}
+
 void MainWindow::applySettings()
 {
   _trayIcon.setVisible(gOptions->trayIcon());
@@ -208,6 +230,26 @@ void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos
   }
 }
 
+void MainWindow::on_applyRuleButton_clicked(bool checked /* false */)
+{
+  MUuidPtrList ruleIds;
+  auto selected = _ui.ruleView->selectionModel()->selectedRows();
+  for (const auto &index : selected)
+  {
+    ruleIds.append(index.internalId());
+  }
+
+  _appWindows.refresh();
+
+  for (const auto &appWindow : *_appWindows.applications())
+  {
+    auto ruleOptions = appWindow.bestRule(ruleIds);
+    applyRule(appWindow, ruleOptions);
+  }
+
+  _ui.applicationView->reset();
+}
+
 void MainWindow::on_editRuleButton_clicked(bool checked /* false */)
 {
   auto selected = _ui.ruleView->selectionModel()->selectedIndexes();
@@ -267,6 +309,7 @@ void MainWindow::on_ruleView_selectionModel_selectionChanged(const QItemSelectio
 {
   _ui.editRuleButton->setEnabled(_ui.ruleView->selectionModel()->selectedRows().size() == 1);
   _ui.removeRuleButton->setEnabled(!_ui.ruleView->selectionModel()->selectedRows().empty());
+  _ui.applyRuleButton->setEnabled(!_ui.ruleView->selectionModel()->selectedRows().empty());
 }
 
 void MainWindow::on_trayIcon_activated(QSystemTrayIcon::ActivationReason reason)
