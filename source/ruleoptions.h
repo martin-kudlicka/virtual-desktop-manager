@@ -7,8 +7,16 @@
 class RuleOptions : public MSettings
 {
   public:
+    enum class ActionType
+    {
+      MoveToDesktop,
+      KeepOnDesktop,
+      AutoClose
+    };
+
     static const QString Action;
     static const QString Class;
+    static const QString DesktopIndex;
     static const QString Enabled;
     static const QString Name;
     static const QString Process;
@@ -19,13 +27,14 @@ class RuleOptions : public MSettings
              RuleOptions(const RuleOptions &other);
     virtual ~RuleOptions() Q_DECL_OVERRIDE;
 
-          QString   className() const;
-          bool      enabled  () const;
-    const MUuidPtr &id       () const;
-          QString   name     () const;
-          QString   process  () const;
-          QString   title    () const;
-          bool      valid    () const;
+          ActionType action   () const;
+          QString    className() const;
+          bool       enabled  () const;
+    const MUuidPtr  &id       () const;
+          QString    name     () const;
+          QString    process  () const;
+          QString    title    () const;
+          bool       valid    () const;
 
   private:
     MUuidPtr _id;

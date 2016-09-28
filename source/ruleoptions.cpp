@@ -2,12 +2,13 @@
 
 #include "rules.h"
 
-const QString RuleOptions::Action  = "action";
-const QString RuleOptions::Class   = "class";
-const QString RuleOptions::Enabled = "enabled";
-const QString RuleOptions::Name    = "name";
-const QString RuleOptions::Process = "process";
-const QString RuleOptions::Title   = "title";
+const QString RuleOptions::Action       = "action";
+const QString RuleOptions::Class        = "class";
+const QString RuleOptions::DesktopIndex = "desktopIndex";
+const QString RuleOptions::Enabled      = "enabled";
+const QString RuleOptions::Name         = "name";
+const QString RuleOptions::Process      = "process";
+const QString RuleOptions::Title        = "title";
 
 RuleOptions::RuleOptions()
 {
@@ -29,6 +30,11 @@ RuleOptions::~RuleOptions()
 {
   endGroup();
   endGroup();
+}
+
+RuleOptions::ActionType RuleOptions::action() const
+{
+  return static_cast<ActionType>(value(Action).toUInt());
 }
 
 QString RuleOptions::className() const
