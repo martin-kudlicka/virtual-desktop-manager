@@ -2,12 +2,14 @@
 
 #include "virtualdesktopmanager.h"
 
-const QString Group_Desktop = "desktop";
-const QString Group_Hotkey  = "hotkey";
+namespace {
+  const auto Group_Desktop = "desktops";
+  const auto Group_Hotkey  = "hotkeys";
 
-const QString Key_Key              = "key";
-const QString Key_Modifiers        = "modifiers";
-const QString Key_NativeVirtualKey = "nativeVirtualKey";
+  const auto Key_Key              = "key";
+  const auto Key_Modifiers        = "modifiers";
+  const auto Key_NativeVirtualKey = "nativeVirtualKey";
+}
 
 const QString Options::DesktopCount   = "general/desktopCount";
 const QString Options::MinimizeToTray = "general/minimizeToTray";
@@ -49,6 +51,11 @@ MHotkey Options::desktopHotkey(quintptr index) const
 bool Options::minimizeToTray() const
 {
   return value(MinimizeToTray).toBool();
+}
+
+void Options::setDesktopCount(quintptr count)
+{
+  setValue(DesktopCount, count);
 }
 
 void Options::setDesktopHotkey(quintptr index, const MHotkey &hotkey)

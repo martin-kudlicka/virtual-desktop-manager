@@ -8,16 +8,17 @@
 class Options : public MSettings
 {
   public:
-             Options();
-    virtual ~Options() Q_DECL_OVERRIDE;
-
     static const QString DesktopCount;
     static const QString MinimizeToTray;
     static const QString TrayIcon;
 
+             Options();
+    virtual ~Options() Q_DECL_OVERRIDE;
+
     quintptr desktopCount    ()               const;
     MHotkey  desktopHotkey   (quintptr index) const;
     bool     minimizeToTray  ()               const;
+    void     setDesktopCount (quintptr count);
     void     setDesktopHotkey(quintptr index, const MHotkey &hotkey);
     bool     trayIcon        ()               const;
 };
