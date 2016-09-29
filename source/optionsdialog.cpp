@@ -11,6 +11,9 @@ OptionsDialog::OptionsDialog(QWidget *parent /* Q_NULLPTR */) : QDialog(parent),
 
   gOptions->setDesktopCount(gVirtualDesktopManager->count());
 
+  _ui.desktopCountLabel->hide();
+  _ui.desktopCount->hide();
+
   setupSettings();
   _widgetSettings.load();
 
