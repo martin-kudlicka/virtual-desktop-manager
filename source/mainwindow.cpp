@@ -14,8 +14,6 @@ MainWindow::MainWindow() : QMainWindow(), _applicationModel(_appWindows.applicat
   setupApplicationModel();
   setupRuleModel();
 
-  gOptions->setDesktopCount(gVirtualDesktopManager->count());
-
   _trayIcon.setIcon(QIcon(":/resources/mainwindow/mainwindow.png"));
   _ui.moveToDesktopButton->setMenu(&_desktopIndexMenu);
 
