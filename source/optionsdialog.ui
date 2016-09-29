@@ -25,7 +25,7 @@
       </attribute>
       <layout class="QFormLayout" name="formLayout">
        <item row="0" column="0">
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="desktopCountLabel">
          <property name="text">
           <string>Desktop &amp;count</string>
          </property>
