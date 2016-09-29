@@ -44,9 +44,10 @@ void MainWindow::applyRule(const AppInfo &appInfo, const RuleOptions &ruleOption
       break;
     case RuleOptions::ActionType::KeepOnDesktop:
       // TODO
+      break;
     case RuleOptions::ActionType::AutoClose:
-      // TODO
-      ;
+      PostMessage(appInfo.window().handle, WM_CLOSE, 0, 0);
+      break;
     default:
       Q_UNREACHABLE();
   }
