@@ -3,12 +3,14 @@
 
 namespace VdmHookDefs
 {
-  const wchar_t *SharedMemoryName = L"VDMHOOK_SHAREDMEMORY_NAME";
-  const int      SharedMemorySize = 4096;
+  static const wchar_t *SharedMemoryName = L"VDMHOOK_SHAREDMEMORY_NAME";
+         const int      SharedMemorySize = 4096;
 
-  const wchar_t *VdmHookDllFileName = L"vdmhook.dll";
+  static const wchar_t *SharedMemorySemaphoreName = L"VDMHOOK_SHAREDMEMORY_SEMAPHORE";
 
-  const char *ShellProcName = "_shellProc@12";
+  static const wchar_t *VdmHookDllFileName = L"vdmhook.dll";
+
+  static const char *ShellProcName = "_shellProc@12";
 }
 
 /*
