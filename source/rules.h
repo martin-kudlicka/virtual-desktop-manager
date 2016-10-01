@@ -13,6 +13,7 @@ class Rules
      Rules();
     ~Rules();
 
+    bool         anyEnabled ()                   const;
     bool         empty      ()                   const;
     MUuidPtr     id         (quintptr index)     const;
     MUuidPtrList ids        ()                   const;

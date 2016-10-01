@@ -108,6 +108,7 @@
     <ClCompile Include="rulemodel.cpp" />
     <ClCompile Include="ruleoptions.cpp" />
     <ClCompile Include="rules.cpp" />
+    <ClCompile Include="vdmhook.cpp" />
     <ClCompile Include="virtualdesktopmanager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainwindow.cpp" />
@@ -167,6 +168,7 @@
     <ClInclude Include="appinfo.h" />
     <ClInclude Include="applicationmodel.h" />
     <ClInclude Include="appwindows.h" />
+    <ClInclude Include="vdmhook.h" />
     <ClInclude Include="wildcard.h" />
     <CustomBuild Include="ruledialog.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>

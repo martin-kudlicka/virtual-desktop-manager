@@ -24,6 +24,8 @@ MainWindow::MainWindow() : QMainWindow(), _applicationModel(_appWindows.applicat
 
   registerHotkeys();
   applySettings();
+
+  _vdmHook.setRulesEnabled(gRules->anyEnabled());
 }
 
 MainWindow::~MainWindow()
@@ -264,6 +266,7 @@ void MainWindow::on_editRuleButton_clicked(bool checked /* false */)
   }
 
   emit _ruleModel.dataChanged(selected.first(), selected.last());
+  _vdmHook.setRulesEnabled(gRules->anyEnabled());
 }
 
 void MainWindow::on_refreshApplicationsButton_clicked(bool checked /* false */)
