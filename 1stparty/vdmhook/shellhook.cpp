@@ -4,35 +4,38 @@
 
 Client gClient;
 
-VDMHOOK_EXPORT LRESULT CALLBACK ShellProc(_In_ int nCode, _In_ WPARAM wParam, _In_ LPARAM lParam)
+VDMHOOK_EXPORT LRESULT CALLBACK shellProc(_In_ int nCode, _In_ WPARAM wParam, _In_ LPARAM lParam)
 {
   if (gClient.rulesEnabled())
   {
     switch (nCode)
     {
       case HSHELL_WINDOWCREATED:
-        ShellWindowCreated(reinterpret_cast<HWND>(wParam));
+        shellWindowCreated(reinterpret_cast<HWND>(wParam));
     }
   }
 
   return CallNextHookEx(nullptr, nCode, wParam, lParam);
 }
 
-void ShellWindowCreated(HWND window)
+void shellWindowCreated(HWND window)
 {
-  WCHAR text[4096] = { 0 };
-
-  auto chars = GetWindowText(window, text, _countof(text));
+  WCHAR windowTitle[4096] = { 0 };
+  auto chars = GetWindowText(window, windowTitle, _countof(windowTitle));
   if (chars == 0)
   {
     return;
   }
 
-  chars = GetClassName(window, text, _countof(text));
-  if (chars > 0)
+  WCHAR filePath[4096] = { 0 };
+  chars = GetModuleFileName(nullptr, filePath, _countof(filePath));
+  if (chars == 0)
   {
-    // TODO
+    return;
   }
 
-  // TODO
+  WCHAR windowClass[4096] = { 0 };
+  GetClassName(window, windowClass, _countof(windowClass));
+
+  gClient.setAppInfo(filePath, windowTitle, windowClass);
 }
