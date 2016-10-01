@@ -3,20 +3,39 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Virtual Desktop Manager", "source\virtualdesktopmanager.vcxproj", "{B12702AD-ABFB-343A-A199-8E24837244A3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "virtualdesktopmanager", "source\virtualdesktopmanager.vcxproj", "{B12702AD-ABFB-343A-A199-8E24837244A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1stparty", "1stparty", "{652C32CC-CB13-4A36-9A3E-08B5AAA9DE2C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vdmhook", "1stparty\vdmhook\vdmhook.vcxproj", "{902C649C-EE6F-4E29-8693-4140AAC9022E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B12702AD-ABFB-343A-A199-8E24837244A3}.Debug|x64.ActiveCfg = Debug|Win32
 		{B12702AD-ABFB-343A-A199-8E24837244A3}.Debug|x86.ActiveCfg = Debug|Win32
 		{B12702AD-ABFB-343A-A199-8E24837244A3}.Debug|x86.Build.0 = Debug|Win32
+		{B12702AD-ABFB-343A-A199-8E24837244A3}.Release|x64.ActiveCfg = Release|Win32
 		{B12702AD-ABFB-343A-A199-8E24837244A3}.Release|x86.ActiveCfg = Release|Win32
 		{B12702AD-ABFB-343A-A199-8E24837244A3}.Release|x86.Build.0 = Release|Win32
+		{902C649C-EE6F-4E29-8693-4140AAC9022E}.Debug|x64.ActiveCfg = Debug|x64
+		{902C649C-EE6F-4E29-8693-4140AAC9022E}.Debug|x64.Build.0 = Debug|x64
+		{902C649C-EE6F-4E29-8693-4140AAC9022E}.Debug|x86.ActiveCfg = Debug|Win32
+		{902C649C-EE6F-4E29-8693-4140AAC9022E}.Debug|x86.Build.0 = Debug|Win32
+		{902C649C-EE6F-4E29-8693-4140AAC9022E}.Release|x64.ActiveCfg = Release|x64
+		{902C649C-EE6F-4E29-8693-4140AAC9022E}.Release|x64.Build.0 = Release|x64
+		{902C649C-EE6F-4E29-8693-4140AAC9022E}.Release|x86.ActiveCfg = Release|Win32
+		{902C649C-EE6F-4E29-8693-4140AAC9022E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{902C649C-EE6F-4E29-8693-4140AAC9022E} = {652C32CC-CB13-4A36-9A3E-08B5AAA9DE2C}
 	EndGlobalSection
 EndGlobal
