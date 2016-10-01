@@ -1,6 +1,7 @@
 #include "rules.h"
 
 #include <MkCore/MUuidPtr>
+#include "ruleoptions.h"
 
 const QString Rules::Group = "rules";
 
@@ -14,6 +15,20 @@ Rules::Rules()
 Rules::~Rules()
 {
   _settings.endGroup();
+}
+
+bool Rules::anyEnabled() const
+{
+  for (const auto &id2 : ids())
+  {
+    RuleOptions ruleOptions(id2);
+    if (ruleOptions.enabled())
+    {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 bool Rules::empty() const

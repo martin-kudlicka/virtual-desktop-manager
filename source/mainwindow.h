@@ -5,6 +5,7 @@
 #include "applicationmodel.h"
 #include <QtWidgets/QSystemTrayIcon>
 #include "rulemodel.h"
+#include "vdmhook.h"
 
 class MainWindow : public QMainWindow
 {
@@ -21,10 +22,11 @@ class MainWindow : public QMainWindow
     RuleModel        _ruleModel;
     QMenu            _desktopIndexMenu;
     QSystemTrayIcon  _trayIcon;
+    VdmHook          _vdmHook;
 
     void applyRule            (const AppInfo &appInfo, const RuleOptions &ruleOptions) const;
     void applySettings        ();
-    void registerHotkeys      () const;
+    void registerHotkeys      ()                                                       const;
     void setupApplicationModel();
     void setupRuleModel       ();
 
