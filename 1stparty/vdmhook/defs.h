@@ -8,12 +8,15 @@ namespace VdmHookDefs
 
   const wchar_t *VdmHookDllFileName = L"vdmhook.dll";
 
-  const char *ShellProcName = "_ShellProc@12";
+  const char *ShellProcName = "_shellProc@12";
 }
 
 /*
 Shared memory
 0 - rules enabled flag
+1 - process file path /0
+  - window title /0
+  - window class /0
 */
 
 #endif
