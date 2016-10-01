@@ -1,8 +1,10 @@
 #include "shellhook.h"
 
 #include "client.h"
+#include "semaphore.h"
 
 Client gClient;
+Semaphore gClientSync;
 
 VDMHOOK_EXPORT LRESULT CALLBACK shellProc(_In_ int nCode, _In_ WPARAM wParam, _In_ LPARAM lParam)
 {
@@ -37,5 +39,9 @@ void shellWindowCreated(HWND window)
   WCHAR windowClass[4096] = { 0 };
   GetClassName(window, windowClass, _countof(windowClass));
 
+  gClientSync.lock();
+
   gClient.setAppInfo(filePath, windowTitle, windowClass);
+
+  gClientSync.unlock();
 }
