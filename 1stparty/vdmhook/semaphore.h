@@ -8,8 +8,8 @@ class Semaphore
      Semaphore();
     ~Semaphore();
 
-    void lock  ();
-    void unlock();
+    void lock() const;
+    void open(LPCWSTR name);
 
   private:
     HANDLE _semaphore;
