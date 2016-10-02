@@ -33,6 +33,9 @@
     <ClInclude Include="semaphore.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="event.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -45,6 +48,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="semaphore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="event.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

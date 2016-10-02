@@ -2,9 +2,11 @@
 
 #include "client.h"
 #include "semaphore.h"
+#include "event.h"
 
-Client gClient;
-Semaphore gClientSync;
+Client    gClient;
+Event     gDataSync;
+Semaphore gWriteSync;
 
 VDMHOOK_EXPORT LRESULT CALLBACK shellProc(_In_ int nCode, _In_ WPARAM wParam, _In_ LPARAM lParam)
 {
@@ -39,9 +41,9 @@ void shellWindowCreated(HWND window)
   WCHAR windowClass[4096] = { 0 };
   GetClassName(window, windowClass, _countof(windowClass));
 
-  gClientSync.lock();
+  gWriteSync.lock();
 
   gClient.setAppInfo(filePath, windowTitle, windowClass);
 
-  gClientSync.unlock();
+  gDataSync.set();
 }

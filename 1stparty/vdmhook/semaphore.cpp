@@ -2,9 +2,8 @@
 
 #include "defs.h"
 
-Semaphore::Semaphore()
+Semaphore::Semaphore() : _semaphore(nullptr)
 {
-  _semaphore = CreateSemaphore(nullptr, 1, 1, VdmHookDefs::SharedMemorySemaphoreName);
 }
 
 Semaphore::~Semaphore()
@@ -12,12 +11,12 @@ Semaphore::~Semaphore()
   CloseHandle(_semaphore);
 }
 
-void Semaphore::lock()
+void Semaphore::lock() const
 {
   WaitForSingleObject(_semaphore, INFINITE);
 }
 
-void Semaphore::unlock()
+void Semaphore::open(LPCWSTR name)
 {
-  ReleaseSemaphore(_semaphore, 1, nullptr);
+  _semaphore = OpenSemaphore(SYNCHRONIZE, FALSE, name);
 }

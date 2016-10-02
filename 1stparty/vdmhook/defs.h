@@ -6,7 +6,8 @@ namespace VdmHookDefs
   static const wchar_t *SharedMemoryName = L"VDMHOOK_SHAREDMEMORY_NAME";
          const int      SharedMemorySize = 4096;
 
-  static const wchar_t *SharedMemorySemaphoreName = L"VDMHOOK_SHAREDMEMORY_SEMAPHORE";
+  static const wchar_t *SharedMemoryWriteSemaphoreName = L"VDMHOOK_SHAREDMEMORY_WRITE_SEMAPHORE";
+  static const wchar_t *SharedMemoryDataReadyEventName = L"VDMHOOK_SHAREDMEMORY_DATAREADY_EVENT";
 
   static const wchar_t *VdmHookDllFileName = L"vdmhook.dll";
 
