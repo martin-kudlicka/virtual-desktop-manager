@@ -4,16 +4,20 @@
 #include <QtCore/QSharedMemory>
 #include <MkCore/MWindowsHook>
 
+class VdmHookWorker;
+
 class VdmHook
 {
   public:
-    VdmHook();
+     VdmHook();
+    ~VdmHook();
 
     void setRulesEnabled(bool enabled);
 
   private:
-    MWindowsHook  _shellProcHook;
-    QSharedMemory _sharedMemory;
+    MWindowsHook   _shellProcHook;
+    VdmHookWorker *_vdmHookWorker;
+    QSharedMemory  _sharedMemory;
 };
 
 #endif
