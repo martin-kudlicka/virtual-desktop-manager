@@ -1,20 +1,20 @@
 #include "event.h"
 
-Event::Event() : _mutex(nullptr)
+Event::Event() : _event(nullptr)
 {
 }
 
 Event::~Event()
 {
-  CloseHandle(_mutex);
+  CloseHandle(_event);
 }
 
 void Event::open(LPCWSTR name)
 {
-  _mutex = OpenEvent(SYNCHRONIZE, FALSE, name);
+  _event = OpenEvent(EVENT_MODIFY_STATE, FALSE, name);
 }
 
 void Event::set() const
 {
-  SetEvent(_mutex);
+  SetEvent(_event);
 }
