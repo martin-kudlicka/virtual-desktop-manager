@@ -12,5 +12,5 @@ class Event
     void set() const;
 
   private:
-    HANDLE _mutex;
+    HANDLE _event;
 };
