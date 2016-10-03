@@ -137,6 +137,9 @@
     <ClCompile Include="vdmhook.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="vdmhookworker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mainwindow.h">
@@ -226,6 +229,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="vdmhook.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vdmhookworker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
