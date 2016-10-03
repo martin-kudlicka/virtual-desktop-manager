@@ -4,6 +4,7 @@
 #include <QtCore/QRunnable>
 #include <MkCore/MSystemSemaphore>
 #include <MkCore/MSystemEvent>
+#include "appinfo.h"
 
 class QSharedMemory;
 
@@ -20,6 +21,10 @@ class VdmHookWorker : public QRunnable
     MSystemEvent     _dataSync;
     MSystemSemaphore _writeSync;
     QSharedMemory   *_sharedMemory;
+
+    void    processData()                    const;
+    AppInfo readData   ()                    const;
+    QString readString (wchar_t **sharedPos) const;
 
     virtual void run();
 };
