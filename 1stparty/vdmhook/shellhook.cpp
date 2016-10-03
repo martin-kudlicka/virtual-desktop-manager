@@ -43,7 +43,7 @@ void shellWindowCreated(HWND window)
 
   gWriteSync.lock();
 
-  gClient.setAppInfo(filePath, windowTitle, windowClass);
+  gClient.writeAppInfo(window, filePath, windowTitle, windowClass);
 
   gDataSync.set();
 }

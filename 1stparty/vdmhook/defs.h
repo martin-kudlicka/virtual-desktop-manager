@@ -3,11 +3,15 @@
 
 namespace VdmHookDefs
 {
-  static const wchar_t *SharedMemoryName = L"VDMHOOK_SHAREDMEMORY_NAME";
+  static const wchar_t *SharedMemoryName = L"VdmHook_SharedMemory_Name";
          const int      SharedMemorySize = 4096;
 
-  static const wchar_t *SharedMemoryWriteSemaphoreName = L"VDMHOOK_SHAREDMEMORY_WRITE_SEMAPHORE";
-  static const wchar_t *SharedMemoryDataReadyEventName = L"VDMHOOK_SHAREDMEMORY_DATAREADY_EVENT";
+  const int SharedMemoryOffsetEnabledFlag  = 0;
+  const int SharedMemoryOffsetWindowHandle = 1;
+  const int SharedMemoryOffsetStringData   = 5;
+
+  static const wchar_t *SharedMemoryWriteSemaphoreName = L"VdmHook_SharedMemory_Write_Semaphore";
+  static const wchar_t *SharedMemoryDataReadyEventName = L"VdmHook_SharedMemory_DataReady_Event";
 
   static const wchar_t *VdmHookDllFileName = L"vdmhook.dll";
 
@@ -17,7 +21,8 @@ namespace VdmHookDefs
 /*
 Shared memory
 0 - rules enabled flag
-1 - process file path /0
+1 - top-level window handle
+5 - process file path /0
   - window title /0
   - window class /0
 */

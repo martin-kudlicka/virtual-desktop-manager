@@ -19,9 +19,12 @@ bool Client::rulesEnabled() const
   return *static_cast<bool *>(_sharedMemory);
 }
 
-void Client::setAppInfo(LPCWSTR filePath, LPCWSTR windowTitle, LPCWSTR windowClass) const
+void Client::writeAppInfo(HWND window, LPCWSTR filePath, LPCWSTR windowTitle, LPCWSTR windowClass) const
 {
-  auto sharedPos = static_cast<LPBYTE>(_sharedMemory) + sizeof(bool);
+  auto sharedPos = static_cast<LPBYTE>(_sharedMemory) + VdmHookDefs::SharedMemoryOffsetWindowHandle;
+  *reinterpret_cast<HWND *>(sharedPos) = window;
+
+  sharedPos = static_cast<LPBYTE>(_sharedMemory) + VdmHookDefs::SharedMemoryOffsetStringData;
   writeString(&sharedPos, filePath);
   writeString(&sharedPos, windowTitle);
   writeString(&sharedPos, windowClass);

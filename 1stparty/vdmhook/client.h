@@ -9,7 +9,7 @@ class Client
     ~Client();
 
     bool rulesEnabled() const;
-    void setAppInfo(LPCWSTR filePath, LPCWSTR windowTitle, LPCWSTR windowClass) const;
+    void writeAppInfo(HWND window, LPCWSTR filePath, LPCWSTR windowTitle, LPCWSTR windowClass) const;
 
   private:
     HANDLE _mapping;
