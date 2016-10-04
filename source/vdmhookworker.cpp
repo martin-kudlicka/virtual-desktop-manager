@@ -3,6 +3,7 @@
 #include "../1stparty/vdmhook/defs.h"
 #include <QtCore/QSharedMemory>
 #include "virtualdesktopmanager.h"
+#include <MkCore/MCoInitialize>
 
 VdmHookWorker::VdmHookWorker(QSharedMemory *sharedMemory) : _sharedMemory(sharedMemory), _stop(false), _dataSync(VdmHookDefs::SharedMemoryDataReadyEventName), _writeSync(VdmHookDefs::SharedMemoryWriteSemaphoreName)
 {
@@ -80,7 +81,7 @@ QString VdmHookWorker::readString(wchar_t **sharedPos) const
 
 void VdmHookWorker::run()
 {
-  CoInitialize(Q_NULLPTR);
+  MCoInitialize coInitialize;
 
   forever
   {
@@ -95,6 +96,4 @@ void VdmHookWorker::run()
 
     _writeSync.release();
   }
-
-  CoUninitialize();
 }
