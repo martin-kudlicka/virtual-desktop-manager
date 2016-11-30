@@ -33,7 +33,7 @@ void OptionsDialog::addHotkeyEdit(QFormLayout *formLayout, quintptr index) const
   auto hotkeyEdit = new MHotkeyLineEdit(_ui.hotkeysContents);
   hotkeyEdit->setHotkey(desktopHotkey);
 
-  formLayout->addRow(QString("Desktop %1").arg(index), hotkeyEdit);
+  formLayout->addRow(QString("Desktop %1").arg(index + 1), hotkeyEdit);
 }
 
 void OptionsDialog::removeHotkeyEdit(MFormLayout *formLayout, quintptr index) const
