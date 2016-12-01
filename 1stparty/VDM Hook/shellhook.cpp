@@ -8,20 +8,6 @@ Client    gClient;
 Event     gDataSync;
 Semaphore gWriteSync;
 
-VDMHOOK_EXPORT LRESULT CALLBACK shellProc(_In_ int nCode, _In_ WPARAM wParam, _In_ LPARAM lParam)
-{
-  if (gClient.rulesEnabled())
-  {
-    switch (nCode)
-    {
-      case HSHELL_WINDOWCREATED:
-        shellWindowCreated(reinterpret_cast<HWND>(wParam));
-    }
-  }
-
-  return CallNextHookEx(nullptr, nCode, wParam, lParam);
-}
-
 void shellWindowCreated(HWND window)
 {
   WCHAR windowTitle[4096] = { 0 };
@@ -46,4 +32,18 @@ void shellWindowCreated(HWND window)
   gClient.writeAppInfo(window, filePath, windowTitle, windowClass);
 
   gDataSync.set();
+}
+
+VDMHOOK_EXPORT LRESULT CALLBACK shellProc(_In_ int nCode, _In_ WPARAM wParam, _In_ LPARAM lParam)
+{
+  if (gClient.rulesEnabled())
+  {
+    switch (nCode)
+    {
+      case HSHELL_WINDOWCREATED:
+        shellWindowCreated(reinterpret_cast<HWND>(wParam));
+    }
+  }
+
+  return CallNextHookEx(nullptr, nCode, wParam, lParam);
 }

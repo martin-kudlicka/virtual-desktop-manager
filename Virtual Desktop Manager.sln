@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "virtualdesktopmanager", "source\virtualdesktopmanager.vcxproj", "{B12702AD-ABFB-343A-A199-8E24837244A3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Virtual Desktop Manager", "source\VirtualDesktopManager.vcxproj", "{B12702AD-ABFB-343A-A199-8E24837244A3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1stparty", "1stparty", "{652C32CC-CB13-4A36-9A3E-08B5AAA9DE2C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vdmhook", "1stparty\vdmhook\vdmhook.vcxproj", "{902C649C-EE6F-4E29-8693-4140AAC9022E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VDM Hook", "1stparty\VDM Hook\VDMHook.vcxproj", "{902C649C-EE6F-4E29-8693-4140AAC9022E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,7 +1,7 @@
 #include "vdmhook.h"
 
 //#include <QtCore/qt_windows.h>
-#include "../1stparty/vdmhook/defs.h"
+#include "../1stparty/VDM Hook/defs.h"
 #include "vdmhookworker.h"
 #include <QtCore/QThreadPool>
 
@@ -27,7 +27,7 @@ void VdmHook::setRulesEnabled(bool enabled)
 {
   _sharedMemory.lock();
 
-  *static_cast<bool *>(_sharedMemory.data()) = enabled;
+  *reinterpret_cast<bool *>(static_cast<char *>(_sharedMemory.data()) + VdmHookDefs::SharedMemoryOffsetEnabledFlag) = enabled;
 
   _sharedMemory.unlock();
 }
