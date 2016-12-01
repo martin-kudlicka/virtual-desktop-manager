@@ -1,6 +1,6 @@
 #include "vdmhookworker.h"
 
-#include "../1stparty/vdmhook/defs.h"
+#include "../1stparty/VDM Hook/defs.h"
 #include <QtCore/QSharedMemory>
 #include "virtualdesktopmanager.h"
 #include <MkCore/MCoInitialize>
