@@ -15,9 +15,8 @@ OptionsDialog::OptionsDialog(QWidget *parent /* Q_NULLPTR */) : QDialog(parent),
   _ui.desktopCount->hide();
 
   setupSettings();
-  _widgetSettings.load();
 
-  on_trayIcon_stateChanged(_ui.trayIcon->checkState());
+  _ui.trayIcon->setCheckState(_ui.trayIcon->checkState());
 
   setupHotkeys();
 }
@@ -69,6 +68,8 @@ void OptionsDialog::setupSettings()
   _widgetSettings.setWidget(Options::DesktopCount,   _ui.desktopCount);
   _widgetSettings.setWidget(Options::TrayIcon,       _ui.trayIcon);
   _widgetSettings.setWidget(Options::MinimizeToTray, _ui.minimizeToTray);
+
+  _widgetSettings.load();
 }
 
 void OptionsDialog::accept()
