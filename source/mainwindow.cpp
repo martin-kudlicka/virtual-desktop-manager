@@ -45,7 +45,7 @@ void MainWindow::applyRule(const AppInfo &appInfo, const RuleOptions &ruleOption
       gVirtualDesktopManager->moveWindowTo(appInfo.window().handle, ruleOptions.desktopIndex() - 1);
       break;
     case RuleOptions::ActionType::KeepOnDesktop:
-      // TODO
+      // apply only when window created
       break;
     case RuleOptions::ActionType::AutoClose:
       PostMessage(appInfo.window().handle, WM_CLOSE, 0, 0);
@@ -226,7 +226,7 @@ void MainWindow::on_applyRuleButton_clicked(bool checked /* false */)
     applyRule(appWindow, ruleOptions);
   }
 
-  on_refreshApplicationsButton_clicked();
+  _ui.refreshApplicationsButton->click();
 }
 
 void MainWindow::on_createRuleButton_clicked(bool checked /* false */)
@@ -252,7 +252,7 @@ void MainWindow::on_desktopIndexMenu_triggered(QAction *action)
     gVirtualDesktopManager->moveWindowTo(appInfo->window().handle, action->data().toUInt());
   }
 
-  on_refreshApplicationsButton_clicked();
+  _ui.refreshApplicationsButton->click();
 }
 
 void MainWindow::on_editRuleButton_clicked(bool checked /* false */)
@@ -313,7 +313,7 @@ void MainWindow::on_ruleView_customContextMenuRequested(const QPoint &pos) const
 
 void MainWindow::on_ruleView_doubleClicked(const QModelIndex &index)
 {
-  on_editRuleButton_clicked();
+  _ui.editRuleButton->click();
 }
 
 void MainWindow::on_ruleView_selectionModel_selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) const
