@@ -26,15 +26,15 @@ QVariant ApplicationModel::data(const QModelIndex &index, int role /* Qt::Displa
 
   switch (index.column())
   {
-    case static_cast<int>(Column::DesktopIndex):
+    case Column::DesktopIndex:
       return appInfo.window().desktopIndex + 1;
-    case static_cast<int>(Column::Path):
+    case Column::Path:
       return QDir::toNativeSeparators(appInfo.process().fileInfo.path());
-    case static_cast<int>(Column::FileName):
+    case Column::FileName:
       return appInfo.process().fileInfo.fileName();
-    case static_cast<int>(Column::Title):
+    case Column::Title:
       return appInfo.window().title;
-    case static_cast<int>(Column::Rule):
+    case Column::Rule:
       {
         auto ruleOptions = appInfo.bestRule();
         if (ruleOptions.valid())
@@ -43,8 +43,6 @@ QVariant ApplicationModel::data(const QModelIndex &index, int role /* Qt::Displa
         }
       }
       return QVariant();
-    default:
-      Q_UNREACHABLE();
   }
 
   Q_UNREACHABLE();
@@ -60,18 +58,16 @@ QVariant ApplicationModel::headerData(int section, Qt::Orientation orientation, 
 
   switch (section)
   {
-    case static_cast<int>(Column::DesktopIndex):
+    case Column::DesktopIndex:
       return "#";
-    case static_cast<int>(Column::Path):
+    case Column::Path:
       return tr("Path");
-    case static_cast<int>(Column::FileName):
+    case Column::FileName:
       return tr("Name");
-    case static_cast<int>(Column::Title):
+    case Column::Title:
       return tr("Title");
-    case static_cast<int>(Column::Rule):
+    case Column::Rule:
       return tr("Rule");
-    default:
-      Q_UNREACHABLE();
   }
 
   Q_UNREACHABLE();
