@@ -30,28 +30,24 @@ QVariant RuleModel::data(const QModelIndex &index, int role /* Qt::DisplayRole *
     case Qt::DisplayRole:
       switch (index.column())
       {
-        case static_cast<int>(Column::Name):
+        case Column::Name:
           return options.name();
-        case static_cast<int>(Column::Process):
+        case Column::Process:
           return options.process();
-        case static_cast<int>(Column::Title):
+        case Column::Title:
           return options.title();
-        case static_cast<int>(Column::Class):
+        case Column::Class:
           return options.className();
-        default:
-          return QVariant();
       }
+      break;
     case Qt::CheckStateRole:
       switch (index.column())
       {
-        case static_cast<int>(Column::Enabled):
+        case Column::Enabled:
           return options.enabled();
-        default:
-          return QVariant();
       }
   }
 
-  Q_UNREACHABLE();
   return QVariant();
 }
 
@@ -64,18 +60,16 @@ QVariant RuleModel::headerData(int section, Qt::Orientation orientation, int rol
 
   switch (section)
   {
-    case static_cast<int>(Column::Enabled):
+    case Column::Enabled:
       return "*";
-    case static_cast<int>(Column::Name):
+    case Column::Name:
       return tr("Name");
-    case static_cast<int>(Column::Process):
+    case Column::Process:
       return tr("Process");
-    case static_cast<int>(Column::Title):
+    case Column::Title:
       return tr("Title");
-    case static_cast<int>(Column::Class):
+    case Column::Class:
       return tr("Class");
-    default:
-      Q_UNREACHABLE();
   }
 
   Q_UNREACHABLE();
