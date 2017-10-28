@@ -2,7 +2,7 @@
 
 #include <QtCore/QDir>
 
-ApplicationModel::ApplicationModel(const AppInfoList *applications) : QAbstractItemModel(), _applications(applications)
+ApplicationModel::ApplicationModel(const AppInfoList *applications) : _applications(applications)
 {
 }
 

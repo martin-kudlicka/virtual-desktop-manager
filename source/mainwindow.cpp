@@ -7,7 +7,7 @@
 #include "ruledialog.h"
 #include <QtCore/QDir>
 
-MainWindow::MainWindow() : QMainWindow(), _applicationModel(_appWindows.applications()), _desktopIndexMenu(tr("Move to desktop"))
+MainWindow::MainWindow() : _applicationModel(_appWindows.applications()), _desktopIndexMenu(tr("Move to desktop"))
 {
   _ui.setupUi(this);
 
