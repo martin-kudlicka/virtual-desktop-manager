@@ -5,7 +5,7 @@
 #include <MkWidgets/MFormLayout>
 #include "virtualdesktopmanager.h"
 
-OptionsDialog::OptionsDialog(QWidget *parent /* Q_NULLPTR */) : QDialog(parent), _widgetSettings(gOptions.data())
+OptionsDialog::OptionsDialog(QWidget *parent) : QDialog(parent), _widgetSettings(gOptions.data())
 {
   _ui.setupUi(this);
 
