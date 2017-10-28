@@ -13,7 +13,7 @@ class MainWindow : public QMainWindow
 
   public:
              MainWindow();
-    virtual ~MainWindow() Q_DECL_OVERRIDE;
+    virtual ~MainWindow() Q_DECL_OVERRIDE Q_DECL_EQ_DEFAULT;
 
   private:
     ApplicationModel _applicationModel;

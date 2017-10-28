@@ -11,7 +11,7 @@ class VirtualDesktopManager : public VirtualDesktopManagerInternal
     static const quintptr InvalidDesktop = -1;
 
              VirtualDesktopManager();
-    virtual ~VirtualDesktopManager();
+    virtual ~VirtualDesktopManager() Q_DECL_EQ_DEFAULT;
 
     quintptr index       (HWND window)                 const;
     void     moveWindowTo(HWND window, quintptr index) const;

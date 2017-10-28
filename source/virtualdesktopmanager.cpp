@@ -14,10 +14,6 @@ VirtualDesktopManager::VirtualDesktopManager()
   serviceProvider->QueryService(IID_IVirtualDesktopManager, &_iVirtualDesktopManager);
 }
 
-VirtualDesktopManager::~VirtualDesktopManager()
-{
-}
-
 quintptr VirtualDesktopManager::index(HWND window) const
 {
   GUID id;

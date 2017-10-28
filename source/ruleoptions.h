@@ -26,7 +26,7 @@ class RuleOptions : public MSettings
              RuleOptions(MUuidPtr &&id);
              RuleOptions(const MUuidPtr &id);
              RuleOptions(const RuleOptions &other);
-    virtual ~RuleOptions() Q_DECL_OVERRIDE;
+    virtual ~RuleOptions() Q_DECL_OVERRIDE Q_DECL_EQ_DEFAULT;
 
           ActionType action      () const;
           QString    className   () const;

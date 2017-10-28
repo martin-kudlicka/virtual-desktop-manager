@@ -12,7 +12,7 @@ class VdmHookWorker : public QRunnable
 {
   public:
              VdmHookWorker(QSharedMemory *sharedMemory);
-    virtual ~VdmHookWorker();
+    virtual ~VdmHookWorker() Q_DECL_OVERRIDE Q_DECL_EQ_DEFAULT;
 
     void stop();
 

@@ -30,12 +30,6 @@ RuleOptions::RuleOptions(const RuleOptions &other) : RuleOptions(MUuidPtr(other.
 {
 }
 
-RuleOptions::~RuleOptions()
-{
-  endGroup();
-  endGroup();
-}
-
 RuleOptions::ActionType RuleOptions::action() const
 {
   return static_cast<ActionType>(value(Action).toUInt());

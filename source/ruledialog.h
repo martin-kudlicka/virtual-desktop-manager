@@ -13,21 +13,21 @@ class RuleDialog : public QDialog
              RuleDialog(MUuidPtr &&id, QWidget *parent = Q_NULLPTR);
              RuleDialog(const QString &process, const QString &windowTitle, const QString &windowClass, QWidget *parent = Q_NULLPTR);
              RuleDialog(QWidget *parent = Q_NULLPTR);
-    virtual ~RuleDialog() Q_DECL_OVERRIDE;
+    virtual ~RuleDialog() Q_DECL_OVERRIDE Q_DECL_EQ_DEFAULT;
 
     const RuleOptions &options() const;
 
-    private:
-      Ui::RuleDialog  _ui;
-      RuleOptions     _options;
-      MWidgetSettings _widgetSettings;
+  private:
+    Ui::RuleDialog  _ui;
+    RuleOptions     _options;
+    MWidgetSettings _widgetSettings;
 
-      void setupSettings();
+    void setupSettings();
 
-      virtual void accept() Q_DECL_OVERRIDE;
+    virtual void accept() Q_DECL_OVERRIDE;
 
-     private Q_SLOTS:
-       void on_name_textChanged(const QString &text) const;
+   private Q_SLOTS:
+     void on_name_textChanged(const QString &text) const;
 };
 
 #endif

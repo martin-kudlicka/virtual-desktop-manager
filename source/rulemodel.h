@@ -9,7 +9,7 @@ class RuleModel : public QAbstractItemModel
 {
   public:
              RuleModel();
-    virtual ~RuleModel() Q_DECL_OVERRIDE;
+    virtual ~RuleModel() Q_DECL_OVERRIDE Q_DECL_EQ_DEFAULT;
 
   private:
     enum class Column
