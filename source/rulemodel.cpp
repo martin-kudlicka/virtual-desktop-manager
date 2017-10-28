@@ -3,10 +3,6 @@
 #include "rules.h"
 #include "ruleoptions.h"
 
-RuleModel::RuleModel() : QAbstractItemModel()
-{
-}
-
 int RuleModel::columnCount(const QModelIndex &parent /* QModelIndex() */) const
 {
   return static_cast<int>(Column::Count);
