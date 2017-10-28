@@ -11,7 +11,7 @@ class OptionsDialog : public QDialog
   Q_OBJECT
 
   public:
-             OptionsDialog(QWidget *parent = Q_NULLPTR);
+             OptionsDialog(QWidget *parent);
     virtual ~OptionsDialog() Q_DECL_OVERRIDE Q_DECL_EQ_DEFAULT;
 
   private:
