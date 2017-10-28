@@ -7,7 +7,6 @@ RuleDialog::RuleDialog(MUuidPtr &&id, QWidget *parent /* Q_NULLPTR */) : QDialog
   _ui.setupUi(this);
 
   setupSettings();
-  _widgetSettings.load();
 
   _ui.desktopIndex->setMaximum(gOptions->desktopCount());
 }
@@ -20,10 +19,6 @@ RuleDialog::RuleDialog(const QString &process, const QString &windowTitle, const
 }
 
 RuleDialog::RuleDialog(QWidget *parent /* Q_NULLPTR */) : RuleDialog(MUuidPtr::createUuid(), parent)
-{
-}
-
-RuleDialog::~RuleDialog()
 {
 }
 
@@ -41,6 +36,8 @@ void RuleDialog::setupSettings()
   _widgetSettings.setWidget(RuleOptions::Class,        _ui.windowClass);
   _widgetSettings.setWidget(RuleOptions::Action,       qMove(QRadioButtonPtrList() << _ui.moveToDesktop << _ui.keepOnOneDesktop << _ui.autoClose));
   _widgetSettings.setWidget(RuleOptions::DesktopIndex, _ui.desktopIndex);
+
+  _widgetSettings.load();
 }
 
 void RuleDialog::accept()

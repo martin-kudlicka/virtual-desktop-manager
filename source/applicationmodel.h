@@ -8,7 +8,7 @@ class ApplicationModel : public QAbstractItemModel
 {
   public:
              ApplicationModel(const AppInfoList *applications);
-    virtual ~ApplicationModel() Q_DECL_OVERRIDE;
+    virtual ~ApplicationModel() Q_DECL_OVERRIDE Q_DECL_EQ_DEFAULT;
 
   private:
     enum class Column

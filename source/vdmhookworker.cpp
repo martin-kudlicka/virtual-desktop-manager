@@ -9,10 +9,6 @@ VdmHookWorker::VdmHookWorker(QSharedMemory *sharedMemory) : _sharedMemory(shared
 {
 }
 
-VdmHookWorker::~VdmHookWorker()
-{
-}
-
 void VdmHookWorker::stop()
 {
   _stop = true;

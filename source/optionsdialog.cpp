@@ -21,10 +21,6 @@ OptionsDialog::OptionsDialog(QWidget *parent /* Q_NULLPTR */) : QDialog(parent),
   setupHotkeys();
 }
 
-OptionsDialog::~OptionsDialog()
-{
-}
-
 void OptionsDialog::addHotkeyEdit(QFormLayout *formLayout, quintptr index) const
 {
   auto desktopHotkey = gOptions->desktopHotkey(index);

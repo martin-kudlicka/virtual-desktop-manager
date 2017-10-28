@@ -12,11 +12,6 @@ Rules::Rules()
   _settings.beginGroup(Group);
 }
 
-Rules::~Rules()
-{
-  _settings.endGroup();
-}
-
 bool Rules::anyEnabled() const
 {
   for (const auto &id2 : ids())
@@ -71,11 +66,6 @@ quintptr Rules::index(const MUuidPtr &id) const
   return -1;
 }
 
-void Rules::removeId(const MUuidPtr &id)
-{
-  _settings.remove(id.toString());
-}
-
 void Rules::removeIndex(quintptr index)
 {
   auto id2 = id(index);
@@ -85,4 +75,9 @@ void Rules::removeIndex(quintptr index)
 quintptr Rules::size() const
 {
   return _settings.childGroups().size();
+}
+
+void Rules::removeId(const MUuidPtr &id)
+{
+  _settings.remove(id.toString());
 }

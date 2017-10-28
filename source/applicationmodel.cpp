@@ -6,10 +6,6 @@ ApplicationModel::ApplicationModel(const AppInfoList *applications) : QAbstractI
 {
 }
 
-ApplicationModel::~ApplicationModel()
-{
-}
-
 int ApplicationModel::columnCount(const QModelIndex &parent /* QModelIndex() */) const
 {
   return static_cast<int>(Column::Count);

@@ -7,10 +7,6 @@ RuleModel::RuleModel() : QAbstractItemModel()
 {
 }
 
-RuleModel::~RuleModel()
-{
-}
-
 int RuleModel::columnCount(const QModelIndex &parent /* QModelIndex() */) const
 {
   return static_cast<int>(Column::Count);

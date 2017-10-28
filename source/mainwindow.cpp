@@ -28,10 +28,6 @@ MainWindow::MainWindow() : QMainWindow(), _applicationModel(_appWindows.applicat
   _vdmHook.setRulesEnabled(gRules->anyEnabled());
 }
 
-MainWindow::~MainWindow()
-{
-}
-
 void MainWindow::applyRule(const AppInfo &appInfo, const RuleOptions &ruleOptions) const
 {
   if (!ruleOptions.valid())
