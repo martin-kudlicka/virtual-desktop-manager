@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include <QtWidgets/QApplication>
-
 #include "virtualdesktopmanager.h"
 
 int main(int argc, char *argv[])
@@ -12,9 +11,5 @@ int main(int argc, char *argv[])
   MainWindow mainWindow;
   mainWindow.show();
 
-  auto error = application.exec();
-
-  gVirtualDesktopManager.reset();
-
-  return error;
+  return application.exec();
 }
