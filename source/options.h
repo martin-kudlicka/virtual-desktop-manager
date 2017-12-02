@@ -13,7 +13,7 @@ class Options : public MSettings
     static const QString TrayIcon;
 
              Options();
-    virtual ~Options() Q_DECL_OVERRIDE;
+    virtual ~Options() Q_DECL_OVERRIDE Q_DECL_EQ_DEFAULT;
 
     quintptr desktopCount    ()               const;
     MHotkey  desktopHotkey   (quintptr index) const;
