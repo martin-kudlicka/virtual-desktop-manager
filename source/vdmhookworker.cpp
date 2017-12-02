@@ -27,13 +27,13 @@ void VdmHookWorker::processData() const
 
   switch (ruleOptions.action())
   {
-    case RuleOptions::ActionType::MoveToDesktop:
+    case RuleOptions::Action::MoveToDesktop:
       gVirtualDesktopManager->moveWindowTo(appInfo.window().handle, ruleOptions.desktopIndex() - 1);
       break;
-    case RuleOptions::ActionType::KeepOnDesktop:
+    case RuleOptions::Action::KeepOnDesktop:
       // TODO
       break;
-    case RuleOptions::ActionType::AutoClose:
+    case RuleOptions::Action::AutoClose:
       PostMessage(appInfo.window().handle, WM_CLOSE, 0, 0);
       break;
     default:

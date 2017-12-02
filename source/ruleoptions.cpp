@@ -26,9 +26,9 @@ RuleOptions::RuleOptions(const RuleOptions &other) : RuleOptions(MUuidPtr(other.
 {
 }
 
-RuleOptions::ActionType RuleOptions::action() const
+RuleOptions::Action RuleOptions::action() const
 {
-  return static_cast<ActionType>(value(Property::Action).toUInt());
+  return static_cast<Action>(value(Property::Action).toUInt());
 }
 
 QString RuleOptions::className() const
