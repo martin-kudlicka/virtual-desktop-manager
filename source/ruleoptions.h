@@ -14,13 +14,17 @@ class RuleOptions : public MSettings
       AutoClose
     };
 
-    static const QString Action;
-    static const QString Class;
-    static const QString DesktopIndex;
-    static const QString Enabled;
-    static const QString Name;
-    static const QString Process;
-    static const QString Title;
+    class Property
+    {
+      public:
+        static const QString Action;
+        static const QString Class;
+        static const QString DesktopIndex;
+        static const QString Enabled;
+        static const QString Name;
+        static const QString Process;
+        static const QString Title;
+    };
 
              RuleOptions() Q_DECL_EQ_DEFAULT;
              RuleOptions(MUuidPtr &&id);
