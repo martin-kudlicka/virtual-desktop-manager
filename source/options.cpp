@@ -11,9 +11,9 @@ namespace {
   const auto Key_NativeVirtualKey = "nativeVirtualKey";
 }
 
-const QString Options::DesktopCount   = "general/desktopCount";
-const QString Options::MinimizeToTray = "general/minimizeToTray";
-const QString Options::TrayIcon       = "general/trayIcon";
+const QString Options::Property::DesktopCount   = "general/desktopCount";
+const QString Options::Property::MinimizeToTray = "general/minimizeToTray";
+const QString Options::Property::TrayIcon       = "general/trayIcon";
 
 MLazySingleton<Options> gOptions;
 
@@ -21,14 +21,14 @@ Options::Options()
 {
   beginGroup("options");
 
-  addProperty(DesktopCount,   gVirtualDesktopManager->count());
-  addProperty(TrayIcon,       Qt::Checked);
-  addProperty(MinimizeToTray, Qt::Checked);
+  addProperty(Property::DesktopCount,   gVirtualDesktopManager->count());
+  addProperty(Property::TrayIcon,       Qt::Checked);
+  addProperty(Property::MinimizeToTray, Qt::Checked);
 }
 
 quintptr Options::desktopCount() const
 {
-  return value(DesktopCount).toUInt();
+  return value(Property::DesktopCount).toUInt();
 }
 
 MHotkey Options::desktopHotkey(quintptr index) const
@@ -45,12 +45,12 @@ MHotkey Options::desktopHotkey(quintptr index) const
 
 bool Options::minimizeToTray() const
 {
-  return value(MinimizeToTray).toBool();
+  return value(Property::MinimizeToTray).toBool();
 }
 
 void Options::setDesktopCount(quintptr count)
 {
-  setValue(DesktopCount, count);
+  setValue(Property::DesktopCount, count);
 }
 
 void Options::setDesktopHotkey(quintptr index, const MHotkey &hotkey)
@@ -64,5 +64,5 @@ void Options::setDesktopHotkey(quintptr index, const MHotkey &hotkey)
 
 bool Options::trayIcon() const
 {
-  return value(TrayIcon).toBool();
+  return value(Property::TrayIcon).toBool();
 }
