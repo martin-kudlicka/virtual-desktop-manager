@@ -26,11 +26,6 @@ Options::Options()
   addProperty(MinimizeToTray, Qt::Checked);
 }
 
-Options::~Options()
-{
-  endGroup();
-}
-
 quintptr Options::desktopCount() const
 {
   return value(DesktopCount).toUInt();
