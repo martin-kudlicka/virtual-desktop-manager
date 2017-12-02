@@ -40,7 +40,7 @@ void OptionsDialog::saveHotkeys() const
 {
   auto formLayout = static_cast<MFormLayout *>(_ui.hotkeysContents->layout());
 
-  for (auto row = 0; row < formLayout->rowCount(); row++)
+  for (auto row = 0; row < formLayout->rowCount(); ++row)
   {
     auto layoutItem = formLayout->itemAt(row, QFormLayout::FieldRole);
     auto hotkeyEdit = qobject_cast<MHotkeyLineEdit *>(layoutItem->widget());
@@ -53,7 +53,7 @@ void OptionsDialog::setupHotkeys() const
 {
   auto formLayout = qobject_cast<QFormLayout *>(_ui.hotkeysContents->layout());
 
-  for (auto index = 0; index < _ui.desktopCount->value(); index++)
+  for (auto index = 0; index < _ui.desktopCount->value(); ++index)
   {
     addHotkeyEdit(formLayout, index);
   }

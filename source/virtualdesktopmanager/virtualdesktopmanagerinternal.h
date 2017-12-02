@@ -11,6 +11,7 @@ class VirtualDesktopManagerInternal
 
     quintptr            count     ()                                         const;
     IVirtualDesktopList desktops  ()                                         const;
+    IVirtualDesktopPtr  find      (GUID id)                                  const;
     void                moveViewTo(IApplicationViewPtr view, quintptr index) const;
     void                switchTo  (quintptr index)                           const;
 

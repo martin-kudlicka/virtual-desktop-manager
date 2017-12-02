@@ -59,7 +59,7 @@ quintptr Rules::index(const MUuidPtr &id) const
       return index2;
     }
 
-    index2++;
+    ++index2;
   }
 
   Q_UNREACHABLE();
