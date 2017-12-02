@@ -10,10 +10,6 @@ const QString RuleOptions::Name         = "name";
 const QString RuleOptions::Process      = "process";
 const QString RuleOptions::Title        = "title";
 
-RuleOptions::RuleOptions()
-{
-}
-
 RuleOptions::RuleOptions(MUuidPtr &&id) : _id(qMove(id))
 {
   beginGroup(Rules::Group);

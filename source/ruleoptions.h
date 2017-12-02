@@ -22,7 +22,7 @@ class RuleOptions : public MSettings
     static const QString Process;
     static const QString Title;
 
-             RuleOptions();
+             RuleOptions() Q_DECL_EQ_DEFAULT;
              RuleOptions(MUuidPtr &&id);
              RuleOptions(const MUuidPtr &id);
              RuleOptions(const RuleOptions &other);
