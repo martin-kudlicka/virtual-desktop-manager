@@ -8,9 +8,13 @@
 class Options : public MSettings
 {
   public:
-    static const QString DesktopCount;
-    static const QString MinimizeToTray;
-    static const QString TrayIcon;
+    class Property
+    {
+      public:
+        static const QString DesktopCount;
+        static const QString MinimizeToTray;
+        static const QString TrayIcon;
+    };
 
              Options();
     virtual ~Options() Q_DECL_OVERRIDE Q_DECL_EQ_DEFAULT;

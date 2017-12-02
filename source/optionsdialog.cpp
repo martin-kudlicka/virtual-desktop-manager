@@ -61,9 +61,9 @@ void OptionsDialog::setupHotkeys() const
 
 void OptionsDialog::setupSettings()
 {
-  _widgetSettings.setWidget(Options::DesktopCount,   _ui.desktopCount);
-  _widgetSettings.setWidget(Options::TrayIcon,       _ui.trayIcon);
-  _widgetSettings.setWidget(Options::MinimizeToTray, _ui.minimizeToTray);
+  _widgetSettings.setWidget(Options::Property::DesktopCount,   _ui.desktopCount);
+  _widgetSettings.setWidget(Options::Property::TrayIcon,       _ui.trayIcon);
+  _widgetSettings.setWidget(Options::Property::MinimizeToTray, _ui.minimizeToTray);
 
   _widgetSettings.load();
 }
