@@ -14,7 +14,7 @@ VirtualDesktopManagerInternal::VirtualDesktopManagerInternal()
 
 quintptr VirtualDesktopManagerInternal::count() const
 {
-  UINT count = 0;
+  UINT count;
   _iVirtualDesktopManagerInternal->GetCount(&count);
 
   return count;
@@ -28,9 +28,9 @@ VirtualDesktopManagerInternal::IVirtualDesktopList VirtualDesktopManagerInternal
 
   IVirtualDesktopList virtualDesktops;
 
-  UINT desktopCount = 0;
+  UINT desktopCount;
   desktopObjects->GetCount(&desktopCount);
-  for (UINT desktopIndex = 0; desktopIndex < desktopCount; desktopIndex++)
+  for (UINT desktopIndex = 0; desktopIndex < desktopCount; ++desktopIndex)
   {
     IVirtualDesktopPtr virtualDesktop;
     desktopObjects->GetAt(desktopIndex, IID_IVirtualDesktop, reinterpret_cast<LPVOID *>(&virtualDesktop));
@@ -39,6 +39,14 @@ VirtualDesktopManagerInternal::IVirtualDesktopList VirtualDesktopManagerInternal
   }
 
   return virtualDesktops;
+}
+
+IVirtualDesktopPtr VirtualDesktopManagerInternal::find(GUID id) const
+{
+  IVirtualDesktopPtr virtualDesktop;
+  _iVirtualDesktopManagerInternal->FindDesktop(&id, &virtualDesktop);
+
+  return virtualDesktop;
 }
 
 void VirtualDesktopManagerInternal::moveViewTo(IApplicationViewPtr view, quintptr index) const
@@ -57,7 +65,7 @@ void VirtualDesktopManagerInternal::switchTo(quintptr index) const
       return;
     }
 
-    index2++;
+    ++index2;
   }
 
   Q_UNREACHABLE();

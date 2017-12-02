@@ -67,10 +67,10 @@ QString VdmHookWorker::readString(wchar_t **sharedPos) const
   {
     text.append(**sharedPos);
 
-    (*sharedPos)++;
+    ++(*sharedPos);
   }
 
-  (*sharedPos)++;
+  ++(*sharedPos);
 
   return text;
 }

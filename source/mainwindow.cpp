@@ -54,7 +54,7 @@ void MainWindow::applyRule(const AppInfo &appInfo, const RuleOptions &ruleOption
 void MainWindow::applySettings()
 {
   _desktopIndexMenu.clear();
-  for (auto index = 0; index < gVirtualDesktopManager->count(); index++)
+  for (auto index = 0; index < gVirtualDesktopManager->count(); ++index)
   {
     auto moveTo = _desktopIndexMenu.addAction(QString::number(index + 1));
     moveTo->setData(index);
@@ -67,7 +67,7 @@ void MainWindow::applySettings()
 
 void MainWindow::registerHotkeys() const
 {
-  for (auto index = 0; index < gOptions->desktopCount(); index++)
+  for (auto index = 0; index < gOptions->desktopCount(); ++index)
   {
     auto hotkey = gOptions->desktopHotkey(index);
     if (!hotkey.valid())
@@ -151,7 +151,7 @@ void MainWindow::on_actionOptions_triggered(bool checked /* false */)
       return;
     }
 
-    for (auto index = gOptions->desktopCount(); index < desktopCountOld; index++)
+    for (auto index = gOptions->desktopCount(); index < desktopCountOld; ++index)
     {
       UnregisterHotKey(reinterpret_cast<HWND>(winId()), index);
     }

@@ -29,7 +29,7 @@ quintptr VirtualDesktopManager::index(HWND window) const
       return index2;
     }
 
-    index2++;
+    ++index2;
   }
 
   return InvalidDesktop;
