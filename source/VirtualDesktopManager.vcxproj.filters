@@ -131,9 +131,6 @@
     <ClCompile Include="appinfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="wildcard.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="vdmhook.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -225,14 +222,19 @@
     <ClInclude Include="appinfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="wildcard.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="vdmhook.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="vdmhookworker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="VirtualDesktopManager.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
