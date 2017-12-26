@@ -3,7 +3,6 @@
 #include "virtualdesktopmanager.h"
 #include "rules.h"
 #include <QtCore/QDir>
-#include "wildcard.h"
 
 RuleOptions AppInfo::bestRule() const
 {
@@ -109,8 +108,8 @@ RuleOptionsList AppInfo::suitableRules(const MUuidPtrList &ruleIds) const
         filePath.prepend('*' + QDir::separator());
       }
 
-      Wildcard wildcard(qMove(filePath));
-      auto ok = wildcard.matches(QDir::toNativeSeparators(_process.fileInfo.filePath()));
+      QRegExp regExp(QDir::fromNativeSeparators(filePath), Qt::CaseInsensitive, QRegExp::Wildcard);
+      auto ok = regExp.exactMatch(QDir::fromNativeSeparators(_process.fileInfo.filePath()));
       if (!ok)
       {
         continue;
@@ -119,8 +118,8 @@ RuleOptionsList AppInfo::suitableRules(const MUuidPtrList &ruleIds) const
 
     if (!ruleOptions.title().isEmpty())
     {
-      Wildcard wildcard(ruleOptions.title());
-      auto ok = wildcard.matches(QDir::toNativeSeparators(_window.title));
+      QRegExp regExp(ruleOptions.title(), Qt::CaseInsensitive, QRegExp::Wildcard);
+      auto ok = regExp.exactMatch(_window.title);
       if (!ok)
       {
         continue;
@@ -129,8 +128,8 @@ RuleOptionsList AppInfo::suitableRules(const MUuidPtrList &ruleIds) const
 
     if (!ruleOptions.className().isEmpty())
     {
-      Wildcard wildcard(ruleOptions.className());
-      auto ok = wildcard.matches(QDir::toNativeSeparators(_window.className));
+      QRegExp regExp(ruleOptions.className(), Qt::CaseInsensitive, QRegExp::Wildcard);
+      auto ok = regExp.exactMatch(_window.className);
       if (!ok)
       {
         continue;
