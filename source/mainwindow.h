@@ -34,6 +34,7 @@ class MainWindow : public QMainWindow
     virtual bool nativeEvent(const QByteArray &eventType, void *message, long *result) Q_DECL_OVERRIDE;
 
   private Q_SLOTS:
+    void on_actionAbout_triggered                          (bool checked = false);
     void on_actionOptions_triggered                        (bool checked = false);
     void on_addRuleButton_clicked                          (bool checked = false);
     void on_applicationView_customContextMenuRequested     (const QPoint &pos);
