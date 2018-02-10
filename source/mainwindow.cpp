@@ -6,6 +6,7 @@
 #include "virtualdesktopmanager.h"
 #include "ruledialog.h"
 #include <QtCore/QDir>
+#include <MkWidgets/MAboutBox>
 
 MainWindow::MainWindow() : _applicationModel(_appWindows.applications()), _desktopIndexMenu(tr("Move to desktop"))
 {
@@ -139,6 +140,11 @@ bool MainWindow::nativeEvent(const QByteArray &eventType, void *message, long *r
   }
 
   return false;
+}
+
+void MainWindow::on_actionAbout_triggered(bool checked /* false */)
+{
+  MAboutBox(this).exec();
 }
 
 void MainWindow::on_actionOptions_triggered(bool checked /* false */)
