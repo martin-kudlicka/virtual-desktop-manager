@@ -7,6 +7,7 @@
 #include "ruledialog.h"
 #include <QtCore/QDir>
 #include <MkWidgets/MAboutBox>
+#include <MkSupport/MFeedback>
 
 MainWindow::MainWindow() : _applicationModel(_appWindows.applications()), _desktopIndexMenu(tr("Move to desktop"))
 {
@@ -164,6 +165,11 @@ void MainWindow::on_actionOptions_triggered(bool checked /* false */)
   }
 
   applySettings();
+}
+
+void MainWindow::on_actionSendFeedback_triggered(bool checked /* false */) const
+{
+  MFeedback::createEmailForm();
 }
 
 void MainWindow::on_addRuleButton_clicked(bool checked /* false */)
