@@ -1,12 +1,10 @@
 #include "mainwindow.h"
-#include <QtWidgets/QApplication>
+#include <MkWidgets/MApplication>
 #include "virtualdesktopmanager.h"
 
 int main(int argc, char *argv[])
 {
-  QApplication application(argc, argv);
-  application.setOrganizationName("MartinK");
-  application.setApplicationName("Virtual Desktop Manager");
+  MApplication application(argc, argv);
 
   MainWindow mainWindow;
   mainWindow.show();
