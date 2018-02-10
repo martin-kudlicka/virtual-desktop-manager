@@ -36,6 +36,7 @@ class MainWindow : public QMainWindow
   private Q_SLOTS:
     void on_actionAbout_triggered                          (bool checked = false);
     void on_actionOptions_triggered                        (bool checked = false);
+    void on_actionSendFeedback_triggered                   (bool checked = false) const;
     void on_addRuleButton_clicked                          (bool checked = false);
     void on_applicationView_customContextMenuRequested     (const QPoint &pos);
     void on_applicationView_selectionModel_selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) const;
