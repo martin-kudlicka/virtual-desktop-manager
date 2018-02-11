@@ -8,6 +8,7 @@
 #include <QtCore/QDir>
 #include <MkWidgets/MAboutBox>
 #include <MkSupport/MFeedback>
+#include <MkGui/MIcon>
 
 MainWindow::MainWindow() : _applicationModel(_appWindows.applications()), _desktopIndexMenu(tr("Move to desktop"))
 {
@@ -16,7 +17,7 @@ MainWindow::MainWindow() : _applicationModel(_appWindows.applications()), _deskt
   setupApplicationModel();
   setupRuleModel();
 
-  _trayIcon.setIcon(QIcon(":/resources/main.ico"));
+  _trayIcon.setIcon(MIcon::applicationIcon());
   _ui.moveToDesktopButton->setMenu(&_desktopIndexMenu);
 
   connect(&_desktopIndexMenu,                    &QMenu::triggered,                      this, &MainWindow::on_desktopIndexMenu_triggered);
