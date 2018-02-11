@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Virtual Desktop Manager</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>resources/main.ico</normaloff>resources/main.ico</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>

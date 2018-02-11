@@ -16,7 +16,7 @@ MainWindow::MainWindow() : _applicationModel(_appWindows.applications()), _deskt
   setupApplicationModel();
   setupRuleModel();
 
-  _trayIcon.setIcon(QIcon(":/resources/mainwindow/mainwindow.png"));
+  _trayIcon.setIcon(QIcon(":/resources/main.ico"));
   _ui.moveToDesktopButton->setMenu(&_desktopIndexMenu);
 
   connect(&_desktopIndexMenu,                    &QMenu::triggered,                      this, &MainWindow::on_desktopIndexMenu_triggered);
