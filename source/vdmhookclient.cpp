@@ -4,10 +4,10 @@
 #include "vdmhookworker.h"
 #include <QtCore/QThreadPool>
 #include <MkCore/MOperatingSystemVersion>
-#include "../1stparty/VDM Helper/defs.h"
+#include "../1stparty/VDM Helper/vdmhelper.h"
 #include <QtCore/QProcess>
 
-VdmHookClient::VdmHookClient() : _helperStopEvent(VdmHelperDefs::StopEventName), _shellProcHook(WH_SHELL)
+VdmHookClient::VdmHookClient() : _helperStopEvent(VdmHelper::StopEventName), _shellProcHook(WH_SHELL)
 {
   _sharedMemory.setNativeKey(QString::fromWCharArray(VdmHook::SharedMemoryName));
   _sharedMemory.create(VdmHook::SharedMemorySize);
