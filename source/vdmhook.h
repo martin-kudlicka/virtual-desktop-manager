@@ -3,6 +3,7 @@
 
 #include <QtCore/QSharedMemory>
 #include <MkCore/MWindowsHook>
+#include <MkCore/MSystemEvent>
 
 class VdmHookWorker;
 
@@ -15,9 +16,10 @@ class VdmHook
     void setRulesEnabled(bool enabled);
 
   private:
+    MSystemEvent   _helperStopEvent;
     MWindowsHook   _shellProcHook;
-    VdmHookWorker *_vdmHookWorker;
     QSharedMemory  _sharedMemory;
+    VdmHookWorker *_vdmHookWorker;
 };
 
 #endif

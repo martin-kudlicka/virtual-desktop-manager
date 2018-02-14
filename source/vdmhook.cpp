@@ -1,11 +1,13 @@
 #include "vdmhook.h"
 
-//#include <QtCore/qt_windows.h>
 #include "../1stparty/VDM Hook/defs.h"
 #include "vdmhookworker.h"
 #include <QtCore/QThreadPool>
+#include <MkCore/MOperatingSystemVersion>
+#include "../1stparty/VDM Helper/defs.h"
+#include <QtCore/QProcess>
 
-VdmHook::VdmHook() : _shellProcHook(WH_SHELL)
+VdmHook::VdmHook() : _helperStopEvent(VdmHelperDefs::StopEventName), _shellProcHook(WH_SHELL)
 {
   _sharedMemory.setNativeKey(QString::fromWCharArray(VdmHookDefs::SharedMemoryName));
   _sharedMemory.create(VdmHookDefs::SharedMemorySize);
@@ -15,10 +17,20 @@ VdmHook::VdmHook() : _shellProcHook(WH_SHELL)
   QThreadPool::globalInstance()->start(_vdmHookWorker);
 
   _shellProcHook.set(VdmHookDefs::ShellProcName, VdmHookDefs::VdmHookDllFileName);
+
+  if (MOperatingSystemVersion::platform() == MOperatingSystemVersion::Platform::X64)
+  {
+    QProcess::startDetached("VDMHelper.exe");
+  }
 }
 
 VdmHook::~VdmHook()
 {
+  if (MOperatingSystemVersion::platform() == MOperatingSystemVersion::Platform::X64)
+  {
+    _helperStopEvent.set();
+  }
+
   _vdmHookWorker->stop();
   QThreadPool::globalInstance()->waitForDone();
 }
