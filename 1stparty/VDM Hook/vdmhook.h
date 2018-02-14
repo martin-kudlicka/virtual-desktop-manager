@@ -8,7 +8,7 @@
 
 namespace VdmHook
 {
-  static LPCWSTR   SharedMemoryName = L"VdmHook_SharedMemory_Name";
+  static LPCWSTR   SharedMemoryName = L"VdmHook_SharedMemory";
          const int SharedMemorySize = 4096;
 
   const int SharedMemoryOffsetEnabledFlag  = 0;
