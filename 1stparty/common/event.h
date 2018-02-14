@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Windows.h>
+#include "stdafx.h"
 
 class Event
 {
@@ -8,7 +8,7 @@ class Event
      Event();
     ~Event();
 
-    void open(LPCWSTR name);
+    void open(DWORD desiredAccess, LPCWSTR name);
     void set() const;
 
   private:

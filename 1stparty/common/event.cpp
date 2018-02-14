@@ -9,9 +9,9 @@ Event::~Event()
   CloseHandle(_event);
 }
 
-void Event::open(LPCWSTR name)
+void Event::open(DWORD desiredAccess, LPCWSTR name)
 {
-  _event = OpenEvent(EVENT_MODIFY_STATE, FALSE, name);
+  _event = OpenEvent(desiredAccess, FALSE, name);
 }
 
 void Event::set() const

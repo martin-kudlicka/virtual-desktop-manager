@@ -2,7 +2,7 @@
 
 #include "client.h"
 #include "semaphore.h"
-#include "event.h"
+#include "..\common\event.h"
 
 Client    gClient;
 Event     gDataSync;
@@ -10,21 +10,21 @@ Semaphore gWriteSync;
 
 void shellWindowCreated(HWND window)
 {
-  WCHAR windowTitle[4096] = { 0 };
+  WCHAR windowTitle[4096] = {};
   auto chars = GetWindowText(window, windowTitle, _countof(windowTitle));
   if (chars == 0)
   {
     return;
   }
 
-  WCHAR filePath[4096] = { 0 };
+  WCHAR filePath[4096] = {};
   chars = GetModuleFileName(nullptr, filePath, _countof(filePath));
   if (chars == 0)
   {
     return;
   }
 
-  WCHAR windowClass[4096] = { 0 };
+  WCHAR windowClass[4096] = {};
   GetClassName(window, windowClass, _countof(windowClass));
 
   gWriteSync.lock();
