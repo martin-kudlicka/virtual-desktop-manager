@@ -8,19 +8,15 @@
 
 namespace VdmHook
 {
-  static LPCWSTR   SharedMemoryName = L"VdmHook_SharedMemory";
-         const int SharedMemorySize = 4096;
+  __declspec(selectany) LPCWSTR   SharedMemoryName = L"VdmHook_SharedMemory";
+                        const int SharedMemorySize = 4096;
 
   const int SharedMemoryOffsetEnabledFlag  = 0;
   const int SharedMemoryOffsetWindowHandle = 1;
   const int SharedMemoryOffsetStringData   = 5;
 
-  static LPCWSTR SharedMemoryWriteSemaphoreName = L"VdmHook_SharedMemory_Write_Semaphore";
-  static LPCWSTR SharedMemoryDataReadyEventName = L"VdmHook_SharedMemory_DataReady_Event";
-
-  static LPCWSTR VdmHookDllFileName = L"vdmhook.dll";
-
-  static LPCSTR ShellProcName = "_shellProc@12";
+  __declspec(selectany) LPCWSTR SharedMemoryWriteSemaphoreName = L"VdmHook_SharedMemory_Write_Semaphore";
+  __declspec(selectany) LPCWSTR SharedMemoryDataReadyEventName = L"VdmHook_SharedMemory_DataReady_Event";
 }
 
 /*
