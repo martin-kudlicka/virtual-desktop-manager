@@ -16,7 +16,7 @@ VdmHookClient::VdmHookClient() : _helperStopEvent(VdmHelper::StopEventName), _sh
   _vdmHookWorker = new VdmHookWorker(&_sharedMemory);
   QThreadPool::globalInstance()->start(_vdmHookWorker);
 
-  _shellProcHook.set(VdmHook::ShellProcName, VdmHook::VdmHookDllFileName);
+  _shellProcHook.set("_shellProc@12", L"vdmhook.dll");
 
   if (MOperatingSystemVersion::platform() == MOperatingSystemVersion::Platform::X64)
   {
