@@ -129,10 +129,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="defs.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="VDMHelper.h" />
+    <ClInclude Include="vdmhelper.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -141,13 +142,13 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="VDMHelper.cpp" />
+    <ClCompile Include="vdmhelper.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="VDMHelper.rc" />
+    <ResourceCompile Include="vdmhelper.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="VDMHelper.ico" />
+    <Image Include="vdmhelper.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
