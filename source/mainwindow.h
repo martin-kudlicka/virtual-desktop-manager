@@ -5,7 +5,7 @@
 #include "applicationmodel.h"
 #include <QtWidgets/QSystemTrayIcon>
 #include "rulemodel.h"
-#include "vdmhook.h"
+#include "vdmhookclient.h"
 
 class MainWindow : public QMainWindow
 {
@@ -22,7 +22,7 @@ class MainWindow : public QMainWindow
     RuleModel        _ruleModel;
     QMenu            _desktopIndexMenu;
     QSystemTrayIcon  _trayIcon;
-    VdmHook          _vdmHook;
+    VdmHookClient    _vdmHookClient;
 
     void applyRule            (const AppInfo &appInfo, const RuleOptions &ruleOptions) const;
     void applySettings        ();

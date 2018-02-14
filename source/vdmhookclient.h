@@ -7,11 +7,11 @@
 
 class VdmHookWorker;
 
-class VdmHook
+class VdmHookClient
 {
   public:
-     VdmHook();
-    ~VdmHook();
+     VdmHookClient();
+    ~VdmHookClient();
 
     void setRulesEnabled(bool enabled);
 
