@@ -128,15 +128,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\common\event.h" />
     <ClInclude Include="client.h" />
-    <ClInclude Include="event.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="semaphore.h" />
     <ClInclude Include="shellhook.h" />
+    <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="vdmhook.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\common\event.cpp" />
     <ClCompile Include="vdmhook.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -151,7 +153,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="event.cpp" />
     <ClCompile Include="semaphore.cpp" />
     <ClCompile Include="shellhook.cpp" />
     <ClCompile Include="client.cpp" />

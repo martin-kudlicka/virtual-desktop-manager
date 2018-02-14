@@ -32,7 +32,7 @@ void Client::writeAppInfo(HWND window, LPCWSTR filePath, LPCWSTR windowTitle, LP
 
 void Client::writeString(LPBYTE *sharedPos, LPCWSTR text) const
 {
-  auto sharedOccupied = *sharedPos - static_cast<LPCBYTE>(_sharedMemory);
+  auto sharedOccupied = *sharedPos - static_cast<LPBYTE>(_sharedMemory);
   auto sharedFree     = VdmHook::SharedMemorySize - sharedOccupied;
   auto textSize       = (wcslen(text) + 1) * sizeof(WCHAR);
   auto writeSize      = min(sharedFree, textSize);

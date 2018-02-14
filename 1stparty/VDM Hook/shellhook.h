@@ -1,6 +1,5 @@
 #pragma once
 
-#include <Windows.h>
 #include "vdmhook.h"
 
 void shellWindowCreated(HWND window);

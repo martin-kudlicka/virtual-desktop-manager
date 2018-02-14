@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="targetver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="shellhook.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -30,10 +27,16 @@
     <ClInclude Include="semaphore.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="event.h">
+    <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
+    <ClInclude Include="..\common\event.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,10 +50,10 @@
     <ClCompile Include="semaphore.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="event.cpp">
+    <ClCompile Include="vdmhook.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="vdmhook.cpp">
+    <ClCompile Include="..\common\event.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
