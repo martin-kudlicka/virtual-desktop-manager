@@ -28,7 +28,7 @@ MainWindow::MainWindow() : _applicationModel(_appWindows.applications()), _deskt
   registerHotkeys();
   applySettings();
 
-  _vdmHook.setRulesEnabled(gRules->anyEnabled());
+  _vdmHookClient.setRulesEnabled(gRules->anyEnabled());
 }
 
 void MainWindow::applyRule(const AppInfo &appInfo, const RuleOptions &ruleOptions) const
@@ -275,7 +275,7 @@ void MainWindow::on_editRuleButton_clicked(bool checked /* false */)
   }
 
   emit _ruleModel.dataChanged(selected.first(), selected.last());
-  _vdmHook.setRulesEnabled(gRules->anyEnabled());
+  _vdmHookClient.setRulesEnabled(gRules->anyEnabled());
 }
 
 void MainWindow::on_refreshApplicationsButton_clicked(bool checked /* false */)

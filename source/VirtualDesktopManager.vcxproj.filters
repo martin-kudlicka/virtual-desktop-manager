@@ -131,10 +131,10 @@
     <ClCompile Include="appinfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="vdmhook.cpp">
+    <ClCompile Include="vdmhookworker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="vdmhookworker.cpp">
+    <ClCompile Include="vdmhookclient.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -222,13 +222,13 @@
     <ClInclude Include="appinfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="vdmhook.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="vdmhookworker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vdmhookclient.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
