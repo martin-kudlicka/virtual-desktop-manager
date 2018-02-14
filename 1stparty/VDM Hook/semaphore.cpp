@@ -1,6 +1,6 @@
 #include "semaphore.h"
 
-#include "defs.h"
+#include "vdmhook.h"
 
 Semaphore::Semaphore() : _semaphore(nullptr)
 {
