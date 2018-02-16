@@ -18,3 +18,8 @@ void Event::set() const
 {
   SetEvent(_event);
 }
+
+const HANDLE *Event::operator &() const
+{
+  return &_event;
+}
