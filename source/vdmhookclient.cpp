@@ -10,13 +10,16 @@
 VdmHookClient::VdmHookClient() : _helperStopEvent(VdmHelper::StopEventName), _shellProcHook(WH_SHELL)
 {
   _sharedMemory.setNativeKey(QString::fromWCharArray(VdmHook::SharedMemoryName));
-  _sharedMemory.create(VdmHook::SharedMemorySize);
+  if (!_sharedMemory.create(VdmHook::SharedMemorySize))
+  {
+    _sharedMemory.attach();
+  }
   setRulesEnabled(false);
 
   _vdmHookWorker = new VdmHookWorker(&_sharedMemory);
   QThreadPool::globalInstance()->start(_vdmHookWorker);
 
-  _shellProcHook.set("_shellProc@12", L"vdmhook.dll");
+  _shellProcHook.set("_shellProc@12", VdmHook::FileName);
 
   if (MOperatingSystemVersion::platform() == MOperatingSystemVersion::Platform::X64)
   {
