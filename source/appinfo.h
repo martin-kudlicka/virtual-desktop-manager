@@ -1,7 +1,7 @@
 #ifndef APPINFO_H
 #define APPINFO_H
 
-#include <qt_windows.h>
+#include <QtCore/qt_windows.h>
 #include <QtCore/QList>
 #include <QtCore/QFileInfo>
 #include "ruleoptions.h"
@@ -9,9 +9,6 @@
 class AppInfo
 {
   public:
-    /*struct WindowInfo;
-    using WindowInfoList = QList<WindowInfo>;*/
-
     struct ProcessInfo
     {
       DWORD     id;
@@ -19,11 +16,10 @@ class AppInfo
     };
     struct WindowInfo
     {
-      HWND           handle;
-      QString        className;
-      QString        title;
-      quintptr       desktopIndex;
-    //WindowInfoList childs;
+      HWND     handle;
+      QString  className;
+      QString  title;
+      quintptr desktopIndex;
 
       WindowInfo();
     };

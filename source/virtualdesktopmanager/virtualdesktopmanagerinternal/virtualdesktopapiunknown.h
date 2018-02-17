@@ -3,6 +3,6 @@
 
 #include <Objbase.h>
 
-extern const CLSID CLSID_VirtualDesktopAPI_Unknown;
+EXTERN_C const CLSID CLSID_VirtualDesktopAPI_Unknown;
 
 #endif

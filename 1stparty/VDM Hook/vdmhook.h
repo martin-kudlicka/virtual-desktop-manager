@@ -19,6 +19,8 @@ namespace VdmHook
 
   __declspec(selectany) LPCWSTR SharedMemoryWriteSemaphoreName = L"VdmHook_SharedMemory_Write_Semaphore";
   __declspec(selectany) LPCWSTR SharedMemoryDataReadyEventName = L"VdmHook_SharedMemory_DataReady_Event";
+
+  __declspec(selectany) LPCWSTR FileName = L"VDMHook.dll";
 }
 
 /*

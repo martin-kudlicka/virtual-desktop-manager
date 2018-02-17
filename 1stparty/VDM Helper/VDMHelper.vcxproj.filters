@@ -40,7 +40,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="vdmhelper.ico">
+    <Image Include="resources\vdmhelper.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -1,7 +1,6 @@
 #ifndef IVIRTUALDESKTOPMANAGERINTERNAL_H
 #define IVIRTUALDESKTOPMANAGERINTERNAL_H
 
-#include <qt_windows.h>
 #include "iapplicationview.h"
 #include "ivirtualdesktop.h"
 #include <ObjectArray.h>

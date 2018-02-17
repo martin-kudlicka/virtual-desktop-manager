@@ -23,7 +23,7 @@ VdmHookClient::VdmHookClient() : _helperStopEvent(VdmHelper::StopEventName), _sh
 
   if (MOperatingSystemVersion::platform() == MOperatingSystemVersion::Platform::X64)
   {
-    QProcess::startDetached("VDMHelper.exe");
+    QProcess::startDetached("x64\\VDMHelper.exe");
   }
 }
 

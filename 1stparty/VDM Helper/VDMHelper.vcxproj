@@ -139,7 +139,7 @@
     <ResourceCompile Include="vdmhelper.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="vdmhelper.ico" />
+    <Image Include="resources\vdmhelper.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
