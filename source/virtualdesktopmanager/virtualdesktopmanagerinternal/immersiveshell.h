@@ -3,6 +3,6 @@
 
 #include <Objbase.h>
 
-extern const CLSID CLSID_ImmersiveShell;
+EXTERN_C const CLSID CLSID_ImmersiveShell;
 
 #endif

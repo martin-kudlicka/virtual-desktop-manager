@@ -13,4 +13,6 @@ MIDL_INTERFACE("FF72FFDD-BE7E-43FC-9C03-AD81681E88E4") IVirtualDesktop : public 
     virtual HRESULT STDMETHODCALLTYPE GetID        (GUID *pGuid)                             = 0;
 };
 
+_COM_SMARTPTR_TYPEDEF(IVirtualDesktop, IID_IVirtualDesktop);
+
 #endif

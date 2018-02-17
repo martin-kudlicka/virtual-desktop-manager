@@ -54,7 +54,7 @@ void AppWindows::setProcessInfo(AppInfo::ProcessInfo *processInfo) const
     return;
   }
 
-  WCHAR filePath[Mk::PageSize] = { 0 };
+  WCHAR filePath[Mk::PageSize] = {};
   DWORD filePathSize           = _countof(filePath);
   auto ok = QueryFullProcessImageName(process, 0, filePath, &filePathSize);
   if (ok)
@@ -66,19 +66,20 @@ void AppWindows::setProcessInfo(AppInfo::ProcessInfo *processInfo) const
 void AppWindows::setWindowInfo(AppInfo::WindowInfo *windowInfo) const
 {
   {
-    WCHAR text[Mk::PageSize] = { 0 };
-    auto chars               = GetClassName(windowInfo->handle, text, _countof(text));
-    if (chars > 0)
-    {
-      windowInfo->className = QString::fromWCharArray(text);
-    }
+    WCHAR text[Mk::PageSize] = {};
 
-    chars = GetWindowText(windowInfo->handle, text, _countof(text));
+    auto chars = GetWindowText(windowInfo->handle, text, _countof(text));
     if (chars == 0)
     {
       return;
     }
     windowInfo->title = QString::fromWCharArray(text);
+
+    chars = GetClassName(windowInfo->handle, text, _countof(text));
+    if (chars > 0)
+    {
+      windowInfo->className = QString::fromWCharArray(text);
+    }
   }
 
   windowInfo->desktopIndex = gVirtualDesktopManager->index(windowInfo->handle);
