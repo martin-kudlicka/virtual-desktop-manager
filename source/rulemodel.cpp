@@ -70,7 +70,7 @@ QVariant RuleModel::headerData(int section, Qt::Orientation orientation, int rol
 
 QModelIndex RuleModel::index(int row, int column, const QModelIndex &parent /* QModelIndex() */) const
 {
-  if (gRules->empty())
+  if (gRules->isEmpty())
   {
     return createIndex(row, column);
   }

@@ -195,7 +195,7 @@ void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos
   switchTo->setEnabled(selected.size() == 1);
 
   contextMenu.addMenu(&_desktopIndexMenu);
-  _desktopIndexMenu.setEnabled(!selected.empty() && gVirtualDesktopManager->count() > 1);
+  _desktopIndexMenu.setEnabled(!selected.isEmpty() && gVirtualDesktopManager->count() > 1);
 
   contextMenu.addSeparator();
 
@@ -214,7 +214,7 @@ void MainWindow::on_applicationView_selectionModel_selectionChanged(const QItemS
   auto selectedRows = _ui.applicationView->selectionModel()->selectedRows();
 
   _ui.switchToButton->setEnabled(selectedRows.size() == 1);
-  _ui.moveToDesktopButton->setEnabled(!selectedRows.empty() && gVirtualDesktopManager->count() > 1);
+  _ui.moveToDesktopButton->setEnabled(!selectedRows.isEmpty() && gVirtualDesktopManager->count() > 1);
   _ui.createRuleButton->setEnabled(selectedRows.size() == 1);
 }
 
@@ -289,7 +289,7 @@ void MainWindow::on_removeRuleButton_clicked(bool checked /* false */)
   forever
   {
     auto selected = _ui.ruleView->selectionModel()->selectedRows();
-    if (selected.empty())
+    if (selected.isEmpty())
     {
       break;
     }
@@ -310,12 +310,12 @@ void MainWindow::on_ruleView_customContextMenuRequested(const QPoint &pos) const
   editRule->setEnabled(selected.size() == 1);
 
   auto removeRule = contextMenu.addAction(tr("Remove"), this, &MainWindow::on_removeRuleButton_clicked);
-  removeRule->setEnabled(!selected.empty());
+  removeRule->setEnabled(!selected.isEmpty());
 
   contextMenu.addSeparator();
 
   auto applyRule2 = contextMenu.addAction(tr("Apply"), this, &MainWindow::on_applyRuleButton_clicked);
-  applyRule2->setEnabled(!selected.empty());
+  applyRule2->setEnabled(!selected.isEmpty());
 
   contextMenu.exec(_ui.ruleView->mapToGlobal(pos));
 }
@@ -330,8 +330,8 @@ void MainWindow::on_ruleView_selectionModel_selectionChanged(const QItemSelectio
   auto selectedRows = _ui.ruleView->selectionModel()->selectedRows();
 
   _ui.editRuleButton->setEnabled(selectedRows.size() == 1);
-  _ui.removeRuleButton->setEnabled(!selectedRows.empty());
-  _ui.applyRuleButton->setEnabled(!selectedRows.empty());
+  _ui.removeRuleButton->setEnabled(!selectedRows.isEmpty());
+  _ui.applyRuleButton->setEnabled(!selectedRows.isEmpty());
 }
 
 void MainWindow::on_switchToButton_clicked(bool checked /* false */) const

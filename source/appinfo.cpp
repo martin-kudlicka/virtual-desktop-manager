@@ -38,7 +38,7 @@ const AppInfo::WindowInfo &AppInfo::window() const
 
 RuleOptions AppInfo::bestRule(const RuleOptionsList &rulesOptions) const
 {
-  if (rulesOptions.empty())
+  if (rulesOptions.isEmpty())
   {
     return RuleOptions();
   }
