@@ -14,20 +14,18 @@ class RuleOptions : public MSettings
       AutoClose
     };
 
-    class Property
+    struct Property
     {
-      public:
-        static const QString Action;
-        static const QString Class;
-        static const QString DesktopIndex;
-        static const QString Enabled;
-        static const QString Name;
-        static const QString Process;
-        static const QString Title;
+      static const QString Action;
+      static const QString Class;
+      static const QString DesktopIndex;
+      static const QString Enabled;
+      static const QString Name;
+      static const QString Process;
+      static const QString Title;
     };
 
              RuleOptions() Q_DECL_EQ_DEFAULT;
-             RuleOptions(MUuidPtr &&id);
              RuleOptions(const MUuidPtr &id);
              RuleOptions(const RuleOptions &other);
     virtual ~RuleOptions() Q_DECL_OVERRIDE Q_DECL_EQ_DEFAULT;

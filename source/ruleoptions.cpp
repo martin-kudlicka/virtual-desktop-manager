@@ -10,16 +10,12 @@ const QString RuleOptions::Property::Name         = "name";
 const QString RuleOptions::Property::Process      = "process";
 const QString RuleOptions::Property::Title        = "title";
 
-RuleOptions::RuleOptions(MUuidPtr &&id) : _id(qMove(id))
+RuleOptions::RuleOptions(const MUuidPtr &id) : _id(id)
 {
   beginGroup(Rules::Group);
   beginGroup(_id.toString());
 
   addProperty(Property::Enabled, Qt::Checked);
-}
-
-RuleOptions::RuleOptions(const MUuidPtr &id) : RuleOptions(MUuidPtr(id))
-{
 }
 
 RuleOptions::RuleOptions(const RuleOptions &other) : RuleOptions(MUuidPtr(other._id))

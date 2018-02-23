@@ -269,7 +269,7 @@ void MainWindow::on_editRuleButton_clicked(bool checked /* false */)
   auto selected = _ui.ruleView->selectionModel()->selectedIndexes();
   auto id       = selected.first().internalId();
 
-  if (RuleDialog(qMove(id), this).exec() == QDialog::Rejected)
+  if (RuleDialog(id, this).exec() == QDialog::Rejected)
   {
     return;
   }
