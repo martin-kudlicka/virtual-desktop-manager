@@ -192,7 +192,7 @@ void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos
   QMenu contextMenu;
 
   auto switchTo = contextMenu.addAction(tr("Switch to"), this, &MainWindow::on_switchToButton_clicked);
-  switchTo->setEnabled(selected.size() == 1);
+  switchTo->setEnabled(selected.count() == 1);
 
   contextMenu.addMenu(&_desktopIndexMenu);
   _desktopIndexMenu.setEnabled(!selected.isEmpty() && gVirtualDesktopManager->count() > 1);
@@ -200,7 +200,7 @@ void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos
   contextMenu.addSeparator();
 
   auto createRule = contextMenu.addAction(tr("Create rule..."), this, &MainWindow::on_createRuleButton_clicked);
-  createRule->setEnabled(selected.size() == 1);
+  createRule->setEnabled(selected.count() == 1);
 
   contextMenu.addSeparator();
 
@@ -213,9 +213,9 @@ void MainWindow::on_applicationView_selectionModel_selectionChanged(const QItemS
 {
   auto selectedRows = _ui.applicationView->selectionModel()->selectedRows();
 
-  _ui.switchToButton->setEnabled(selectedRows.size() == 1);
+  _ui.switchToButton->setEnabled(selectedRows.count() == 1);
   _ui.moveToDesktopButton->setEnabled(!selectedRows.isEmpty() && gVirtualDesktopManager->count() > 1);
-  _ui.createRuleButton->setEnabled(selectedRows.size() == 1);
+  _ui.createRuleButton->setEnabled(selectedRows.count() == 1);
 }
 
 void MainWindow::on_applyRuleButton_clicked(bool checked /* false */)
@@ -307,7 +307,7 @@ void MainWindow::on_ruleView_customContextMenuRequested(const QPoint &pos) const
   auto addRule = contextMenu.addAction(tr("Add"), this, &MainWindow::on_addRuleButton_clicked);
 
   auto editRule = contextMenu.addAction(tr("Edit"), this, &MainWindow::on_editRuleButton_clicked);
-  editRule->setEnabled(selected.size() == 1);
+  editRule->setEnabled(selected.count() == 1);
 
   auto removeRule = contextMenu.addAction(tr("Remove"), this, &MainWindow::on_removeRuleButton_clicked);
   removeRule->setEnabled(!selected.isEmpty());
@@ -329,7 +329,7 @@ void MainWindow::on_ruleView_selectionModel_selectionChanged(const QItemSelectio
 {
   auto selectedRows = _ui.ruleView->selectionModel()->selectedRows();
 
-  _ui.editRuleButton->setEnabled(selectedRows.size() == 1);
+  _ui.editRuleButton->setEnabled(selectedRows.count() == 1);
   _ui.removeRuleButton->setEnabled(!selectedRows.isEmpty());
   _ui.applyRuleButton->setEnabled(!selectedRows.isEmpty());
 }

@@ -54,17 +54,17 @@ RuleOptions AppInfo::bestRule(const RuleOptionsList &rulesOptions) const
     if (!ruleOptions.process().isEmpty())
     {
       ++ruleFilledFields;
-      ruleFieldChars += ruleOptions.process().size();
+      ruleFieldChars += ruleOptions.process().count();
     }
     if (!ruleOptions.title().isEmpty())
     {
       ++ruleFilledFields;
-      ruleFieldChars += ruleOptions.title().size();
+      ruleFieldChars += ruleOptions.title().count();
     }
     if (!ruleOptions.className().isEmpty())
     {
       ++ruleFilledFields;
-      ruleFieldChars += ruleOptions.className().size();
+      ruleFieldChars += ruleOptions.className().count();
     }
 
     if (bestOptions)

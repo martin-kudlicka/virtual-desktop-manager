@@ -107,7 +107,7 @@ int RuleModel::rowCount(const QModelIndex &parent /* QModelIndex() */) const
 {
   if (parent == QModelIndex())
   {
-    return gRules->size();
+    return gRules->count();
   }
   else
   {
