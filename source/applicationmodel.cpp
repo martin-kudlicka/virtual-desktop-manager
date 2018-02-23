@@ -82,12 +82,12 @@ QModelIndex ApplicationModel::parent(const QModelIndex &index) const
 
 int ApplicationModel::rowCount(const QModelIndex &parent /* QModelIndex() */) const
 {
-  if (parent == QModelIndex())
+  if (parent.isValid())
   {
-    return _applications->count();
+    return 0;
   }
   else
   {
-    return 0;
+    return _applications->count();
   }
 }

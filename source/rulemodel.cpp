@@ -105,12 +105,12 @@ bool RuleModel::removeRows(int row, int count, const QModelIndex &parent /* QMod
 
 int RuleModel::rowCount(const QModelIndex &parent /* QModelIndex() */) const
 {
-  if (parent == QModelIndex())
+  if (parent.isValid())
   {
-    return gRules->count();
+    return 0;
   }
   else
   {
-    return 0;
+    return gRules->count();
   }
 }
