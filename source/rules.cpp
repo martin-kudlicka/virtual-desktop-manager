@@ -42,7 +42,7 @@ MUuidPtrList Rules::ids() const
 
   for (const auto &id2 : _settings.childGroups())
   {
-    ids2.push_back(id2);
+    ids2.append(id2);
   }
 
   return ids2;
