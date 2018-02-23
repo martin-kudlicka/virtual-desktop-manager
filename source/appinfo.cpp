@@ -136,7 +136,7 @@ RuleOptionsList AppInfo::suitableRules(const MUuidPtrList &ruleIds) const
       }
     }
 
-    rulesOptions.append(qMove(ruleOptions));
+    rulesOptions.append(ruleOptions);
   }
 
   return rulesOptions;

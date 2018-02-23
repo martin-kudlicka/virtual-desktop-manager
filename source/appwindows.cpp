@@ -42,7 +42,7 @@ void AppWindows::enumWindows(HWND window)
       return;
     }
 
-    _appsInfo.append(qMove(appInfo));
+    _appsInfo.append(appInfo);
   }
 }
 

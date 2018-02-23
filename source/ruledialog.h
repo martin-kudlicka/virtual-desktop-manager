@@ -10,7 +10,7 @@ class RuleDialog : public QDialog
   Q_OBJECT
 
   public:
-             RuleDialog(MUuidPtr &&id, QWidget *parent);
+             RuleDialog(const MUuidPtr &id, QWidget *parent);
              RuleDialog(const QString &process, const QString &windowTitle, const QString &windowClass, QWidget *parent);
              RuleDialog(QWidget *parent);
     virtual ~RuleDialog() Q_DECL_OVERRIDE Q_DECL_EQ_DEFAULT;

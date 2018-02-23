@@ -35,7 +35,7 @@ VirtualDesktopManagerInternal::IVirtualDesktopList VirtualDesktopManagerInternal
     IVirtualDesktopPtr virtualDesktop;
     desktopObjects->GetAt(desktopIndex, IID_IVirtualDesktop, reinterpret_cast<LPVOID *>(&virtualDesktop));
 
-    virtualDesktops.append(qMove(virtualDesktop));
+    virtualDesktops.append(virtualDesktop);
   }
 
   return virtualDesktops;
@@ -69,5 +69,4 @@ void VirtualDesktopManagerInternal::switchTo(quintptr index) const
   }
 
   Q_UNREACHABLE();
-  return;
 }

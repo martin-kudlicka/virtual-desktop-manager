@@ -2,7 +2,7 @@
 
 #include "options.h"
 
-RuleDialog::RuleDialog(MUuidPtr &&id, QWidget *parent) : QDialog(parent), _options(qMove(id)), _widgetSettings(&_options)
+RuleDialog::RuleDialog(const MUuidPtr &id, QWidget *parent) : QDialog(parent), _options(id), _widgetSettings(&_options)
 {
   _ui.setupUi(this);
 
@@ -34,7 +34,7 @@ void RuleDialog::setupSettings()
   _widgetSettings.setWidget(RuleOptions::Property::Process,      _ui.process);
   _widgetSettings.setWidget(RuleOptions::Property::Title,        _ui.windowTitle);
   _widgetSettings.setWidget(RuleOptions::Property::Class,        _ui.windowClass);
-  _widgetSettings.setWidget(RuleOptions::Property::Action,       qMove(QRadioButtonPtrList() << _ui.moveToDesktop << _ui.keepOnOneDesktop << _ui.autoClose));
+  _widgetSettings.setWidget(RuleOptions::Property::Action,       QRadioButtonPtrList() << _ui.moveToDesktop << _ui.keepOnOneDesktop << _ui.autoClose);
   _widgetSettings.setWidget(RuleOptions::Property::DesktopIndex, _ui.desktopIndex);
 
   _widgetSettings.load();
