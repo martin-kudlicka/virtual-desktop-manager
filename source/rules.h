@@ -14,12 +14,12 @@ class Rules
     ~Rules() Q_DECL_EQ_DEFAULT;
 
     bool         anyEnabled ()                   const;
+    quintptr     count      ()                   const;
     MUuidPtr     id         (quintptr index)     const;
     MUuidPtrList ids        ()                   const;
     quintptr     index      (const MUuidPtr &id) const;
     bool         isEmpty    ()                   const;
     void         removeIndex(quintptr index);
-    quintptr     size       ()                   const;
 
   private:
     QSettings _settings;

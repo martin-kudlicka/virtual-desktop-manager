@@ -84,7 +84,7 @@ int ApplicationModel::rowCount(const QModelIndex &parent /* QModelIndex() */) co
 {
   if (parent == QModelIndex())
   {
-    return _applications->size();
+    return _applications->count();
   }
   else
   {

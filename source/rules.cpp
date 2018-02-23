@@ -26,6 +26,11 @@ bool Rules::anyEnabled() const
   return false;
 }
 
+quintptr Rules::count() const
+{
+  return _settings.childGroups().count();
+}
+
 MUuidPtr Rules::id(quintptr index) const
 {
   return _settings.childGroups().at(index);
@@ -63,18 +68,13 @@ quintptr Rules::index(const MUuidPtr &id) const
 
 bool Rules::isEmpty() const
 {
-  return size() == 0;
+  return count() == 0;
 }
 
 void Rules::removeIndex(quintptr index)
 {
   auto id2 = id(index);
   removeId(id2);
-}
-
-quintptr Rules::size() const
-{
-  return _settings.childGroups().size();
 }
 
 void Rules::removeId(const MUuidPtr &id)
