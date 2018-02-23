@@ -14,10 +14,10 @@ class Rules
     ~Rules() Q_DECL_EQ_DEFAULT;
 
     bool         anyEnabled ()                   const;
-    bool         empty      ()                   const;
     MUuidPtr     id         (quintptr index)     const;
     MUuidPtrList ids        ()                   const;
     quintptr     index      (const MUuidPtr &id) const;
+    bool         isEmpty    ()                   const;
     void         removeIndex(quintptr index);
     quintptr     size       ()                   const;
 

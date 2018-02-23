@@ -26,11 +26,6 @@ bool Rules::anyEnabled() const
   return false;
 }
 
-bool Rules::empty() const
-{
-  return size() == 0;
-}
-
 MUuidPtr Rules::id(quintptr index) const
 {
   return _settings.childGroups().at(index);
@@ -64,6 +59,11 @@ quintptr Rules::index(const MUuidPtr &id) const
 
   Q_UNREACHABLE();
   return -1;
+}
+
+bool Rules::isEmpty() const
+{
+  return size() == 0;
 }
 
 void Rules::removeIndex(quintptr index)
