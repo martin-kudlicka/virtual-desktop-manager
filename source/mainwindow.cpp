@@ -57,7 +57,7 @@ void MainWindow::applyRule(const AppInfo &appInfo, const RuleOptions &ruleOption
 void MainWindow::applySettings()
 {
   _desktopIndexMenu.clear();
-  for (auto index = 0; index < gVirtualDesktopManager->count(); ++index)
+  for (decltype(gVirtualDesktopManager->count()) index = 0; index < gVirtualDesktopManager->count(); ++index)
   {
     auto moveTo = _desktopIndexMenu.addAction(QString::number(index + 1));
     moveTo->setData(index);
@@ -70,7 +70,7 @@ void MainWindow::applySettings()
 
 void MainWindow::registerHotkeys() const
 {
-  for (auto index = 0; index < gOptions->desktopCount(); ++index)
+  for (decltype(gOptions->desktopCount()) index = 0; index < gOptions->desktopCount(); ++index)
   {
     auto hotkey = gOptions->desktopHotkey(index);
     if (!hotkey.valid())
