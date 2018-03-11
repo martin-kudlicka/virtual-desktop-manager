@@ -8,12 +8,11 @@
 class Options : public MSettings
 {
   public:
-    class Property
+    struct Property
     {
-      public:
-        static const QString DesktopCount;
-        static const QString MinimizeToTray;
-        static const QString TrayIcon;
+      static const QString DesktopCount;
+      static const QString MinimizeToTray;
+      static const QString TrayIcon;
     };
 
              Options();
