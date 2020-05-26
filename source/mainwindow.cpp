@@ -132,6 +132,9 @@ bool MainWindow::event(QEvent *event)
 
 bool MainWindow::nativeEvent(const QByteArray &eventType, void *message, long *result)
 {
+  Q_UNUSED(eventType);
+  Q_UNUSED(result);
+
   auto msg = static_cast<LPMSG>(message);
   switch (msg->message)
   {
@@ -146,11 +149,15 @@ bool MainWindow::nativeEvent(const QByteArray &eventType, void *message, long *r
 
 void MainWindow::on_actionAbout_triggered(bool checked /* false */)
 {
+  Q_UNUSED(checked);
+
   MAboutBox(this).exec();
 }
 
 void MainWindow::on_actionOptions_triggered(bool checked /* false */)
 {
+  Q_UNUSED(checked);
+
   {
     auto desktopCountOld = gOptions->desktopCount();
 
@@ -170,11 +177,15 @@ void MainWindow::on_actionOptions_triggered(bool checked /* false */)
 
 void MainWindow::on_actionSendFeedback_triggered(bool checked /* false */) const
 {
+  Q_UNUSED(checked);
+
   MFeedback::createEmailForm();
 }
 
 void MainWindow::on_addRuleButton_clicked(bool checked /* false */)
 {
+  Q_UNUSED(checked);
+
   RuleDialog ruleDialog(this);
   if (ruleDialog.exec() == QDialog::Rejected)
   {
@@ -211,6 +222,9 @@ void MainWindow::on_applicationView_customContextMenuRequested(const QPoint &pos
 
 void MainWindow::on_applicationView_selectionModel_selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) const
 {
+  Q_UNUSED(selected);
+  Q_UNUSED(deselected);
+
   auto selectedRows = _ui.applicationView->selectionModel()->selectedRows();
 
   _ui.switchToButton->setEnabled(selectedRows.count() == 1);
@@ -220,6 +234,8 @@ void MainWindow::on_applicationView_selectionModel_selectionChanged(const QItemS
 
 void MainWindow::on_applyRuleButton_clicked(bool checked /* false */)
 {
+  Q_UNUSED(checked);
+
   MUuidPtrList ruleIds;
   auto selected = _ui.ruleView->selectionModel()->selectedRows();
   for (const auto &index : selected)
@@ -240,8 +256,10 @@ void MainWindow::on_applyRuleButton_clicked(bool checked /* false */)
 
 void MainWindow::on_createRuleButton_clicked(bool checked /* false */)
 {
+  Q_UNUSED(checked);
+
   auto selected = _ui.applicationView->selectionModel()->selectedRows();
-  auto appInfo  = &_appWindows.applications()->at(selected.first().row());
+  auto appInfo  = &_appWindows.applications()->at(selected.constFirst().row());
 
   RuleDialog ruleDialog(QDir::toNativeSeparators(appInfo->process().fileInfo.filePath()), appInfo->window().title, appInfo->window().className, this);
   if (ruleDialog.exec() == QDialog::Accepted)
@@ -266,26 +284,32 @@ void MainWindow::on_desktopIndexMenu_triggered(QAction *action)
 
 void MainWindow::on_editRuleButton_clicked(bool checked /* false */)
 {
+  Q_UNUSED(checked);
+
   auto selected = _ui.ruleView->selectionModel()->selectedIndexes();
-  auto id       = selected.first().internalId();
+  auto id       = selected.constFirst().internalId();
 
   if (RuleDialog(id, this).exec() == QDialog::Rejected)
   {
     return;
   }
 
-  emit _ruleModel.dataChanged(selected.first(), selected.last());
+  emit _ruleModel.dataChanged(selected.constFirst(), selected.constLast());
   _vdmHookClient.setRulesEnabled(gRules->anyEnabled());
 }
 
 void MainWindow::on_refreshApplicationsButton_clicked(bool checked /* false */)
 {
+  Q_UNUSED(checked);
+
   _appWindows.refresh();
   _ui.applicationView->reset();
 }
 
 void MainWindow::on_removeRuleButton_clicked(bool checked /* false */)
 {
+  Q_UNUSED(checked);
+
   forever
   {
     auto selected = _ui.ruleView->selectionModel()->selectedRows();
@@ -294,7 +318,7 @@ void MainWindow::on_removeRuleButton_clicked(bool checked /* false */)
       break;
     }
 
-    _ruleModel.removeRow(selected.first().row());
+    _ruleModel.removeRow(selected.constFirst().row());
   }
 }
 
@@ -304,7 +328,7 @@ void MainWindow::on_ruleView_customContextMenuRequested(const QPoint &pos) const
 
   QMenu contextMenu;
 
-  auto addRule = contextMenu.addAction(tr("Add"), this, &MainWindow::on_addRuleButton_clicked);
+  contextMenu.addAction(tr("Add"), this, &MainWindow::on_addRuleButton_clicked);
 
   auto editRule = contextMenu.addAction(tr("Edit"), this, &MainWindow::on_editRuleButton_clicked);
   editRule->setEnabled(selected.count() == 1);
@@ -322,11 +346,16 @@ void MainWindow::on_ruleView_customContextMenuRequested(const QPoint &pos) const
 
 void MainWindow::on_ruleView_doubleClicked(const QModelIndex &index)
 {
+  Q_UNUSED(index);
+
   _ui.editRuleButton->click();
 }
 
 void MainWindow::on_ruleView_selectionModel_selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) const
 {
+  Q_UNUSED(selected);
+  Q_UNUSED(deselected);
+
   auto selectedRows = _ui.ruleView->selectionModel()->selectedRows();
 
   _ui.editRuleButton->setEnabled(selectedRows.count() == 1);
@@ -336,8 +365,10 @@ void MainWindow::on_ruleView_selectionModel_selectionChanged(const QItemSelectio
 
 void MainWindow::on_switchToButton_clicked(bool checked /* false */) const
 {
+  Q_UNUSED(checked);
+
   auto selected = _ui.applicationView->selectionModel()->selectedRows();
-  auto appInfo  = &_appWindows.applications()->at(selected.first().row());
+  auto appInfo  = &_appWindows.applications()->at(selected.constFirst().row());
 
   SetForegroundWindow(appInfo->window().handle);
 }

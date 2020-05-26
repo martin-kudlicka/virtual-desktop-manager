@@ -8,7 +8,7 @@
 class VirtualDesktopManager : public VirtualDesktopManagerInternal
 {
   public:
-    static const quintptr InvalidDesktop = -1;
+    static const quintptr InvalidDesktop = std::numeric_limits<quintptr>::max();
 
              VirtualDesktopManager();
     virtual ~VirtualDesktopManager() Q_DECL_EQ_DEFAULT;

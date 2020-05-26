@@ -84,9 +84,9 @@ void OptionsDialog::on_desktopCount_valueChanged(int i) const
     return;
   }
 
-  while (i != formLayout->rowCount())
+  while (static_cast<quintptr>(i) != formLayout->rowCount())
   {
-    if (i < formLayout->rowCount())
+    if (static_cast<quintptr>(i) < formLayout->rowCount())
     {
       removeHotkeyEdit(formLayout, formLayout->rowCount() - 1);
     }

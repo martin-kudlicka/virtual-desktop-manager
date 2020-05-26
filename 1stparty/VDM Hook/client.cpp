@@ -1,5 +1,6 @@
 #include "client.h"
 
+#include <algorithm>
 #include "vdmhook.h"
 
 Client::Client() : _mapping(nullptr), _sharedMemory(nullptr)
@@ -35,7 +36,7 @@ void Client::writeString(LPBYTE *sharedPos, LPCWSTR text) const
   auto sharedOccupied = *sharedPos - static_cast<LPBYTE>(_sharedMemory);
   auto sharedFree     = VdmHook::SharedMemorySize - sharedOccupied;
   auto textSize       = (wcslen(text) + 1) * sizeof(WCHAR);
-  auto writeSize      = min(sharedFree, textSize);
+  auto writeSize      = std::min<size_t>(sharedFree, textSize);
 
   memcpy(*sharedPos, text, writeSize);
   *sharedPos += writeSize;

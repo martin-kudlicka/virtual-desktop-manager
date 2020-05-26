@@ -5,7 +5,6 @@
 
 ApplicationViewCollection::ApplicationViewCollection()
 {
-  _COM_SMARTPTR_TYPEDEF(IServiceProvider, IID_IServiceProvider);
   IServiceProviderPtr serviceProvider;
   CoCreateInstance(CLSID_ImmersiveShell, Q_NULLPTR, CLSCTX_LOCAL_SERVER, IID_IServiceProvider, reinterpret_cast<LPVOID *>(&serviceProvider));
 

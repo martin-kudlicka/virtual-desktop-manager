@@ -8,6 +8,8 @@ ApplicationModel::ApplicationModel(const AppInfoList *applications) : _applicati
 
 int ApplicationModel::columnCount(const QModelIndex &parent /* QModelIndex() */) const
 {
+  Q_UNUSED(parent);
+
   return static_cast<int>(Column::Count);
 }
 
@@ -72,11 +74,15 @@ QVariant ApplicationModel::headerData(int section, Qt::Orientation orientation, 
 
 QModelIndex ApplicationModel::index(int row, int column, const QModelIndex &parent /* QModelIndex() */) const
 {
+  Q_UNUSED(parent);
+
   return createIndex(row, column);
 }
 
 QModelIndex ApplicationModel::parent(const QModelIndex &index) const
 {
+  Q_UNUSED(index);
+
   return QModelIndex();
 }
 

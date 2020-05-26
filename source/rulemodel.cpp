@@ -5,6 +5,8 @@
 
 int RuleModel::columnCount(const QModelIndex &parent /* QModelIndex() */) const
 {
+  Q_UNUSED(parent);
+
   return static_cast<int>(Column::Count);
 }
 
@@ -70,6 +72,8 @@ QVariant RuleModel::headerData(int section, Qt::Orientation orientation, int rol
 
 QModelIndex RuleModel::index(int row, int column, const QModelIndex &parent /* QModelIndex() */) const
 {
+  Q_UNUSED(parent);
+
   if (gRules->isEmpty())
   {
     return createIndex(row, column);
@@ -89,6 +93,8 @@ bool RuleModel::insertRows(int row, int count, const QModelIndex &parent /* QMod
 
 QModelIndex RuleModel::parent(const QModelIndex &index) const
 {
+  Q_UNUSED(index);
+
   return QModelIndex();
 }
 

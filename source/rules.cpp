@@ -63,7 +63,7 @@ quintptr Rules::index(const MUuidPtr &id) const
   }
 
   Q_UNREACHABLE();
-  return -1;
+  return std::numeric_limits<quintptr>::max();
 }
 
 bool Rules::isEmpty() const
