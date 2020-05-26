@@ -3,7 +3,6 @@
 
 #include "iapplicationview.h"
 #include "ivirtualdesktop.h"
-#include <ObjectArray.h>
 
 EXTERN_C const IID IID_IVirtualDesktopManagerInternal;
 

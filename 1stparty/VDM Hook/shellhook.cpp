@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "shellhook.h"
 
 #include "client.h"

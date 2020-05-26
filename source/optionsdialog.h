@@ -2,7 +2,6 @@
 #define OPTIONSDIALOG_H
 
 #include "ui_optionsdialog.h"
-#include <MkWidgets/MWidgetSettings>
 
 class MFormLayout;
 

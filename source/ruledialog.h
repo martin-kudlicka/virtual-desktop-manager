@@ -3,7 +3,6 @@
 
 #include "ui_ruledialog.h"
 #include "ruleoptions.h"
-#include <MkWidgets/MWidgetSettings>
 
 class RuleDialog : public QDialog
 {

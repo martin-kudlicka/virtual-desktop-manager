@@ -1,7 +1,6 @@
 #ifndef VIRTUALDESKTOPMANAGERINTERNAL_H
 #define VIRTUALDESKTOPMANAGERINTERNAL_H
 
-#include <QtCore/QList>
 #include "virtualdesktopmanagerinternal/ivirtualdesktopmanagerinternal.h"
 
 class VirtualDesktopManagerInternal

@@ -1,7 +1,6 @@
 #ifndef APPLICATIONMODEL_H
 #define APPLICATIONMODEL_H
 
-#include <QtCore/QAbstractItemModel>
 #include "appwindows.h"
 
 class ApplicationModel : public QAbstractItemModel

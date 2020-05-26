@@ -1,8 +1,7 @@
+#include "pch.h"
 #include "appwindows.h"
 
-#include <MkCore/MkGlobal>
 #include "virtualdesktopmanager.h"
-#include <MkCore/MProcessHandle>
 
 AppWindows::AppWindows()
 {

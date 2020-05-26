@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "semaphore.h"
 
 #include "vdmhook.h"

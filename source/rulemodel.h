@@ -1,8 +1,6 @@
 #ifndef RULEMODEL_H
 #define RULEMODEL_H
 
-#include <QtCore/QAbstractItemModel>
-
 class MUuidPtr;
 
 class RuleModel : public QAbstractItemModel

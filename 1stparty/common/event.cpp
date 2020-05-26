@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "event.h"
 
 Event::Event() : _event(nullptr)

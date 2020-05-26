@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "virtualdesktopmanager.h"
 
 #include "virtualdesktopmanager/virtualdesktopmanagerinternal/immersiveshell.h"

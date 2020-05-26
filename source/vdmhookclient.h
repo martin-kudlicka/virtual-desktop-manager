@@ -1,10 +1,6 @@
 #ifndef VDMHOOK_H
 #define VDMHOOK_H
 
-#include <QtCore/QSharedMemory>
-#include <MkCore/MWindowsHook>
-#include <MkCore/MSystemEvent>
-
 class VdmHookWorker;
 
 class VdmHookClient

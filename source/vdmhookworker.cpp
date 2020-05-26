@@ -1,9 +1,8 @@
+#include "pch.h"
 #include "vdmhookworker.h"
 
 #include "../1stparty/VDM Hook/vdmhook.h"
-#include <QtCore/QSharedMemory>
 #include "virtualdesktopmanager.h"
-#include <MkCore/MCoInitialize>
 
 VdmHookWorker::VdmHookWorker(QSharedMemory *sharedMemory) : _sharedMemory(sharedMemory), _stop(false), _dataSync(VdmHook::SharedMemoryDataReadyEventName), _writeSync(VdmHook::SharedMemoryWriteSemaphoreName)
 {

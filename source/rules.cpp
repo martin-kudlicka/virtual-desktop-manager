@@ -1,6 +1,6 @@
+#include "pch.h"
 #include "rules.h"
 
-#include <MkCore/MUuidPtr>
 #include "ruleoptions.h"
 
 const QString Rules::Group = "rules";

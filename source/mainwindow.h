@@ -3,7 +3,6 @@
 
 #include "ui_mainwindow.h"
 #include "applicationmodel.h"
-#include <QtWidgets/QSystemTrayIcon>
 #include "rulemodel.h"
 #include "vdmhookclient.h"
 

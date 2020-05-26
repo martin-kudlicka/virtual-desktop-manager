@@ -1,6 +1,6 @@
+#include "pch.h"
 #include "applicationviewcollection.h"
 
-#include <QtCore/QtGlobal>
 #include "virtualdesktopmanagerinternal/immersiveshell.h"
 
 ApplicationViewCollection::ApplicationViewCollection()

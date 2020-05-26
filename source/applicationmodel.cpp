@@ -1,6 +1,5 @@
+#include "pch.h"
 #include "applicationmodel.h"
-
-#include <QtCore/QDir>
 
 ApplicationModel::ApplicationModel(const AppInfoList *applications) : _applications(applications)
 {

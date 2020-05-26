@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "mainwindow.h"
 
 #include "rules.h"
@@ -5,10 +6,6 @@
 #include "options.h"
 #include "virtualdesktopmanager.h"
 #include "ruledialog.h"
-#include <QtCore/QDir>
-#include <MkWidgets/MAboutBox>
-#include <MkSupport/MFeedback>
-#include <MkGui/MIcon>
 
 MainWindow::MainWindow() : _applicationModel(_appWindows.applications()), _desktopIndexMenu(tr("Move to desktop"))
 {

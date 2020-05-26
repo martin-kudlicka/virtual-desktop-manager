@@ -3,7 +3,6 @@
 
 #include "virtualdesktopmanager/virtualdesktopmanagerinternal.h"
 #include "virtualdesktopmanager/ivirtualdesktopmanager.h"
-#include <MkCore/MLazySingleton>
 
 class VirtualDesktopManager : public VirtualDesktopManagerInternal
 {

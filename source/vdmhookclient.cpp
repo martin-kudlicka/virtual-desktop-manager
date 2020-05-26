@@ -1,11 +1,9 @@
+#include "pch.h"
 #include "vdmhookclient.h"
 
 #include "../1stparty/VDM Hook/vdmhook.h"
 #include "vdmhookworker.h"
-#include <QtCore/QThreadPool>
-#include <MkCore/MOperatingSystemVersion>
 #include "../1stparty/VDM Helper/vdmhelper.h"
-#include <QtCore/QProcess>
 
 VdmHookClient::VdmHookClient() : _helperStopEvent(VdmHelper::StopEventName), _shellProcHook(WH_SHELL)
 {

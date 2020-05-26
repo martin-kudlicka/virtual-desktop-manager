@@ -49,6 +49,8 @@
     <ClCompile>
       <PreprocessorDefinitions>UNICODE;WIN32;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_NETWORK_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtWidgets;.\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName);.\..\..\..\intermediate\virtualdesktopmanager;$(QTDIR)\include\QtNetwork;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
@@ -60,6 +62,8 @@
     <ClCompile>
       <PreprocessorDefinitions>UNICODE;WIN32;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_NETWORK_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtWidgets;.\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName);.\..\..\..\intermediate\virtualdesktopmanager;$(QTDIR)\include\QtNetwork;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
@@ -95,6 +99,10 @@
     <ClCompile Include="appinfo.cpp" />
     <ClCompile Include="applicationmodel.cpp" />
     <ClCompile Include="appwindows.cpp" />
+    <ClCompile Include="pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="ruledialog.cpp" />
     <ClCompile Include="rulemodel.cpp" />
     <ClCompile Include="ruleoptions.cpp" />
@@ -120,10 +128,10 @@
     <CustomBuild Include="mainwindow.h">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing mainwindow.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DBUILD_STATIC -DWINVER=0x0600 -D_WIN32_WINNT=0x0600 -DPSAPI_VERSION=1 -D_user_mode_=1  "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets" "-I.\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\." "-I.\..\..\..\intermediate\virtualdesktopmanager" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -D%(PreprocessorDefinitions)  "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets" "-I.\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)" "-I.\..\..\..\intermediate\virtualdesktopmanager" "-I$(QTDIR)\include\QtNetwork" "-fpch.h" "-f../../../projects/virtual-desktop-manager/source/%(Filename)%(Extension)"</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing mainwindow.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DBUILD_STATIC -DWINVER=0x0600 -D_WIN32_WINNT=0x0600 -DPSAPI_VERSION=1 -D_user_mode_=1  "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets" "-I.\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\." "-I.\..\..\..\intermediate\virtualdesktopmanager" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -D%(PreprocessorDefinitions)  "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets" "-I.\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)" "-I.\..\..\..\intermediate\virtualdesktopmanager" "-I$(QTDIR)\include\QtNetwork" "-fpch.h" "-f../../../projects/virtual-desktop-manager/source/%(Filename)%(Extension)"</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
     </CustomBuild>
@@ -159,6 +167,7 @@
     <ClInclude Include="appinfo.h" />
     <ClInclude Include="applicationmodel.h" />
     <ClInclude Include="appwindows.h" />
+    <ClInclude Include="pch.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="vdmhookclient.h" />
     <ClInclude Include="vdmhookworker.h" />
@@ -166,11 +175,11 @@
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing ruledialog.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DBUILD_STATIC -DWINVER=0x0600 -D_WIN32_WINNT=0x0600 -DPSAPI_VERSION=1 -D_user_mode_=1  "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets" "-I.\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\." "-I.\..\..\..\intermediate\virtualdesktopmanager" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -D%(PreprocessorDefinitions)  "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets" "-I.\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)" "-I.\..\..\..\intermediate\virtualdesktopmanager" "-I$(QTDIR)\include\QtNetwork" "-fpch.h" "-f../../../projects/virtual-desktop-manager/source/%(Filename)%(Extension)"</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing ruledialog.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DBUILD_STATIC -DWINVER=0x0600 -D_WIN32_WINNT=0x0600 -DPSAPI_VERSION=1 -D_user_mode_=1  "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets" "-I.\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\." "-I.\..\..\..\intermediate\virtualdesktopmanager" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -D%(PreprocessorDefinitions)  "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets" "-I.\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)" "-I.\..\..\..\intermediate\virtualdesktopmanager" "-I$(QTDIR)\include\QtNetwork" "-fpch.h" "-f../../../projects/virtual-desktop-manager/source/%(Filename)%(Extension)"</Command>
     </CustomBuild>
     <ClInclude Include="rulemodel.h" />
     <ClInclude Include="ruleoptions.h" />
@@ -181,11 +190,11 @@
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing optionsdialog.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DBUILD_STATIC -DWINVER=0x0600 -D_WIN32_WINNT=0x0600 -DPSAPI_VERSION=1 -D_user_mode_=1  "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets" "-I.\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\." "-I.\..\..\..\intermediate\virtualdesktopmanager" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -D%(PreprocessorDefinitions)  "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets" "-I.\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)" "-I.\..\..\..\intermediate\virtualdesktopmanager" "-I$(QTDIR)\include\QtNetwork" "-fpch.h" "-f../../../projects/virtual-desktop-manager/source/%(Filename)%(Extension)"</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing optionsdialog.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DBUILD_STATIC -DWINVER=0x0600 -D_WIN32_WINNT=0x0600 -DPSAPI_VERSION=1 -D_user_mode_=1  "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets" "-I.\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\." "-I.\..\..\..\intermediate\virtualdesktopmanager" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -D%(PreprocessorDefinitions)  "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets" "-I.\..\..\..\intermediate\virtualdesktopmanager\$(ConfigurationName)" "-I.\..\..\..\intermediate\virtualdesktopmanager" "-I$(QTDIR)\include\QtNetwork" "-fpch.h" "-f../../../projects/virtual-desktop-manager/source/%(Filename)%(Extension)"</Command>
     </CustomBuild>
     <ClInclude Include="virtualdesktopmanager\applicationviewcollection.h" />
     <ClInclude Include="virtualdesktopmanager\ivirtualdesktopmanager.h" />

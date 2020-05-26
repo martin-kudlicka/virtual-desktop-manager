@@ -1,8 +1,8 @@
+#include "pch.h"
 #include "appinfo.h"
 
 #include "virtualdesktopmanager.h"
 #include "rules.h"
-#include <QtCore/QDir>
 
 RuleOptions AppInfo::bestRule() const
 {

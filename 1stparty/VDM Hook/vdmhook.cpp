@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "vdmhook.h"
 
 #include "..\common\event.h"

@@ -1,8 +1,7 @@
+#include "pch.h"
 #include "optionsdialog.h"
 
 #include "options.h"
-#include <MkWidgets/MHotkeyLineEdit>
-#include <MkWidgets/MFormLayout>
 #include "virtualdesktopmanager.h"
 
 OptionsDialog::OptionsDialog(QWidget *parent) : QDialog(parent), _widgetSettings(gOptions.data())

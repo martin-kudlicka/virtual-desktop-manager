@@ -1,8 +1,6 @@
 #ifndef IVIRTUALDESKTOPMANAGER_H
 #define IVIRTUALDESKTOPMANAGER_H
 
-#include <comdef.h>
-
 //EXTERN_C const CLSID CLSID_IVirtualDesktopManager;
 EXTERN_C const IID IID_IVirtualDesktopManager;
 

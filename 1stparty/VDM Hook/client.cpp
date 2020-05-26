@@ -1,6 +1,6 @@
+#include "stdafx.h"
 #include "client.h"
 
-#include <algorithm>
 #include "vdmhook.h"
 
 Client::Client() : _mapping(nullptr), _sharedMemory(nullptr)

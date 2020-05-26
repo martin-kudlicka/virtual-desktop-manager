@@ -1,10 +1,6 @@
 #ifndef RULES_H
 #define RULES_H
 
-#include <MkCore/MLazySingleton>
-#include <QtCore/QSettings>
-#include <MkCore/MUuidPtr>
-
 class Rules
 {
   public:

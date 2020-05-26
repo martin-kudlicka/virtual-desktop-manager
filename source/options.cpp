@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "options.h"
 
 #include "virtualdesktopmanager.h"

@@ -1,7 +1,6 @@
 #ifndef IVIRTUALDESKTOP_H
 #define IVIRTUALDESKTOP_H
 
-#include <Objbase.h>
 #include "iapplicationview.h"
 
 EXTERN_C const IID IID_IVirtualDesktop;

@@ -1,7 +1,6 @@
 ﻿#ifndef IAPPLICATIONVIEWCOLLECTION_H
 #define IAPPLICATIONVIEWCOLLECTION_H
 
-#include <ObjectArray.h>
 #include "iapplicationview.h"
 
 EXTERN_C const IID IID_IApplicatonViewCollection;

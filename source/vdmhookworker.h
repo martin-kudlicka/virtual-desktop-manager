@@ -1,9 +1,6 @@
 #ifndef VDMHOOKWORKER_H
 #define VDMHOOKWORKER_H
 
-#include <QtCore/QRunnable>
-#include <MkCore/MSystemSemaphore>
-#include <MkCore/MSystemEvent>
 #include "appinfo.h"
 
 class QSharedMemory;

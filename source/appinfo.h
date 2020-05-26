@@ -1,9 +1,6 @@
 #ifndef APPINFO_H
 #define APPINFO_H
 
-#include <QtCore/qt_windows.h>
-#include <QtCore/QList>
-#include <QtCore/QFileInfo>
 #include "ruleoptions.h"
 
 class AppInfo

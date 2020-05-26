@@ -1,7 +1,5 @@
 #pragma once
 
-#include "stdafx.h"
-
 #ifdef VDMHOOK_EXPORTS
 # define VDMHOOK_EXPORT extern "C" __declspec(dllexport)
 #else
