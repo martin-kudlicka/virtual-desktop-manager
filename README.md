@@ -2,7 +2,7 @@
 
 Extends capabilities of Windows 10 virtual desktop feature.
 
-![](http://martink.cz/sites/default/files/inline-images/main-window-50.png)
+![](https://raw.githubusercontent.com/martin-kudlicka/virtual-desktop-manager/master/web/screenshot.png)
 
 ## Description
 * allows moving application between desktops
@@ -14,7 +14,7 @@ Extends capabilities of Windows 10 virtual desktop feature.
 
 ## Requirements
 * Windows 10
-* [Visual C++ Redistributable for Visual Studio 2015](https://www.microsoft.com/download/details.aspx?id=48145)
+* [Visual C++ Redistributable for Visual Studio 2017](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)
 
 ## Components
 * [Qt](https://www.qt.io/)
