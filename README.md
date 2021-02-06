@@ -14,7 +14,7 @@ Extends capabilities of Windows 10 virtual desktop feature.
 
 ## Requirements
 * Windows 10
-* [Visual C++ Redistributable for Visual Studio 2017](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)
+* [Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)
 
 ## Components
 * [Qt](https://www.qt.io/)
