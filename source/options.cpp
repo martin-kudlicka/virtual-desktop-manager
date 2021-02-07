@@ -37,8 +37,8 @@ MHotkey Options::desktopHotkey(quintptr index) const
   auto group = QString("%1/%2/%3/").arg(Group_Hotkey).arg(Group_Desktop).arg(index);
 
   MHotkey hotkey;
-  hotkey.setKey(static_cast<Qt::Key>(value(group + Key_Key).toUInt()));
-  hotkey.setModifiers(static_cast<Qt::KeyboardModifiers>(value(group + Key_Modifiers).toUInt()));
+  hotkey.setKey(gsl::narrow<Qt::Key>(value(group + Key_Key).toUInt()));
+  hotkey.setModifiers(gsl::narrow<Qt::KeyboardModifiers>(value(group + Key_Modifiers).toUInt()));
   hotkey.setNativeVirtualKey(value(group + Key_NativeVirtualKey).toUInt());
 
   return hotkey;
@@ -58,8 +58,8 @@ void Options::setDesktopHotkey(quintptr index, const MHotkey &hotkey)
 {
   auto group = QString("%1/%2/%3/").arg(Group_Hotkey).arg(Group_Desktop).arg(index);
 
-  setValue(group + Key_Key,              static_cast<quintptr>(hotkey.key()));
-  setValue(group + Key_Modifiers,        static_cast<quintptr>(hotkey.modifiers()));
+  setValue(group + Key_Key,              gsl::narrow<quintptr>(hotkey.key()));
+  setValue(group + Key_Modifiers,        gsl::narrow<quintptr>(hotkey.modifiers()));
   setValue(group + Key_NativeVirtualKey, hotkey.nativeVirtualKey());
 }
 

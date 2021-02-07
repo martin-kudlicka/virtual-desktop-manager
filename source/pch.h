@@ -1,6 +1,8 @@
 #ifndef PCH_H
 #define PCH_H
 
+#include <gsl/gsl>
+
 #include <comdef.h>
 #include <Objbase.h>
 #include <ObjectArray.h>
