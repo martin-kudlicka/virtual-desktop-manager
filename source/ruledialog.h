@@ -4,7 +4,7 @@
 #include "ui_ruledialog.h"
 #include "ruleoptions.h"
 
-class RuleDialog : public QDialog
+class RuleDialog : public MOptionsDialog<Ui::RuleDialog, RuleOptions>
 {
   Q_OBJECT
 
@@ -14,16 +14,8 @@ class RuleDialog : public QDialog
              RuleDialog(QWidget *parent);
     virtual ~RuleDialog() Q_DECL_OVERRIDE Q_DECL_EQ_DEFAULT;
 
-    const RuleOptions &options() const;
-
   private:
-    Ui::RuleDialog  _ui;
-    RuleOptions     _options;
-    MWidgetSettings _widgetSettings;
-
-    void setupSettings();
-
-    virtual void accept() Q_DECL_OVERRIDE;
+    virtual void setupSettings() Q_DECL_OVERRIDE;
 
    private Q_SLOTS:
      void on_name_textChanged(const QString &text) const;

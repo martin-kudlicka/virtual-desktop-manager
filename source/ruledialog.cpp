@@ -3,12 +3,8 @@
 
 #include "options.h"
 
-RuleDialog::RuleDialog(const MUuidPtr &id, QWidget *parent) : QDialog(parent), _options(id), _widgetSettings(&_options)
+RuleDialog::RuleDialog(const MUuidPtr &id, QWidget *parent) : MOptionsDialog(id, parent)
 {
-  _ui.setupUi(this);
-
-  setupSettings();
-
   _ui.desktopIndex->setMaximum(gOptions->desktopCount());
 }
 
@@ -23,11 +19,6 @@ RuleDialog::RuleDialog(QWidget *parent) : RuleDialog(MUuidPtr::createUuid(), par
 {
 }
 
-const RuleOptions &RuleDialog::options() const
-{
-  return _options;
-}
-
 void RuleDialog::setupSettings()
 {
   _widgetSettings.setWidget(RuleOptions::Property::Name,         _ui.name);
@@ -38,14 +29,7 @@ void RuleDialog::setupSettings()
   _widgetSettings.setWidget(RuleOptions::Property::Action,       QRadioButtonPtrList() << _ui.moveToDesktop << _ui.keepOnOneDesktop << _ui.autoClose);
   _widgetSettings.setWidget(RuleOptions::Property::DesktopIndex, _ui.desktopIndex);
 
-  _widgetSettings.load();
-}
-
-void RuleDialog::accept()
-{
-  _widgetSettings.save();
-
-  QDialog::accept();
+  MOptionsDialog::setupSettings();
 }
 
 void RuleDialog::on_name_textChanged(const QString &text) const
